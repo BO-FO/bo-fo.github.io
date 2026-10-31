@@ -3,168 +3,159 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BO-FO: Bayesian Optimization of a Fourth-Order ESO</title>
+<title>BO-FO · Bayesian Optimization of a Fourth-Order ESO</title>
 <meta name="description" content="Project page: Bayesian optimization of a fourth-order extended state observer with pole relocation for robot manipulators (Hwarang Kim, Sesun You).">
-<meta property="og:title" content="BO-FO — Bayesian Optimization of a Fourth-Order ESO With Pole Relocation">
+<meta property="og:title" content="BO-FO: Bayesian Optimization of a Fourth-Order ESO With Pole Relocation for Robot Manipulators">
 <meta property="og:description" content="A fourth-order ESO gain rule tuned by constrained Bayesian optimization on a randomized simulated manipulator and validated on an Indy7 with its production ADRC gains.">
 <meta property="og:image" content="https://bo-fo.github.io/assets/teaser_snapshots.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial' font-size='26' font-weight='700' text-anchor='middle' fill='white'%3EBO%3C/text%3E%3C/svg%3E">
-<style>
-:root{--bg:#ffffff;--fg:#1b1f23;--muted:#5b6470;--line:#e3e7eb;--card:#f6f8fa;--accent:#0f766e;--accent-2:#b45309;--code:#f0f3f6}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1116;--fg:#e6e9ee;--muted:#9aa4b1;--line:#262c35;--card:#161b22;--accent:#2dd4bf;--accent-2:#fbbf24;--code:#1b212b}}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
-header.hero{padding:56px 0 28px;text-align:center}
-.kicker{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:14px}
-h1{font-size:clamp(26px,4.2vw,40px);line-height:1.2;margin:0 0 18px;font-weight:800;letter-spacing:-.01em}
-.authors{font-size:18px;margin:0 0 6px}
-.authors sup{font-size:11px;color:var(--muted)}
-.affil{color:var(--muted);font-size:15px;margin:0 0 6px}
-.venue{color:var(--muted);font-size:15px;margin:0 0 22px}
-.venue strong{color:var(--fg);font-weight:600}
-.btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:34px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--fg);font-weight:600;font-size:14px}
-.btn:hover{text-decoration:none;border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-@media (prefers-color-scheme:dark){.btn.primary{color:#06231f}}
-.btn.soon{opacity:.6;cursor:default}
-.btn svg{width:16px;height:16px;fill:currentColor}
-figure{margin:0}
-figure img,video{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:#fff}
-figcaption{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.5}
-section{padding:34px 0;border-top:1px solid var(--line)}
-h2{font-size:22px;margin:0 0 16px;letter-spacing:-.01em}
-h3{font-size:17px;margin:22px 0 8px}
-p{margin:0 0 14px}
-.lead{font-size:17px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 14px}
-.card h3{margin:0 0 8px;font-size:16px}
-.card p{font-size:15px;color:var(--muted);margin:0}
-.num{font-size:30px;font-weight:800;color:var(--accent);line-height:1.1;margin-bottom:4px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
-@media (max-width:720px){.two{grid-template-columns:1fr}}
-table{width:100%;border-collapse:collapse;font-size:14.5px;margin:6px 0 10px}
-th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{font-weight:600;color:var(--muted);font-size:13px;letter-spacing:.03em;text-transform:uppercase}
-td.n{text-align:right;font-variant-numeric:tabular-nums}
-th.n{text-align:right}
-tr.hl td{font-weight:600}
-.note{font-size:14px;color:var(--muted)}
-pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;font-size:13.5px;line-height:1.5}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;background:var(--card);border:1px solid var(--line);color:var(--muted);vertical-align:middle}
-footer{padding:30px 0 50px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);text-align:center}
-.rho{font-style:italic}
-</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23315c45'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial' font-size='26' font-weight='700' text-anchor='middle' fill='white'%3EBO%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css?v=20261031b">
 </head>
-<body>
-<div class="wrap">
-
-<header class="hero">
-  <span class="kicker">BO-FO · Bayesian Optimization of a Fourth-Order ESO</span>
-  <h1>Bayesian Optimization of a Fourth-Order Extended State Observer With Pole Relocation for Robot Manipulators</h1>
-  <p class="authors">Hwarang Kim<sup>1</sup> &nbsp;·&nbsp; Sesun You<sup>2</sup></p>
-  <p class="affil"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
-  <p class="venue">Manuscript under review, <strong>IEEE Transactions on Industrial Electronics</strong> (2026)</p>
-  <div class="btns">
-    <span class="btn soon" title="The preprint link will appear here once the paper is available"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6zm8 1.5V8h4.5zM8 12h8v1.5H8zm0 3h8v1.5H8zm0 3h5v1.5H8z"/></svg>Paper · coming soon</span>
-    <a class="btn primary" href="#video"><svg viewBox="0 0 24 24"><path d="M4 5h12a2 2 0 0 1 2 2v2.5l4-2.5v10l-4-2.5V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg>Supplementary video</a>
-    <a class="btn" href="https://github.com/BO-FO"><svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub · BO-FO</a>
-  </div>
-  <figure>
-    <img src="assets/teaser_snapshots.png" alt="Measured path deviation drawn on video frames of the robot, magnified 100 times: production ADRC, the setting selected by the search, and the adopted common value rho = 87, on three Cartesian lines with a 4.5 kg payload.">
-    <figcaption>Measured path deviation on the Indy7, drawn on the video frames magnified ×100 (4.5 kg payload): production ADRC (top), the setting selected by the search (middle) and the adopted common value <span class="rho">ρ</span> = 87 (bottom), on the <em>y</em> line, the <em>z</em> line and the <em>x</em> line seen end-on. Colour: perpendicular path error from the joint encoders.</figcaption>
-  </figure>
-</header>
-
-<section id="abstract">
-  <h2>Abstract</h2>
-  <p class="lead">Disturbance compensation in active disturbance rejection control (ADRC) depends on how well the extended state observer (ESO) follows changes in the joint disturbance. The standard third-order ESO lags behind the changes that a moving payload causes; a fourth state that estimates the disturbance rate reduces the lag, but the usual binomial pole placement reduces the stability margin and can drive the low-inertia wrist joints into the torque clamp. We introduce a gain rule that relocates the four observer poles with one parameter per gain order and select its parameters by constrained Bayesian optimization on a simulated manipulator with randomized delay, noise, and disturbances, keeping the torque demand of every joint within its clamp.</p>
-  <p>On a 6-DOF manipulator with its production ADRC gains, the selected setting reduced the perpendicular path error along Cartesian lines, with and without a suspended payload, without reaching the clamp. Stepping the relocation parameter beyond the feasible region of the search then located the margin of the robot: a common-value setting that the search excludes reduced the error further and ran cleanly, while the next larger tested value oscillated. We adopt the former, the most accurate setting of that test without a sustained oscillation; a search repeated under the located margin returns settings on the same boundary that are no more accurate on the robot. Most of the accuracy gain came from the observer order; what the search contributes is the choice of the trade-off between accuracy and torque margin on an uncertain plant, and the selected setting remains the choice where the delay or the mismatch is not known.</p>
-</section>
-
-<section id="overview">
-  <h2>Study design</h2>
-  <figure>
-    <img src="assets/fig1_pipeline.png" alt="Two-stage pipeline: constrained Bayesian optimization of the four gain-rule parameters on a simulated Indy7 with a pendulum payload, then hardware tests of the selected setting, reference settings and two common values against the production ADRC.">
-    <figcaption>Stage 1: constrained Bayesian optimization tunes the four parameters of the gain rule on a simulated manipulator with a pendulum payload, the production ADRC gains, randomized delay, noise and disturbances, and a torque-demand constraint on every joint. Stage 2: the selected setting is tested on the robot with the same gains against the production ADRC, reference settings and two common values beyond the feasible region, which locate the margin of the robot.</figcaption>
-  </figure>
-  <div class="grid" style="margin-top:22px">
-    <div class="card"><h3>One rule, four parameters</h3><p>A fourth-order ESO whose four poles are relocated by one parameter per gain order, <span class="rho">ρ</span><sub>1…4</sub>, while the production bandwidth <em>ω<sub>o</sub></em> and the joint-controller gains stay fixed. Zero parameters recover the binomial fourth-order observer; a common value <span class="rho">ρ</span> changes the relative pole locations.</p></div>
-    <div class="card"><h3>Search with a torque budget</h3><p>Constrained Bayesian optimization on an Isaac Sim model of the Indy7 with randomized loop delay, sensor noise, input-gain mismatch and disturbances. The cost weighs path errors and torque activity against the production ADRC; every joint must stay within its torque clamp on every configuration.</p></div>
-    <div class="card"><h3>Validation on the robot</h3><p>Cartesian line tracking on an Indy7 running the production real-time controller at 1 kHz, with and without a 4.5 kg suspended payload. Errors are computed from the joint encoders; the measured deviations are drawn on the video frames magnified 100 times.</p></div>
-  </div>
-</section>
-
-<section id="method">
-  <h2>Margin against accuracy along the rule</h2>
-  <div class="two">
-    <figure>
-      <img src="assets/margin_residual.png" alt="Wrist-loop gain margin versus the 1 Hz disturbance residual along the gain rule with a common rho; the binomial observer, the margin peak, the tested values 59, 87 and 104 and the selected per-order setting are marked.">
-      <figcaption>Wrist-loop gain margin <em>λ</em> (with the loop delay of the controller) against the residual of a 1 Hz disturbance along the rule with a common <span class="rho">ρ</span>. Up and to the left is better; the production third-order observer lies off scale (residual 0.31, <em>λ</em> = 5.6).</figcaption>
-    </figure>
-    <div>
-      <p>For a common <span class="rho">ρ</span> the quadruple binomial pole splits into one fast real pole and three slower ones. The estimation error stays exponentially stable for every <span class="rho">ρ</span> ≥ 0, but with loop delay the input-gain margin is finite: it rises from the binomial observer to a peak near <span class="rho">ρ</span> = 35 and then falls, while the disturbance residual keeps shrinking. The search therefore chooses a point on this trade-off rather than the fastest observer.</p>
-      <table>
-        <thead><tr><th>Setting</th><th class="n">Wrist margin <em>λ</em></th></tr></thead>
-        <tbody>
-          <tr><td>Production third-order ADRC</td><td class="n">5.6</td></tr>
-          <tr><td>Selected <span class="rho">ρ</span><sub>i</sub> = (61, 61, 59, 53) rad/s</td><td class="n">2.28</td></tr>
-          <tr><td>Uniform <span class="rho">ρ</span> = 59</td><td class="n">2.16</td></tr>
-          <tr><td>Binomial fourth-order (<span class="rho">ρ</span> = 0)</td><td class="n">1.76</td></tr>
-          <tr class="hl"><td>Adopted <span class="rho">ρ</span> = 87</td><td class="n">1.51</td></tr>
-          <tr><td><span class="rho">ρ</span> = 104 (oscillated on the robot)</td><td class="n">1.21</td></tr>
-        </tbody>
-      </table>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="wordmark" href="#top">BO-FO</a>
+      <nav aria-label="Main navigation">
+        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Experiment 1</a><a href="#experiment-2">Experiment 2</a><a href="#located">Located margin</a><a href="#citation">Citation</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
+  <main id="main">
+    <section class="hero page-width" aria-labelledby="paper-title">
+      <h1 id="paper-title">Bayesian Optimization of a Fourth-Order Extended State Observer With Pole Relocation for Robot Manipulators</h1>
+      <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
+      <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
+      <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4">Supplementary video (MP4)</a><a class="paper-link" href="https://github.com/BO-FO">GitHub</a></p>
+    </section>
 
-<section id="simulation">
-  <h2>Search on the randomized plant</h2>
-  <div class="two">
-    <figure>
-      <img src="assets/search.png" alt="(a) Cost of every evaluated candidate against its wrist-loop margin, feasible and infeasible candidates marked; (b) largest torque demand relative to the clamp on seven unseen configurations for the validated settings.">
-      <figcaption>(a) Cost of the 52 evaluated candidates against the wrist-loop margin; feasible candidates (circles), infeasible ones (crosses), the uniform <span class="rho">ρ</span> = 59, the selected setting and the adopted <span class="rho">ρ</span> = 87, which is infeasible on the search configurations. (b) Validation on seven unseen plant configurations: largest torque demand of any joint relative to its clamp.</figcaption>
-    </figure>
-    <div>
-      <p>The search evaluated 52 candidates on seven plant configurations each. The selected per-order setting lowers the simulated cost to 0.88 of the production ADRC while staying clear of the clamp on all configurations; among the evaluated candidates, none that beats the production ADRC tolerates a wrist input-gain ratio above about 2.4.</p>
-      <p>Validated on eleven motions and seven new configurations, the selected setting stayed below the clamp on all 55 motion–configuration pairs with delay ≤ 8 samples and wrist mismatch ≤ 2.3, where the binomial observer reached the clamp. The common values <span class="rho">ρ</span> = 87 and 104 are more accurate on the mild configurations but saturate on the severe ones.</p>
-    </div>
-  </div>
-</section>
+    <section class="showcase page-width" id="videos" aria-label="Featured videos">
+      <div class="showcase-layout">
+        <div class="featured-demo">
+          <div class="video-shell">
+            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4" poster="assets/posters/full.jpg" aria-label="Supplementary video"></video>
+          </div>
+          <p id="featured-description" class="featured-caption">The full narrated video: study design, hardware set-up, the three Cartesian lines with and without the payload (measured deviations drawn ×100, live joint-5 torque), the simulation search and a summary.</p>
+        </div>
+        <div class="demo-picker" id="demo-picker" role="group" aria-label="Choose a video"></div>
+      </div>
+    </section>
 
-<section id="hardware">
-  <h2>Hardware results</h2>
-  <figure>
-    <img src="assets/hw_bars.png" alt="Perpendicular-error RMS of each setting on the x, y and z lines with and without the payload, and the reconstructed torque demand of each joint relative to its clamp.">
-    <figcaption>Indy7 with the production gains: perpendicular-error RMS (a) with the 4.5 kg payload and (b) without it; (c) reconstructed torque demand of each joint relative to its clamp, worst case over the three lines and both load conditions; the dotted line is the bound used in the search.</figcaption>
-  </figure>
-  <div class="grid" style="margin-top:22px">
-    <div class="card"><div class="num">23–40 %</div><h3>Lower perpendicular error</h3><p>Selected setting against the production ADRC on three lines, with and without the payload; reversal error 32–47 % lower. No joint reached the torque clamp (peak demand 0.64 of the clamp).</p></div>
-    <div class="card"><div class="num">51–65 %</div><h3>Adopted <span class="rho">ρ</span> = 87</h3><p>A common value that the search excludes ran cleanly on this robot and reduced the perpendicular error further (reversal error 63–79 %, orientation error 47–66 % lower). It is the most accurate setting of its session without a sustained oscillation.</p></div>
-    <div class="card"><div class="num">30 Hz</div><h3>Where the margin ends</h3><p>The next larger tested value, <span class="rho">ρ</span> = 104, carried a sustained wrist oscillation on the <em>z</em> line without reaching the clamp. Through the loop model this places the robot's wrist input-gain ratio between the margins of the two settings, 1.21 and 1.51.</p></div>
-  </div>
-  <h3>All tested settings</h3>
-  <figure>
-    <img src="assets/snapshots_all.png" alt="Nine settings on three lines with the payload: measured path deviation drawn on the frames magnified 100 times.">
-    <figcaption>Every hardware setting with the 4.5 kg payload, measured path deviation magnified ×100: the seven settings of the first session, then the two per-order settings found by a search repeated under the located margin. The located settings ran cleanly and matched <span class="rho">ρ</span> = 87, which is kept as the simplest member of that boundary set.</figcaption>
-  </figure>
-</section>
+    <section class="abstract-section section-space" id="abstract" aria-labelledby="abstract-title">
+      <div class="reading-width">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>Disturbance compensation in active disturbance rejection control (ADRC) depends on how well the extended state observer (ESO) follows changes in the joint disturbance. The standard third-order ESO lags behind the changes that a moving payload causes; a fourth state that estimates the disturbance rate reduces the lag, but the usual binomial pole placement reduces the stability margin and can drive the low-inertia wrist joints into the torque clamp. We introduce a gain rule that relocates the four observer poles with one parameter per gain order and select its parameters by constrained Bayesian optimization on a simulated manipulator with randomized delay, noise, and disturbances, keeping the torque demand of every joint within its clamp.</p>
+        <p>On a 6-DOF manipulator with its production ADRC gains, the selected setting reduced the perpendicular path error along Cartesian lines, with and without a suspended payload, without reaching the clamp. Stepping the relocation parameter beyond the feasible region of the search then located the margin of the robot: a common-value setting that the search excludes reduced the error further and ran cleanly, while the next larger tested value oscillated. We adopt the former, the most accurate setting of that test without a sustained oscillation; a search repeated under the located margin returns settings on the same boundary that are no more accurate on the robot. Most of the accuracy gain came from the observer order; what the search contributes is the choice of the trade-off between accuracy and torque margin on an uncertain plant, and the selected setting remains the choice where the delay or the mismatch is not known.</p>
+      </div>
+    </section>
 
-<section id="video">
-  <h2>Supplementary video</h2>
-  <video controls preload="metadata" poster="assets/video_poster.jpg" src="assets/supp_video.mp4"></video>
-  <p class="note" style="margin-top:10px">3 min 11 s, narrated. Study design, hardware set-up, the three lines with and without the payload (measured deviations drawn ×100, live joint-5 torque), the simulation search and a summary. <a href="assets/supp_video.mp4" download>Download (MP4, 25 MB)</a>.</p>
-</section>
+    <section class="page-width section-space" id="method" aria-labelledby="method-title">
+      <h2 id="method-title">Method</h2>
+      <figure class="method-figure">
+        <img src="assets/fig1_pipeline.png" alt="Two-stage pipeline: constrained Bayesian optimization of the four gain-rule parameters on a simulated Indy7 with a pendulum payload, then hardware tests of the selected setting, reference settings and two common values against the production ADRC.">
+      </figure>
+      <p class="method-overview">Stage 1 tunes the four parameters ρ<sub>1…4</sub> of the gain rule on an Isaac Sim model of the Indy7 with a pendulum payload, the production ADRC gains, and randomized loop delay, sensor noise, input-gain mismatch and disturbances. The cost weighs the perpendicular, along-track and reversal path errors and the torque activity against the production ADRC; a candidate is feasible only if every joint stays within its torque clamp on every configuration. Stage 2 runs the selected setting on the robot with the same gains against the production ADRC, reference settings and two common values beyond the feasible region of the search, which locate the margin of the physical robot.</p>
+      <div class="method-contributions">
+        <h3 class="contributions-title">Our contributions are:</h3>
+        <ul class="contributions">
+          <li>A gain rule for a fourth-order ESO that relocates the four observer poles with one parameter per gain order while the production bandwidth <em>ω<sub>o</sub></em> and the joint-controller gains stay fixed; zero parameters recover the binomial observer, and the input-gain margin under loop delay rises with the common value ρ to a peak before it falls.</li>
+          <li>Constrained Bayesian optimization of the rule on a randomized simulated manipulator with a torque-demand constraint on every joint, so that accuracy is not bought with saturation, and validation on unseen motions and plant configurations.</li>
+          <li>Hardware validation on an Indy7 with its production ADRC gains, with and without a 4.5 kg suspended payload, including the location of the robot's margin by stepping the rule beyond the feasible region and a second search under the located margin.</li>
+        </ul>
+      </div>
+    </section>
 
-<section id="citation">
-  <h2>Citation</h2>
-  <pre><code>@article{kim2026bofo,
+    <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
+      <h2 id="experiment-1-title">Experiment 1 - Search on a randomized simulated plant</h2>
+      <p class="section-description">52 candidates were evaluated on seven plant configurations each (loop delay 5–8 samples, wrist input-gain ratio 1.3–3.0). The selected per-order setting ρ<sub>i</sub> = (61, 61, 59, 53) rad/s lowers the cost to 0.88 of the production ADRC and stays clear of the clamp on every configuration; among the evaluated candidates, none that beats the production ADRC tolerates a wrist input-gain ratio above about 2.4. Validated on eleven motions and seven new configurations, it stayed below the clamp on all 55 motion–configuration pairs with delay ≤ 8 samples and wrist mismatch ≤ 2.3, where the binomial observer reached the clamp.</p>
+      <div class="media-group">
+        <div class="media-grid">
+          <figure class="media-card">
+            <div class="media-card-bar"><span class="media-name">Search and validation</span><span class="media-metrics"><span><strong>52</strong> candidates</span><span><strong>7 + 7</strong> configurations</span><span><strong>11</strong> motions</span></span></div>
+            <img src="assets/search.png" alt="(a) Cost of every evaluated candidate against its wrist-loop margin; (b) largest torque demand relative to the clamp on seven unseen configurations.">
+            <figcaption>(a) Cost of the candidates against the wrist-loop margin λ: feasible (circles), infeasible (crosses), the uniform ρ = 59, the selected setting and the adopted ρ = 87, infeasible on the search configurations. (b) Validation on seven unseen configurations, ordered by delay and wrist mismatch: largest torque demand of any joint relative to its clamp; dotted line, the constraint of the search.</figcaption>
+          </figure>
+          <figure class="media-card">
+            <div class="media-card-bar"><span class="media-name">Margin against accuracy along the rule</span><span class="media-metrics"><span>1 Hz disturbance</span><span><strong>8</strong>-sample loop delay</span></span></div>
+            <img src="assets/margin_residual.png" alt="Wrist-loop gain margin versus the 1 Hz disturbance residual along the gain rule with a common rho.">
+            <figcaption>Wrist-loop gain margin λ against the residual of a 1 Hz disturbance along the rule with a common ρ, from the binomial observer with increasing ρ. Up and to the left is better; the production third-order observer lies off scale (residual 0.31, λ = 5.6). The margin peaks near ρ = 35 and has fallen below the binomial value at ρ = 87.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <p class="section-reference"><span>Cost.</span> J = w<sub>⊥</sub>ê<sub>⊥</sub>² + w<sub>∥</sub>ê<sub>∥</sub>² + w<sub>rev</sub>ê<sub>rev</sub>² + w<sub>u</sub>U/U<sub>0</sub>, each term normalized by the production ADRC on the same motion and configuration (weights ≈ 0.5, 0.2, 0.1, 0.2); U is the torque increment squared per joint relative to its clamp and summed over the joints. The optimizer is BoTorch with a log-noisy-expected-improvement acquisition and a feasibility classifier; candidates are screened by the Routh–Hurwitz conditions before evaluation.</p>
+    </section>
+
+    <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
+      <h2 id="experiment-2-title">Experiment 2 - Cartesian line tracking on the Indy7</h2>
+      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on an Indy7 running the production real-time controller PLEM at 1 kHz. All errors come from the joint encoders through the kinematic model; the supplementary video draws the measured deviations on the frames magnified 100 times.</p>
+      <div class="highlights">
+        <div class="highlight"><div class="num">23–40 %</div><h3>Lower perpendicular error</h3><p>Selected setting against the production ADRC on the three lines, with and without the payload; reversal error 32–47 % lower. No joint reached the torque clamp (peak demand 0.64 of the clamp).</p></div>
+        <div class="highlight"><div class="num">51–65 %</div><h3>Adopted ρ = 87</h3><p>A common value that the search excludes ran cleanly on this robot and reduced the perpendicular error further (reversal error 63–79 %, orientation error 47–66 % lower): the most accurate setting of its session without a sustained oscillation.</p></div>
+        <div class="highlight"><div class="num">30 Hz</div><h3>Where the margin ends</h3><p>The next larger tested value, ρ = 104, carried a sustained wrist oscillation on the z line without reaching the clamp. Through the loop model this places the robot's wrist input-gain ratio between the margins of the two settings, 1.21 and 1.51.</p></div>
+      </div>
+      <div class="media-group">
+        <div class="media-group-header"><h3 class="media-group-title">Perpendicular error and torque demand</h3></div>
+        <div class="media-grid single">
+          <figure class="media-card">
+            <img src="assets/hw_bars.png" alt="Perpendicular-error RMS of each setting on the x, y and z lines with and without the payload, and the reconstructed torque demand of each joint relative to its clamp.">
+            <figcaption>Hardware results with the production gains: perpendicular-error RMS (a) with the 4.5 kg payload and (b) without it; (c) reconstructed torque demand of each joint relative to its clamp, worst case over the three lines and both load conditions; the dotted line is the bound used in the search.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="media-group">
+        <div class="media-group-header"><h3 class="media-group-title">Every tested setting</h3></div>
+        <div class="choice-table">
+          <table class="metrics-table">
+            <thead>
+              <tr><th>Setting</th><th>Wrist margin λ</th><th>e<sub>⊥</sub> x (mm)</th><th>e<sub>⊥</sub> y</th><th>e<sub>⊥</sub> z</th><th>e<sub>rev</sub> x (mm)</th><th>e<sub>rev</sub> y</th><th>e<sub>rev</sub> z</th><th>e<sub>⊥</sub> x, no payload</th><th>y</th><th>z</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Production ADRC (3rd order)</td><td>5.6</td><td>0.28</td><td>0.29</td><td>0.37</td><td>1.55</td><td>2.56</td><td>2.92</td><td>0.26</td><td>0.25</td><td>0.34</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (58, 65, 58, 58)</td><td>2.40</td><td>0.18</td><td>0.19</td><td>0.31</td><td>0.87</td><td>1.32</td><td>2.15</td><td>0.19</td><td>0.18</td><td>0.30</td></tr>
+              <tr><td>4th, selected ρ<sub>i</sub> = (61, 61, 59, 53)</td><td>2.28</td><td>0.17</td><td>0.18</td><td>0.24</td><td>0.82</td><td>1.38</td><td>1.73</td><td>0.18</td><td>0.19</td><td>0.25</td></tr>
+              <tr><td>4th, uniform ρ = 59</td><td>2.16</td><td>0.16</td><td>0.16</td><td>0.24</td><td>0.71</td><td>1.25</td><td>2.04</td><td>0.17</td><td>0.14</td><td>0.22</td></tr>
+              <tr><td>4th, binomial (ρ = 0)</td><td>1.76</td><td>0.17</td><td>0.16</td><td>0.23</td><td>0.85</td><td>1.07</td><td>1.90</td><td>0.17</td><td>0.14</td><td>0.22</td></tr>
+              <tr class="adopted"><td>4th, adopted ρ = 87</td><td>1.51</td><td>0.14</td><td>0.11</td><td>0.15</td><td>0.45</td><td>0.57</td><td>0.82</td><td>0.11</td><td>0.09</td><td>0.13</td></tr>
+              <tr><td>4th, ρ = 104 (30 Hz oscillation on z)</td><td>1.21</td><td>0.12</td><td>0.08</td><td>0.10</td><td>0.35</td><td>0.46</td><td>1.15</td><td>0.09</td><td>0.07</td><td>0.08</td></tr>
+              <tr class="group"><td colspan="11">Second session: ρ = 87 repeated and the settings of the search under the located margin</td></tr>
+              <tr><td>4th, located ρ<sub>i</sub> = (78, 101, 93, 81)</td><td>—</td><td>0.12</td><td>0.12</td><td>0.15</td><td>0.71</td><td>0.87</td><td>1.20</td><td>0.12</td><td>0.11</td><td>0.13</td></tr>
+              <tr><td>4th, ρ = 87</td><td>1.51</td><td>0.14</td><td>0.11</td><td>0.16</td><td>0.60</td><td>0.66</td><td>1.02</td><td>0.12</td><td>0.09</td><td>0.12</td></tr>
+              <tr><td>4th, located ρ<sub>i</sub> = (107, 110, 100, 87)</td><td>1.66</td><td>0.12</td><td>0.12</td><td>0.14</td><td>0.66</td><td>0.82</td><td>1.08</td><td>0.11</td><td>0.10</td><td>0.12</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Perpendicular-error RMS e<sub>⊥</sub> and reversal error e<sub>rev</sub>, means over the runs of each line; λ is the wrist-loop gain margin of the loop model with an eight-sample delay. ρ in rad/s.</p>
+        <div class="media-grid single">
+          <figure class="media-card">
+            <img src="assets/snapshots_all.png" alt="Nine settings on three lines with the payload: measured path deviation drawn on the frames magnified 100 times." style="max-width:760px;margin:auto">
+            <figcaption>Every hardware setting with the 4.5 kg payload, measured path deviation drawn on the frames magnified ×100, on the y line, the z line and the x line seen end-on. Rows: the seven settings of the first session in the order of the table, then the two located settings of the second session. Colour: perpendicular path error from the joint encoders.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-width section-space experiment-section" id="located" aria-labelledby="located-title">
+      <h2 id="located-title">Searching again under the located margin</h2>
+      <p class="section-description">Only ρ = 104 (λ = 1.21) oscillated on the robot; ρ = 87 (λ = 1.51) did not. If the oscillation is the marginal mode of the loop model, the robot's wrist input-gain ratio lies between the two margins, an indirect estimate rather than a measurement. The optimizer was then rerun with that bound as a prefilter (wrist- and shoulder-loop margins at least those of ρ = 87) on the three mildest configurations, with 40 new proposals.</p>
+      <div class="media-group">
+        <div class="media-grid">
+          <div class="media-card">
+            <div class="media-card-bar"><span class="media-name">What the second search found</span><span class="media-metrics"><span><strong>40</strong> proposals</span><span>cost <strong>0.56–0.58</strong> plateau</span></span></div>
+            <p class="method-overview" style="margin-top:0">The best setting, ρ<sub>i</sub> = (107, 110, 100, 87), and the nine next ones lie on a plateau on which the shoulder-loop constraint is active, 11 % below ρ = 87 and 32 % below the selected setting in simulated cost. On the robot the best setting and the runner-up ran cleanly on all six lines with the wrist torque activity of ρ = 87, although their ρ<sub>1</sub> and ρ<sub>2</sub> exceed the ρ = 104 that oscillated: the loop margins, not the size of ρ, decide stability.</p>
+          </div>
+          <div class="media-card">
+            <div class="media-card-bar"><span class="media-name">Against ρ = 87 run in the same session</span><span class="media-metrics"><span>e<sub>⊥</sub> <strong>−14 … +21 %</strong></span><span>e<sub>rev</sub> larger in <strong>10 of 12</strong> cases</span></span></div>
+            <p class="method-overview" style="margin-top:0">Their perpendicular errors differ from those of ρ = 87 by −14 to +21 % depending on the line, with no consistent sign, and their reversal errors are larger in ten of the twelve line–load cases. The search under the located bound thus converges to the boundary set of ρ = 87, which is kept as its simplest member. Values between 87 and 104 were not tested, so ρ = 87 is the adopted value among the tested ones, not the most accurate stable setting of the rule.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-width section-space experiment-section" id="citation" aria-labelledby="citation-title">
+      <h2 id="citation-title">Citation</h2>
+      <p class="section-description">The manuscript is under review; the entry below will be updated when it is published.</p>
+<pre><code>@article{kim2026bofo,
   author  = {Kim, Hwarang and You, Sesun},
   title   = {Bayesian Optimization of a Fourth-Order Extended State Observer
              With Pole Relocation for Robot Manipulators},
@@ -172,12 +163,10 @@ footer{padding:30px 0 50px;color:var(--muted);font-size:14px;border-top:1px soli
   year    = {2026},
   note    = {under review}
 }</code></pre>
-  <p class="note">Corresponding author: Sesun You. The Indy7 is a product of Neuromeka; the production ADRC and the real-time controller PLEM are WIM Inc.'s. The simulation used NVIDIA Isaac Sim and BoTorch.</p>
-</section>
-
-</div>
-<footer>
-  <div class="wrap">BO-FO · <a href="https://github.com/BO-FO">github.com/BO-FO</a> · © 2026 Hwarang Kim and Sesun You</div>
-</footer>
+      <p class="section-reference"><span>Acknowledgement.</span> The Indy7 is a product of Neuromeka; the production ADRC and the real-time controller PLEM are WIM Inc.'s. The simulation used NVIDIA Isaac Sim and BoTorch.</p>
+    </section>
+  </main>
+  <footer class="page-width"><a class="wordmark" href="#top">BO-FO</a><p>Hwarang Kim and Sesun You · Manuscript under review, IEEE Transactions on Industrial Electronics</p><a href="#top">Back to top ↑</a></footer>
+  <script src="site.js?v=20261031b" defer></script>
 </body>
 </html>

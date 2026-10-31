@@ -5,4 +5,8 @@ Project page of **BO-FO** — *Bayesian Optimization of a Fourth-Order Extended 
 
 Live page: https://bo-fo.github.io
 
-Static site: `index.html` plus the figures and the supplementary video in `assets/`. No build step; GitHub Pages serves the `main` branch root.
+Static site, no build step (GitHub Pages serves the `main` branch root):
+
+- `index.html`, `styles.css`, `site.js` — the page; `site.js` only drives the featured-video picker.
+- `assets/` — figures (PNG) and poster frames (`assets/posters/`).
+- `videos/` — the narrated supplementary video (`supp_video.mp4`, 3:11) and its six slide segments with narration (`s1_overview` … `s6_summary`).
