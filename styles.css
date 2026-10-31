@@ -91,8 +91,8 @@ figcaption { color:var(--muted); font-size:13px; line-height:1.6; margin-top:9px
 .section-reference span { color:var(--ink); font-weight:600; }
 
 /* looping clips of every setting */
-.loops-grid { gap:22px 22px; }
-.loop-card video { width:100%; aspect-ratio:1200/310; border:1px solid var(--line); border-radius:5px; background:#fff; }
+.loops-grid { gap:26px 22px; }
+.loop-card video { width:100%; aspect-ratio:1200/296; border:1px solid var(--line); border-radius:5px; background:#fff; }
 .loop-card .media-name .speed-tag { margin-left:8px; font-size:11px; font-weight:600; }
 .loop-toggle { flex:none; padding:4px 12px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--muted); font-size:12px; }
 .loop-toggle:hover { background:var(--tint); color:var(--ink); }
