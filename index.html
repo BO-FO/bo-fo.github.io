@@ -92,10 +92,26 @@
     <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
       <h2 id="experiment-2-title">Experiment 2 - Cartesian line tracking on the Indy7</h2>
       <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on an Indy7 running the production real-time controller PLEM at 1 kHz. All errors come from the joint encoders through the kinematic model; the supplementary video draws the measured deviations on the frames magnified 100 times.</p>
-      <div class="highlights">
-        <div class="highlight"><div class="num">23–40 %</div><h3>Lower perpendicular error</h3><p>Selected setting against the production ADRC on the three lines, with and without the payload; reversal error 32–47 % lower. No joint reached the torque clamp (peak demand 0.64 of the clamp).</p></div>
-        <div class="highlight"><div class="num">51–65 %</div><h3>Adopted ρ = 87</h3><p>A common value that the search excludes ran cleanly on this robot and reduced the perpendicular error further (reversal error 63–79 %, orientation error 47–66 % lower): the most accurate setting of its session without a sustained oscillation.</p></div>
-        <div class="highlight"><div class="num">30 Hz</div><h3>Where the margin ends</h3><p>The next larger tested value, ρ = 104, carried a sustained wrist oscillation on the z line without reaching the clamp. Through the loop model this places the robot's wrist input-gain ratio between the margins of the two settings, 1.21 and 1.51.</p></div>
+      <div class="media-group">
+        <div class="media-group-header"><h3 class="media-group-title">Results against the production ADRC</h3></div>
+        <div class="choice-table">
+          <table class="metrics-table">
+            <thead>
+              <tr><th>Setting</th><th>λ</th><th>e<sub>⊥</sub>, payload</th><th>e<sub>⊥</sub>, no payload</th><th>e<sub>rev</sub>, payload</th><th>e<sub>rev</sub>, no payload</th><th>Orientation, payload</th><th>Orientation, no payload</th><th>Peak torque demand</th><th>Joint-5 HF torque</th><th style="text-align:left">Outcome</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>4th, binomial (ρ = 0)</td><td>1.76</td><td>−39 … −45 %</td><td>−35 … −44 %</td><td>−35 … −58 %</td><td>−39 … −56 %</td><td>−35 … −43 %</td><td>−32 … −45 %</td><td>0.62</td><td>1.1 – 2.2×</td><td style="text-align:left">ran cleanly</td></tr>
+              <tr><td>4th, uniform ρ = 59</td><td>2.16</td><td>−34 … −44 %</td><td>−34 … −44 %</td><td>−30 … −54 %</td><td>−36 … −59 %</td><td>−34 … −40 %</td><td>−31 … −43 %</td><td>0.62</td><td>1.1 – 1.7×</td><td style="text-align:left">ran cleanly</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (58, 65, 58, 58)</td><td>2.40</td><td>−16 … −37 %</td><td>−13 … −29 %</td><td>−26 … −48 %</td><td>−26 … −41 %</td><td>−28 … −33 %</td><td>−25 … −29 %</td><td>0.63</td><td>1.1 – 1.6×</td><td style="text-align:left">ran cleanly</td></tr>
+              <tr><td>4th, selected ρ<sub>i</sub> = (61, 61, 59, 53)</td><td>2.28</td><td>−35 … −40 %</td><td>−23 … −30 %</td><td>−41 … −47 %</td><td>−32 … −42 %</td><td>−37 … −40 %</td><td>−31 … −37 %</td><td>0.63</td><td>1.1 – 1.6×</td><td style="text-align:left">ran cleanly</td></tr>
+              <tr class="adopted"><td>4th, adopted ρ = 87</td><td>1.51</td><td>−51 … −64 %</td><td>−57 … −65 %</td><td>−71 … −78 %</td><td>−63 … −79 %</td><td>−47 … −64 %</td><td>−53 … −66 %</td><td>0.63</td><td>1.3 – 2.3×</td><td style="text-align:left">ran cleanly, adopted</td></tr>
+              <tr><td>4th, ρ = 104</td><td>1.21</td><td>−59 … −73 %</td><td>−67 … −77 %</td><td>−61 … −82 %</td><td>−71 … −84 %</td><td>−56 … −71 %</td><td>−63 … −72 %</td><td>0.64</td><td>1.6 – 14.4×</td><td style="text-align:left">sustained 30 Hz oscillation on z</td></tr>
+              <tr class="group"><td colspan="11">Second session (search under the located margin), against ρ = 87 run in the same session: ρ<sub>i</sub> = (78, 101, 93, 81) and (107, 110, 100, 87) ran cleanly; perpendicular error −14 … +21 % depending on the line, reversal error larger in 10 of the 12 line–load cases.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Changes of the perpendicular-error RMS, the reversal error and the tool-orientation error relative to the production ADRC on the same line (range over the x, y and z lines); peak reconstructed torque demand of any joint as a fraction of its clamp (production ADRC 0.63; no run reached the clamp); joint-5 torque after a 5 Hz high-pass filter relative to the production level (range over the six runs); λ is the wrist-loop gain margin of the loop model.</p>
+      </div>
       </div>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Perpendicular error and torque demand</h3></div>
