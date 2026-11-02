@@ -1,7 +1,7 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "3:11", src: "videos/supp_video.mp4", poster: "assets/posters/full.jpg",
+    { id: "full", title: "Supplementary video", length: "3:12", src: "videos/supp_video.mp4", poster: "assets/posters/full.jpg",
       caption: "The full narrated video: study design, hardware set-up, the three Cartesian lines with and without the payload (measured deviations drawn ×100, live joint-5 torque), the simulation search and a summary." },
     { id: "s1", title: "Overview", length: "0:36", src: "videos/s1_overview.mp4", poster: "assets/posters/s1.jpg",
       caption: "Study design: a fourth-order ESO gain rule with one relocation parameter per gain order, tuned by constrained Bayesian optimization on a randomized simulated Indy7 and tested on the robot with its production ADRC gains." },
@@ -13,7 +13,7 @@
       caption: "The z line: ρ = 104 carries a sustained 30 Hz wrist oscillation below the torque clamp, a setting of the second search runs cleanly; live joint-5 torque strips." },
     { id: "s5", title: "Simulation", length: "0:33", src: "videos/s5_simulation.mp4", poster: "assets/posters/s5.jpg",
       caption: "The search on the randomized plant and the validation on unseen configurations (Fig. 3) and the margin against the disturbance residual along the rule (Fig. 2)." },
-    { id: "s6", title: "Summary", length: "0:13", src: "videos/s6_summary.mp4", poster: "assets/posters/s6.jpg",
+    { id: "s6", title: "Summary", length: "0:14", src: "videos/s6_summary.mp4", poster: "assets/posters/s6.jpg",
       caption: "What the search contributes: the choice of the trade-off between accuracy and torque margin on an uncertain plant." }
   ];
   var player = document.getElementById("featured-video");
