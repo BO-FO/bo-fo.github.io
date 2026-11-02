@@ -64,7 +64,7 @@
         <ul class="contributions">
           <li>A gain rule for a fourth-order ESO that relocates the four observer poles with one parameter per gain order while the production bandwidth <em>ω<sub>o</sub></em> and the joint-controller gains stay fixed; zero parameters recover the binomial observer, and the input-gain margin under loop delay rises with the common value ρ to a peak before it falls.</li>
           <li>Constrained Bayesian optimization of the rule on a randomized simulated manipulator with a torque-demand constraint on every joint, so that accuracy is not bought with saturation, and validation on unseen motions and plant configurations.</li>
-          <li>Hardware validation on an Indy7 with its production ADRC gains, with and without a 4.5 kg suspended payload, including the location of the robot's margin by stepping the rule beyond the feasible region and a second search under the located margin.</li>
+          <li>Hardware validation on an Indy7 with its production ADRC gains, with and without a 4.5 kg suspended payload, including the location of the robot's margin by stepping the rule beyond the feasible region and a second search bounded by the margin of the robot.</li>
         </ul>
       </div>
     </section>
