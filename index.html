@@ -71,18 +71,18 @@
 
     <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
       <h2 id="experiment-1-title">Experiment 1 - Search on a randomized simulated plant</h2>
-      <p class="section-description">52 candidates were evaluated on seven plant configurations each (loop delay 5–8 samples, wrist input-gain ratio 1.3–3.0). The lowest-cost setting, ρ<sub>i</sub> = (61, 61, 59, 53) rad/s, lowers the cost to 0.88 of the production ADRC and stays clear of the clamp on every configuration; among the evaluated candidates, none that beats the production ADRC tolerates a wrist input-gain ratio above about 2.4. Validated on eleven motions and seven new configurations, it stayed below the clamp on all 55 motion–configuration pairs with delay ≤ 8 samples and wrist mismatch ≤ 2.3, where the binomial observer reached the clamp.</p>
+      <p class="section-description">52 candidates were evaluated on seven randomized plant configurations each (wrist input-gain ratio 1.3–3.0, sensor noise and disturbances). The lowest-cost setting, ρ<sub>i</sub> = (61, 61, 59, 53) rad/s, lowers the cost to 0.88 of the production ADRC and stays clear of the clamp on every configuration; among the evaluated candidates, none that beats the production ADRC tolerates a wrist input-gain ratio above about 2.4. Validated on eleven motions and seven new configurations, it stayed below the clamp on all 55 motion–configuration pairs with wrist mismatch ≤ 2.3, where the binomial observer reached the clamp.</p>
       <div class="media-group">
         <div class="media-grid">
           <figure class="media-card">
             <div class="media-card-bar"><span class="media-name">Search and validation</span><span class="media-metrics"><span><strong>52</strong> candidates</span><span><strong>7 + 7</strong> configurations</span><span><strong>11</strong> motions</span></span></div>
             <img src="assets/search.png" alt="(a) Cost of every evaluated candidate against its wrist-loop margin; (b) largest torque demand relative to the clamp on seven unseen configurations.">
-            <figcaption>(a) Cost of the candidates against the wrist-loop margin λ: feasible (circles), infeasible (crosses), the uniform ρ = 59, the lowest-cost setting and the adopted ρ = 87, infeasible on the search configurations. (b) Validation on seven unseen configurations, ordered by delay and wrist mismatch: largest torque demand of any joint relative to its clamp.</figcaption>
+            <figcaption>(a) Cost of the candidates against the wrist-loop margin λ: feasible (circles), infeasible (crosses), the uniform ρ = 59, the lowest-cost setting and the adopted ρ = 87, infeasible on the search configurations. (b) Validation on seven unseen configurations, from mild to severe: largest torque demand of any joint relative to its clamp.</figcaption>
           </figure>
           <figure class="media-card">
-            <div class="media-card-bar"><span class="media-name">Margin against accuracy along the rule</span><span class="media-metrics"><span>1 Hz disturbance</span><span><strong>8</strong>-sample loop delay</span></span></div>
+            <div class="media-card-bar"><span class="media-name">Margin against accuracy along the rule</span><span class="media-metrics"><span>1 Hz disturbance</span></span></div>
             <img src="assets/margin_residual.png" alt="Wrist-loop gain margin versus the 1 Hz disturbance residual along the gain rule with a common rho.">
-            <figcaption>Wrist-loop gain margin λ (with the loop delay of the controller) against the residual of a 1 Hz disturbance for every setting tested on the robot: the binomial observer (ρ = 0), the common values ρ = 59, 87 (adopted) and 104, the per-order settings (58, 65, 58, 58) and (61, 61, 59, 53) (stars), and the two settings of the second search (crosses). Up and to the left is better; the production third-order observer lies off scale (residual 0.31, λ = 5.6).</figcaption>
+            <figcaption>Wrist-loop gain margin λ against the residual of a 1 Hz disturbance for every setting tested on the robot: the binomial observer (ρ = 0), the common values ρ = 59, 87 (adopted) and 104, the per-order settings (58, 65, 58, 58) and (61, 61, 59, 53) (stars), and the two settings of the second search (crosses). Up and to the left is better; the production third-order observer lies off scale (residual 0.31, λ = 5.6).</figcaption>
           </figure>
         </div>
       </div>
