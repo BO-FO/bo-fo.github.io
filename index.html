@@ -86,6 +86,13 @@
           </figure>
         </div>
       </div>
+      <div class="media-group" id="motions">
+        <div class="media-group-header"><h3 class="media-group-title">The eleven validation motions in simulation</h3></div>
+        <p class="section-description" style="margin-top:0">One cycle of every motion on the simulated Indy7 with the 4.5 kg pendulum payload, same plant draw for both controllers (nominal inertia, seven samples of loop delay, 1.5× sensor noise): production ADRC on the left of each cell, the lowest-cost setting of the search on the right; orange line, the commanded path. The clip loops and plays when it is in view.</p>
+        <div class="media-grid single">
+          <div class="media-card loop-card"><video class="loop" muted loop playsinline preload="none" poster="videos/motions_grid.jpg" data-src="videos/motions_grid.mp4" style="aspect-ratio:16/9" aria-label="Eleven validation motions in simulation, production ADRC and the lowest-cost setting side by side"></video></div>
+        </div>
+      </div>
       <p class="section-reference"><span>Cost.</span> J = w<sub>⊥</sub>ê<sub>⊥</sub>² + w<sub>∥</sub>ê<sub>∥</sub>² + w<sub>rev</sub>ê<sub>rev</sub>² + w<sub>u</sub>U/U<sub>0</sub>, each term normalized by the production ADRC on the same motion and configuration (weights ≈ 0.5, 0.2, 0.1, 0.2); U is the torque increment squared per joint relative to its clamp and summed over the joints. The optimizer is BoTorch with a log-noisy-expected-improvement acquisition and a feasibility classifier; candidates are screened by the Routh–Hurwitz conditions before evaluation.</p>
     </section>
 
