@@ -1,20 +1,20 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "3:12", src: "videos/supp_video.mp4", poster: "assets/posters/full.jpg",
-      caption: "The full narrated video: study design, hardware set-up, the three Cartesian lines with and without the payload (measured deviations drawn ×100, live joint-5 torque), the simulation search and a summary." },
-    { id: "s1", title: "Overview", length: "0:36", src: "videos/s1_overview.mp4", poster: "assets/posters/s1.jpg",
-      caption: "Study design: a fourth-order ESO gain rule with one relocation parameter per gain order, tuned by constrained Bayesian optimization on a randomized simulated Indy7 and tested on the robot with its production ADRC gains." },
+    { id: "full", title: "Supplementary video", length: "3:41", src: "videos/supp_video.mp4", poster: "assets/posters/full.jpg",
+      caption: "The full narrated video: study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the simulation search and a summary." },
+    { id: "s1", title: "Overview", length: "0:42", src: "videos/s1_overview.mp4", poster: "assets/posters/s1.jpg",
+      caption: "Study design: the robot brackets the onset of wrist oscillation and fits a two-mass loop model; constrained Bayesian optimization searches the four parameters of the gain rule within that damping bound; the optimum goes back to the robot beside the common value." },
     { id: "s2", title: "Hardware set-up", length: "0:22", src: "videos/s2_setup.mp4", poster: "assets/posters/s2.jpg",
       caption: "Indy7 running the production real-time controller PLEM at 1 kHz, a 4.5 kg case hanging from the flange, and the three 0.30 m lines along x, y and z." },
-    { id: "s3", title: "y line with payload", length: "0:34", src: "videos/s3_yline.mp4", poster: "assets/posters/s3.jpg",
-      caption: "Production ADRC, the lowest-cost setting of the search and the adopted ρ = 87 on the y line with the payload; the measured deviation is drawn on the frames magnified 100 times." },
-    { id: "s4", title: "z line: where the margin ends", length: "0:44", src: "videos/s4_zline.mp4", poster: "assets/posters/s4.jpg",
-      caption: "The z line: ρ = 104 carries a sustained 30 Hz wrist oscillation below the torque clamp, a setting of the second search runs cleanly; live joint-5 torque strips." },
-    { id: "s5", title: "Simulation", length: "0:33", src: "videos/s5_simulation.mp4", poster: "assets/posters/s5.jpg",
-      caption: "The search on the randomized plant and the validation on unseen configurations (Fig. 3) and the margin against the disturbance residual along the rule (Fig. 2)." },
-    { id: "s6", title: "Summary", length: "0:14", src: "videos/s6_summary.mp4", poster: "assets/posters/s6.jpg",
-      caption: "What the search contributes: the choice of the trade-off between accuracy and torque margin on an uncertain plant." }
+    { id: "s3", title: "y line with payload", length: "0:44", src: "videos/s3_yline.mp4", poster: "assets/posters/s3.jpg",
+      caption: "Production ADRC, the common value ρ = 87 and the adopted setting (108, 90, 91, 81) on the y line with the payload; the measured deviation is drawn on the frames magnified 100 times." },
+    { id: "s4", title: "z line: wrist damping", length: "0:44", src: "videos/s4_zline.mp4", poster: "assets/posters/s4.jpg",
+      caption: "The z line without payload: ρ = 87 runs cleanly, ρ = 104 carries a sustained 30 Hz wrist oscillation below the torque clamp, and the wider-box setting (142, 98, 98, 76) runs as cleanly as ρ = 87; live joint-5 torque strips." },
+    { id: "s5", title: "Simulation", length: "0:43", src: "videos/s5_simulation.mp4", poster: "assets/posters/s5.jpg",
+      caption: "The two searches against the predicted wrist damping and the validation on unseen configurations (Fig. 3), and the wrist mode identified from the robot runs (Fig. 2)." },
+    { id: "s6", title: "Summary", length: "0:17", src: "videos/s6_summary.mp4", poster: "assets/posters/s6.jpg",
+      caption: "The damping of the measured wrist mode, not the gain margin of the rigid loop, is the quantity to carry from the robot to the simulator." }
   ];
   var player = document.getElementById("featured-video");
   var caption = document.getElementById("featured-description");
