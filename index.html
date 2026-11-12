@@ -20,7 +20,7 @@
     <div class="nav-inner">
       <a class="wordmark" href="#top">BO-FO</a>
       <nav aria-label="Main navigation">
-        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Simulation</a><a href="#experiment-2">Robot</a><a href="#bound">Damping bound</a><a href="#citation">Citation</a>
+        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Simulation</a><a href="#experiment-2">Robot</a><a href="#bound">Damping bound</a><a href="#ablation">Ablation</a><a href="#citation">Citation</a>
       </nav>
     </div>
   </header>
@@ -49,7 +49,7 @@
       <div class="reading-width">
         <h2 id="abstract-title">Abstract</h2>
         <p>In active disturbance rejection control (ADRC) a fourth observer state that estimates the disturbance rate reduces the lag of the extended state observer (ESO) behind a moving payload, but binomial pole placement cuts the stability margin and can drive the low-inertia wrist into the torque clamp. We introduce a gain rule with one relocation parameter per gain order and a tuning procedure split between robot and simulator. A common value is stepped up on the robot to the onset of wrist oscillation, and a two-mass loop model fitted to the torque spectra of these two runs captures a compliant-wrist mode that the rigid joint model lacks and predicts its order of appearance across every setting run on the robot. Constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, then searches the four parameters within the torque clamps among the settings whose predicted wrist damping is at least a bound, swept over three levels.</p>
-        <p>On a 6-DOF manipulator with production ADRC gains every optimum ran with the wrist mode damped in the predicted order and cut the tracking cost of Cartesian lines, with and without a payload, well below the production ADRC, the nominal value and the binomial observer. The cost falls with the bound in simulation, the lowest bound gains a few percent on the robot with the payload only, and its optimum is adopted. The damping of the measured mode, carried from robot to simulator, makes the search transfer.</p>
+        <p>On a 6-DOF manipulator with production ADRC gains every optimum ran with the wrist mode damped in the predicted order and cut the tracking cost of Cartesian lines, with and without a payload, well below the production ADRC, the nominal value and the binomial observer. The cost falls with the bound in simulation, the lowest bound gains a few percent on the robot with the payload only, and its optimum is adopted. An ablation of the cost weighting on a wave motion leaves the optimum within the scatter of the search.</p>
       </div>
     </section>
 
@@ -81,8 +81,8 @@
           </figure>
           <figure class="media-card">
             <div class="media-card-bar"><span class="media-name">The wrist mode identified on the robot</span><span class="media-metrics"><span>rank correlation <strong>−0.98</strong></span></span></div>
-            <img src="assets/ident.png?v=20261111" alt="(a) Joint-5 torque spectra of the production ADRC, the nominal rho = 59, rho = 104 and the adopted setting. (b) Predicted wrist-mode damping against the measured spectral bump of every setting run on the robot.">
-            <figcaption>(a) PSD of the joint-5 torque command on the z line without payload, where the mode that oscillates at 30 Hz with ρ = 104 is present, damped, near 26 Hz with the nominal ρ = 59 and near 29 Hz with the adopted setting, and absent with the production ADRC. (b) Wrist-mode damping predicted by the two-mass model, fitted to the ρ = 59 and ρ = 104 runs only, against the measured height of the spectral bump for every setting run on the robot, with and without the payload, with the three bounds of the search dashed.</figcaption>
+            <img src="assets/ident.png?v=20261112" alt="Predicted wrist-mode damping against the measured spectral bump of every setting run on the robot, with and without the payload, with the three bounds of the search dashed.">
+            <figcaption>Wrist-mode damping predicted by the two-mass model, fitted to the ρ = 59 and ρ = 104 runs only, against the measured height of the bump of the joint-5 torque spectrum for every setting run on the robot, with and without the payload, with the three bounds of the search dashed (Fig. 2 of the paper).</figcaption>
           </figure>
         </div>
       </div>
@@ -156,7 +156,7 @@
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">adopted</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.11 / 0.13</strong> mm</span><span>ζ <strong>0.05</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z05.jpg?v=20261111" data-src="videos/loops/z05.mp4?v=20261111" aria-label="Adopted setting, one cycle on the three lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 104 <span class="speed-tag">30 Hz oscillation on z, rejected</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.12 / 0.08 / 0.10</strong> mm</span><span>ζ <strong>−0.002</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho104.jpg?v=20261111" data-src="videos/loops/rho104.mp4?v=20261111" aria-label="rho = 104, one cycle on the three lines"></video></div>
         </div>
-        <p class="section-reference"><span>Still version.</span> Six of the settings as a single figure, the measured deviation drawn ×100, in <a href="assets/snapshots_all.png?v=20261111">snapshots_all.png</a> (Fig. 4 of the paper).</p>
+        <p class="section-reference"><span>Still version.</span> Four of the settings as a single figure, the measured deviation drawn ×100, in <a href="assets/snapshots_all.png?v=20261112">snapshots_all.png</a> (Fig. 4 of the paper).</p>
       </div>
     </section>
 
@@ -176,6 +176,26 @@
         </div>
       </div>
       <p class="section-description">We adopt the optimum of the lowest bound, ρ<sub>i</sub> = (82, 92, 90, 79), since on this robot the wrist mode stays a damped bump down to a predicted damping of 0.05, a quarter of the way from the oscillating common value to the nominal one, and the accuracy bought by lowering the bound to it appears with the payload only.</p>
+    </section>
+
+    <section class="page-width section-space experiment-section" id="ablation" aria-labelledby="ablation-title">
+      <h2 id="ablation-title">Ablation, the cost weighting on a wave motion</h2>
+      <p class="section-description">To test whether the optimum depends on the weighting of the path errors in the cost or on the motion, the three lines were given a lateral sine of 4 cm amplitude and 1.5 waves, and the search was repeated on them at the adopted bound 0.05 with w<sub>u</sub> = 0.3 and the path weights (w<sub>⊥</sub>, w<sub>∥</sub>, w<sub>rev</sub>) set in turn to (0.5, 0.1, 0.1), (0.1, 0.5, 0.1) and (0.1, 0.1, 0.5), 40 proposals per weighting after 28 prior settings that include the line optima, 128 settings in all.</p>
+      <div class="media-group">
+        <div class="media-grid">
+          <figure class="media-card">
+            <div class="media-card-bar"><span class="media-name">The wave motion and the cost under the three weightings</span><span class="media-metrics"><span><strong>48</strong> robot runs</span></span></div>
+            <img src="assets/wave.png?v=20261112" alt="(a) Top view of the first move along the y line with a lateral sine, commanded path dashed, measured path with its perpendicular deviation magnified 30 times for the production ADRC and W1. (b) Robot cost under the three weightings for the adopted setting, W1 and W2.">
+            <figcaption>(a) First move along the y line with a lateral sine of 4 cm and 1.5 waves, on the robot with the payload, the commanded path dashed and the measured path drawn with its perpendicular deviation magnified 30 times, for the production ADRC and the wave-search optimum W1. (b) Robot cost on the three wave lines, normalized by the production ADRC of the same line and load, under the three weightings for the adopted setting (82, 92, 90, 79), W1 (92, 92, 92, 80) and W2 (120, 113, 101, 86), bars the mean of the two loads and whiskers the two loads (Fig. 7 of the paper).</figcaption>
+          </figure>
+          <div class="media-card">
+            <div class="media-card-bar"><span class="media-name">In simulation and on the robot</span></div>
+            <p class="method-overview" style="margin-top:0">Under every weighting the lowest costs form one cluster on the damping bound, within 1 %, with the adopted line setting within 1.2 % of each optimum. The optimum of the perpendicular and of the along-track weighting is W1, ρ<sub>i</sub> = (92, 92, 92, 80), the adopted setting with ρ<sub>1</sub> raised, and that of the reversal weighting is W2, ρ<sub>i</sub> = (120, 113, 101, 86), with ρ<sub>1</sub> at the limit of the box, both at a predicted damping of 0.05.</p>
+            <p class="method-overview">On the robot the adopted setting, W1 and W2 ran the three wave lines with and without the payload, 48 runs, all clean. Against the production ADRC of the same line and load they lowered the cost by 57–61 % under every weighting and the perpendicular error from 0.46–0.56 to 0.12–0.16 mm, W1 lowest under each by 1–3 % over the adopted setting and 3–5 % over W2, repeated runs within 0.02.</p>
+          </div>
+        </div>
+      </div>
+      <p class="section-description">The weighting moves neither the simulated nor the measured optimum beyond the scatter of the search, and the setting adopted on the lines carries its gain to a curved path. The search decides the damping bound, and the weighting only names a point of the cluster on it.</p>
     </section>
 
     <section class="page-width section-space experiment-section" id="citation" aria-labelledby="citation-title">
