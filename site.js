@@ -1,20 +1,22 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "3 min 23 s", src: "videos/supp_video.mp4?v=20261111", poster: "assets/posters/full.jpg?v=20261111",
-      caption: "The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the bound sweep in simulation and a summary." },
-    { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261111", poster: "assets/posters/s1.jpg?v=20261111",
+    { id: "full", title: "Supplementary video", length: "4 min 8 s", src: "videos/supp_video.mp4?v=20261113", poster: "assets/posters/full.jpg?v=20261113",
+      caption: "The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the bound sweep in simulation, the ablation on the wave lines and a summary." },
+    { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261113", poster: "assets/posters/s1.jpg?v=20261113",
       caption: "Study design, in which the common value is stepped up on the robot from its nominal value to the onset of wrist oscillation, and a two-mass loop model fitted to these two runs gives the damping of every setting. Constrained Bayesian optimization in the simulator, with and without the payload, searches at three levels of the damping bound, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value." },
-    { id: "s2", title: "Hardware set-up", length: "22 s", src: "videos/s2_setup.mp4?v=20261111", poster: "assets/posters/s2.jpg?v=20261111",
+    { id: "s2", title: "Hardware set-up", length: "22 s", src: "videos/s2_setup.mp4?v=20261113", poster: "assets/posters/s2.jpg?v=20261113",
       caption: "Indy7 running the production real-time controller PLEM at 1 kHz, a 4.5 kg case hanging from the flange, and the three 0.30 m lines along x, y and z." },
-    { id: "s3", title: "y line with payload", length: "32 s", src: "videos/s3_yline.mp4?v=20261111", poster: "assets/posters/s3.jpg?v=20261111",
-      caption: "Production ADRC, the nominal ρ = 59 and the adopted setting (82, 92, 90, 79) on the y line with the payload, with the measured deviation is drawn on the frames magnified 100 times." },
-    { id: "s4", title: "z line, wrist damping", length: "36 s", src: "videos/s4_zline.mp4?v=20261111", poster: "assets/posters/s4.jpg?v=20261111",
+    { id: "s3", title: "y line with payload", length: "32 s", src: "videos/s3_yline.mp4?v=20261113", poster: "assets/posters/s3.jpg?v=20261113",
+      caption: "Production ADRC, the nominal ρ = 59 and the adopted setting (82, 92, 90, 79) on the y line with the payload, with the measured deviation drawn on the frames magnified 100 times." },
+    { id: "s4", title: "z line, wrist damping", length: "36 s", src: "videos/s4_zline.mp4?v=20261113", poster: "assets/posters/s4.jpg?v=20261113",
       caption: "The z line without payload, where the nominal ρ = 59 runs cleanly with a broad wrist-mode bump, ρ = 104 carries a sustained 30 Hz wrist oscillation below the torque clamp, and the adopted setting runs cleanly with the mode damped near 29 Hz, as the two-mass model predicted." },
-    { id: "s5", title: "Simulation", length: "39 s", src: "videos/s5_simulation.mp4?v=20261111", poster: "assets/posters/s5.jpg?v=20261111",
-      caption: "The three searches against the predicted wrist damping and the validation on unseen configurations (Fig. 3), and the wrist mode identified from the robot runs (Fig. 2)." },
-    { id: "s6", title: "Summary", length: "21 s", src: "videos/s6_summary.mp4?v=20261111", poster: "assets/posters/s6.jpg?v=20261111",
-      caption: "The damping of the measured wrist mode, carried from the robot to the simulator, is what makes the search transfer, and the optimum of the lowest bound is adopted." }
+    { id: "s5", title: "Simulation", length: "39 s", src: "videos/s5_simulation.mp4?v=20261113", poster: "assets/posters/s5.jpg?v=20261113",
+      caption: "The three searches against the predicted wrist damping (Fig. 3), and the wrist mode identified from the robot runs (Fig. 2)." },
+    { id: "s5b", title: "Ablation, wave lines", length: "37 s", src: "videos/s5b_ablation.mp4?v=20261113", poster: "assets/posters/s5b.jpg?v=20261113",
+      caption: "The cost weighting on a wave motion. The production ADRC, the optimum of the perpendicular weighting (92, 92, 92, 80) and the adopted setting on the y wave line with the payload, the measured deviation drawn ×30, and the search repeated under three weightings." },
+    { id: "s6", title: "Summary", length: "29 s", src: "videos/s6_summary.mp4?v=20261113", poster: "assets/posters/s6.jpg?v=20261113",
+      caption: "The damping of the measured wrist mode, carried from the robot to the simulator, is what makes the search transfer, the optimum of the lowest bound is adopted, and the ablation leaves it within the scatter of the search." }
   ];
   var player = document.getElementById("featured-video");
   var caption = document.getElementById("featured-description");
