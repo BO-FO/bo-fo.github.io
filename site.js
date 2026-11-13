@@ -1,9 +1,9 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 15 s", src: "videos/supp_video.mp4?v=20261113c", poster: "assets/posters/full.jpg?v=20261113d",
+    { id: "full", title: "Supplementary video", length: "4 min 15 s", src: "videos/supp_video.mp4?v=20261113c", poster: "assets/posters/full.jpg?v=20261113e",
       caption: "The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the bound sweep in simulation, the ablation on the wave lines and a summary." },
-    { id: "silent", title: "Silent version, captions", length: "2 min 51 s", src: "videos/supp_video_silent.mp4?v=20261113", poster: "assets/posters/full.jpg?v=20261113d",
+    { id: "silent", title: "Silent version, captions", length: "2 min 51 s", src: "videos/supp_video_silent.mp4?v=20261113", poster: "assets/posters/full.jpg?v=20261113e",
       caption: "The same slides without narration or sound, the key points as captions at the bottom of the hardware slides, for a quiet room or a quick look." },
     { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261113b", poster: "assets/posters/s1.jpg?v=20261113b",
       caption: "Study design, in which the common value is stepped up on the robot from its nominal value to the onset of wrist oscillation, and a two-mass loop model fitted to these two runs gives the damping of every setting. Constrained Bayesian optimization in the simulator, with and without the payload, searches at three levels of the damping bound, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value." },
