@@ -184,9 +184,9 @@
       <div class="media-group">
         <div class="media-grid">
           <figure class="media-card">
-            <div class="media-card-bar"><span class="media-name">The wave motion and the cost under the three weightings</span><span class="media-metrics"><span><strong>48</strong> robot runs</span></span></div>
-            <img src="assets/wave.png?v=20261113" alt="(a) Robot frames of the z line with a lateral sine, commanded path dashed, measured path with its perpendicular deviation magnified 30 times for the production ADRC, the adopted setting, W1 and W2. (b) Robot cost under the three weightings for the adopted setting, W1 and W2.">
-            <figcaption>(a) The z line with a lateral sine of 4 cm and 1.5 waves on the robot with the payload, seen at the first dwell, the commanded path dashed and the measured path of the three cycles drawn with its perpendicular deviation magnified 30 times, for the production ADRC, the adopted setting, W1 and W2. (b) Robot cost on the three wave lines, normalized by the production ADRC of the same line and load, under the three weightings for the adopted setting (82, 92, 90, 79), W1 (92, 92, 92, 80) and W2 (120, 113, 101, 86), bars the mean of the two loads and whiskers the two loads (Fig. 5 of the paper).</figcaption>
+            <div class="media-card-bar"><span class="media-name">The wave lines on the robot, every setting of Table III</span><span class="media-metrics"><span><strong>48</strong> robot runs</span></span></div>
+            <img src="assets/wave.png?v=20261113" alt="Robot frames of the y, z and end-on x wave lines with the payload, four rows for the production ADRC, W2, W1 and the adopted setting, the commanded wave dashed and the measured path with its perpendicular deviation magnified 30 times.">
+            <figcaption>Hardware runs on the wave lines (lateral sine of 4 cm and 1.5 waves) with the 4.5 kg payload, the measured path deviation drawn on the frames magnified 30 times (y, z and end-on x lines, the frame at the first dwell or, end-on, at mid-line). The rows are the production ADRC, the wave-search optima W2 and W1 and the adopted setting of the lines. The dashed line is the commanded wave and the colour is the perpendicular error (Fig. 5 of the paper).</figcaption>
           </figure>
           <div class="media-card">
             <div class="media-card-bar"><span class="media-name">In simulation and on the robot</span></div>
@@ -194,6 +194,23 @@
             <p class="method-overview">On the robot the adopted setting, W1 and W2 ran the three wave lines with and without the payload, 48 runs, all clean. Against the production ADRC of the same line and load they lowered the cost by 57–61 % under every weighting and the perpendicular error from 0.46–0.56 to 0.12–0.16 mm, W1 lowest under each by 1–3 % over the adopted setting and 3–5 % over W2, repeated runs within 0.02.</p>
           </div>
         </div>
+      </div>
+      <div class="media-group">
+        <div class="media-group-header"><h3 class="media-group-title">Every setting of Table III</h3></div>
+        <div class="choice-table">
+          <table class="metrics-table">
+            <thead>
+              <tr><th>Setting</th><th>e<sub>⊥</sub> x (mm)</th><th>e<sub>⊥</sub> y</th><th>e<sub>⊥</sub> z</th><th>e<sub>rev</sub> x (mm)</th><th>e<sub>rev</sub> y</th><th>e<sub>rev</sub> z</th><th>e<sub>⊥</sub> x, no payload</th><th>y</th><th>z</th><th>J̄, w<sub>⊥</sub> = 0.5</th><th>w<sub>∥</sub> = 0.5</th><th>w<sub>rev</sub> = 0.5</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Production ADRC (3rd order)</td><td>0.49</td><td>0.62</td><td>0.58</td><td>1.76</td><td>2.48</td><td>2.66</td><td>0.43</td><td>0.45</td><td>0.54</td><td>1.00</td><td>1.00</td><td>1.00</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (120, 113, 101, 86), W2</td><td>0.14</td><td>0.16</td><td>0.17</td><td>0.61</td><td>0.86</td><td>0.80</td><td>0.12</td><td>0.13</td><td>0.14</td><td>0.41</td><td>0.43</td><td>0.43</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (92, 92, 92, 80), W1</td><td>0.13</td><td>0.15</td><td>0.16</td><td>0.62</td><td>0.77</td><td>0.78</td><td>0.11</td><td>0.12</td><td>0.13</td><td><strong>0.39</strong></td><td><strong>0.41</strong></td><td><strong>0.41</strong></td></tr>
+              <tr class="adopted"><td>4th, ρ<sub>i</sub> = (82, 92, 90, 79), adopted</td><td>0.14</td><td>0.15</td><td>0.17</td><td>0.63</td><td>0.98</td><td>0.82</td><td>0.12</td><td>0.13</td><td>0.14</td><td>0.40</td><td>0.43</td><td>0.42</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="table-note">Perpendicular-error RMS e<sub>⊥</sub> and reversal error e<sub>rev</sub> on the wave lines, means over the two runs of each line, from Table III of the paper, with ρ in rad/s, and the cost under each weighting (one path weight raised to 0.5, the other two 0.1, w<sub>u</sub> = 0.3), normalized by the production ADRC of the same line and load and averaged over the six lines. Rows in the order of the paper, decreasing cost, the adopted setting last. W1 is lowest under every weighting, by 1–3 % over the adopted setting and 3–5 % over W2, and repeated runs of one setting differ by 0.02 at most.</p>
       </div>
       <p class="section-description">The weighting moves neither the simulated nor the measured optimum beyond the scatter of the search, and the setting adopted on the lines carries its gain to a curved path. The search decides the damping bound, and the weighting only names a point of the cluster on it.</p>
     </section>
