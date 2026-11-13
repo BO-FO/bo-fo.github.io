@@ -6,7 +6,7 @@
 <title>BO-FO · Bayesian Optimization of a Fourth-Order ESO</title>
 <meta name="description" content="Project page of Bayesian optimization of a fourth-order extended state observer with pole relocation for robot manipulators (Hwarang Kim, Sesun You).">
 <meta property="og:title" content="BO-FO, Bayesian Optimization of a Fourth-Order ESO With Pole Relocation for Robot Manipulators">
-<meta property="og:description" content="A fourth-order ESO gain rule tuned by constrained Bayesian optimization within a wrist-damping bound identified on the robot, and validated on an Indy7 with its production ADRC gains.">
+<meta property="og:description" content="A fourth-order ESO gain rule tuned by constrained Bayesian optimization within a wrist-damping bound identified on the robot, and validated on a six-axis industrial manipulator with its production ADRC gains.">
 <meta property="og:image" content="https://bo-fo.github.io/assets/teaser_snapshots.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23315c45'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial' font-size='26' font-weight='700' text-anchor='middle' fill='white'%3EBO%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,13 +58,13 @@
       <figure class="method-figure">
         <img src="assets/fig1_pipeline.png?v=20261113b" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
       </figure>
-      <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the Indy7 with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their spectral bumps, in the order of their bounds as predicted, close the loop.</p>
+      <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the robot with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their spectral bumps, in the order of their bounds as predicted, close the loop.</p>
       <div class="method-contributions">
         <h3 class="contributions-title">Our contributions</h3>
         <ul class="contributions">
           <li>A gain rule for a fourth-order ESO that relocates the four observer poles with one parameter per gain order while the production bandwidth <em>ω<sub>o</sub></em> and the joint-controller gains stay fixed, and zero parameters recover the binomial observer.</li>
           <li>A tuning procedure that divides the work between the robot and a simulator. The nominal and the oscillating run on the robot identify the wrist mode and fit a two-mass loop model, and constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, searches under a bound on the damping of that model, swept over three levels, with a torque-demand constraint on every joint so that accuracy is not bought with saturation.</li>
-          <li>Hardware validation on an Indy7 with its production ADRC gains, with and without a 4.5 kg suspended payload, of the nominal and the stepped common value, the binomial observer and the optima of the three bounds, two runs per line and load. The fitted damping orders the measured spectral bump of every setting (rank correlation −0.98), and the optima lower the tracking cost by 60–62 % against the production ADRC and by 27–29 % against the nominal value, the three bounds within the repeat scatter of each other on the robot.</li>
+          <li>Hardware validation on a six-axis industrial manipulator with its production ADRC gains, with and without a 4.5 kg suspended payload, of the nominal and the stepped common value, the binomial observer and the optima of the three bounds, two runs per line and load. The fitted damping orders the measured spectral bump of every setting (rank correlation −0.98), and the optima lower the tracking cost by 60–62 % against the production ADRC and by 27–29 % against the nominal value, the three bounds within the repeat scatter of each other on the robot.</li>
         </ul>
       </div>
     </section>
@@ -88,7 +88,7 @@
       </div>
       <div class="media-group" id="motions">
         <div class="media-group-header"><h3 class="media-group-title">The eleven validation motions in simulation</h3></div>
-        <p class="section-description" style="margin-top:0">One cycle of every motion on the simulated Indy7 with the 4.5 kg pendulum payload, same plant draw for both controllers (nominal inertia, seven samples of loop delay, 1.5× sensor noise), the production ADRC on the left of each cell and a damping-bound optimum of an earlier revision of the search, ρ<sub>i</sub> = (108, 90, 91, 81), on the right, with the commanded path as an orange line. The clip loops and plays when it is in view.</p>
+        <p class="section-description" style="margin-top:0">One cycle of every motion on the simulated manipulator with the 4.5 kg pendulum payload, same plant draw for both controllers (nominal inertia, seven samples of loop delay, 1.5× sensor noise), the production ADRC on the left of each cell and a damping-bound optimum of an earlier revision of the search, ρ<sub>i</sub> = (108, 90, 91, 81), on the right, with the commanded path as an orange line. The clip loops and plays when it is in view.</p>
         <div class="media-grid single">
           <div class="media-card loop-card"><video class="loop" muted loop playsinline preload="none" poster="videos/motions_grid.jpg?v=20261111" data-src="videos/motions_grid.mp4?v=20261111" style="aspect-ratio:16/9" aria-label="Eleven validation motions in simulation, production ADRC and a damping-bound optimum side by side"></video></div>
         </div>
@@ -97,8 +97,8 @@
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
-      <h2 id="experiment-2-title">Robot - Cartesian line tracking on the Indy7</h2>
-      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on an Indy7 running the production real-time controller PLEM at 1 kHz. All errors come from the joint encoders through the kinematic model, and the supplementary video draws the measured deviations on the frames magnified 100 times. The production ADRC, the nominal ρ = 59, the binomial observer and the four searched settings ran in one session, two runs per line and load (84 runs, all clean), and ρ = 104 ran in an earlier session.</p>
+      <h2 id="experiment-2-title">Robot - Cartesian line tracking on a six-axis manipulator</h2>
+      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis industrial manipulator running the production real-time controller PLEM at 1 kHz. All errors come from the joint encoders through the kinematic model, and the supplementary video draws the measured deviations on the frames magnified 100 times. The production ADRC, the nominal ρ = 59, the binomial observer and the four searched settings ran in one session, two runs per line and load (84 runs, all clean), and ρ = 104 ran in an earlier session.</p>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Results against the production ADRC</h3></div>
         <div class="choice-table">
@@ -232,7 +232,7 @@
   year    = {2026},
   note    = {under review}
 }</code></pre>
-      <p class="section-reference"><span>Acknowledgement.</span> The Indy7 is a product of Neuromeka, and the production ADRC and the real-time controller PLEM are WIM Inc.'s. The simulation used NVIDIA Isaac Sim and BoTorch.</p>
+      <p class="section-reference"><span>Acknowledgement.</span> The production ADRC and the real-time controller PLEM are WIM Inc.'s. The simulation used NVIDIA Isaac Sim and BoTorch.</p>
     </section>
   </main>
   <footer class="page-width"><a class="wordmark" href="#top">BO-FO</a><p>Hwarang Kim and Sesun You · Manuscript under review, IEEE Transactions on Industrial Electronics</p><a href="#top">Back to top ↑</a></footer>

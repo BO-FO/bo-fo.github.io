@@ -6,7 +6,7 @@
     { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261113b", poster: "assets/posters/s1.jpg?v=20261113b",
       caption: "Study design, in which the common value is stepped up on the robot from its nominal value to the onset of wrist oscillation, and a two-mass loop model fitted to these two runs gives the damping of every setting. Constrained Bayesian optimization in the simulator, with and without the payload, searches at three levels of the damping bound, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value." },
     { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261113d", poster: "assets/posters/s2.jpg?v=20261113d",
-      caption: "Indy7 running the production real-time controller PLEM at 1 kHz, a 4.5 kg case hanging from the flange, and the three 0.30 m lines along x, y and z." },
+      caption: "A six-axis manipulator running the production real-time controller PLEM at 1 kHz, a 4.5 kg case hanging from the flange, and the three 0.30 m lines along x, y and z." },
     { id: "s3", title: "y line with payload", length: "33 s", src: "videos/s3_yline.mp4?v=20261113b", poster: "assets/posters/s3.jpg?v=20261113b",
       caption: "Production ADRC, the nominal ρ = 59 and the optimum of the bound 0.05, (82, 92, 90, 79), on the y line with the payload, with the measured deviation drawn on the frames magnified 100 times." },
     { id: "s4", title: "z line, wrist damping", length: "37 s", src: "videos/s4_zline.mp4?v=20261113c", poster: "assets/posters/s4.jpg?v=20261113c",
