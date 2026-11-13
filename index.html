@@ -182,12 +182,7 @@
       <h2 id="ablation-title">Ablation, the cost weighting on a wave motion</h2>
       <p class="section-description">To test whether the optimum depends on the weighting of the path errors in the cost or on the motion, the three lines were given a lateral sine of 4 cm amplitude and 1.5 waves, and the search was repeated on them at the adopted bound 0.05 with w<sub>u</sub> = 0.3 and the path weights (w<sub>⊥</sub>, w<sub>∥</sub>, w<sub>rev</sub>) set in turn to (0.5, 0.1, 0.1), (0.1, 0.5, 0.1) and (0.1, 0.1, 0.5), 40 proposals per weighting after 28 prior settings that include the line optima, 128 settings in all.</p>
       <div class="media-group">
-        <div class="media-grid">
-          <figure class="media-card">
-            <div class="media-card-bar"><span class="media-name">The wave lines on the robot, every setting of Table III</span><span class="media-metrics"><span><strong>48</strong> robot runs</span></span></div>
-            <img src="assets/wave.png?v=20261113" alt="Robot frames of the y, z and end-on x wave lines with the payload, four rows for the production ADRC, the two wave optima and the adopted setting, the commanded wave dashed and the measured path with its perpendicular deviation magnified 30 times.">
-            <figcaption>Hardware runs on the wave lines (lateral sine of 4 cm and 1.5 waves) with the 4.5 kg payload, the measured path deviation drawn on the frames magnified 30 times (y, z and end-on x lines, the frame at the first dwell or, end-on, at mid-line). The rows are the production ADRC, the optima of the wave search under the reversal and under the perpendicular weighting, and the adopted setting of the paper. The dashed line is the commanded wave and the colour is the perpendicular error (Fig. 5 of the paper).</figcaption>
-          </figure>
+        <div class="media-grid single">
           <div class="media-card">
             <div class="media-card-bar"><span class="media-name">In simulation and on the robot</span></div>
             <p class="method-overview" style="margin-top:0">Under every weighting the lowest costs form one cluster on the damping bound, within 1 %, with the adopted setting within 1.2 % of each optimum. The optimum of the perpendicular and of the along-track weighting is ρ<sub>i</sub> = (92, 92, 92, 80), the adopted setting with ρ<sub>1</sub> raised, and that of the reversal weighting is ρ<sub>i</sub> = (120, 113, 101, 86), with ρ<sub>1</sub> at the limit of the box, both at a predicted damping of 0.05.</p>
@@ -204,6 +199,7 @@
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (92, 92, 92, 80) <span class="speed-tag">perpendicular weighting</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.15 / 0.16</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.39</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/w1.jpg?v=20261113" data-src="videos/loops_wave/w1.mp4?v=20261113" aria-label="rho_i = (92, 92, 92, 80), one cycle on the three wave lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">adopted on the straight lines</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.14 / 0.15 / 0.17</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.40</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/z05.jpg?v=20261113" data-src="videos/loops_wave/z05.mp4?v=20261113" aria-label="adopted setting, one cycle on the three wave lines"></video></div>
         </div>
+        <p class="section-reference"><span>Still version.</span> The four settings as a single figure, the measured deviation drawn ×30, in <a href="assets/wave.png?v=20261113">wave.png</a> (Fig. 5 of the paper).</p>
       </div>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Every setting of Table III</h3></div>
