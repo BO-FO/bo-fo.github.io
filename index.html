@@ -39,7 +39,7 @@
           <div class="video-shell">
             <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261113d" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
           </div>
-          <p id="featured-description" class="featured-caption">The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the simulation search and a summary.</p>
+          <p id="featured-description" class="featured-caption">The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the bound sweep in simulation, the ablation on the wave lines and a summary.</p>
         </div>
         <div class="demo-picker" id="demo-picker" role="group" aria-label="Choose a video"></div>
       </div>
@@ -49,7 +49,7 @@
       <div class="reading-width">
         <h2 id="abstract-title">Abstract</h2>
         <p>In active disturbance rejection control (ADRC) a fourth observer state for the disturbance rate reduces the lag of the extended state observer (ESO) behind a moving payload, but binomial pole placement cuts the stability margin and can drive the low-inertia wrist into the torque clamp. We introduce a gain rule with one relocation parameter per gain order and a tuning procedure split between robot and simulator. A common value is stepped up on the robot to the onset of wrist oscillation, and a two-mass loop model fitted to the torque spectra of these two runs represents a wrist mode the rigid joint model lacks and predicts its order of appearance across every straight-line setting run on the robot. Constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, searches the four parameters within the torque clamps among settings whose predicted wrist damping reaches a bound swept over three levels.</p>
-        <p>On a 6-DOF manipulator with production ADRC gains every optimum ran with the wrist mode damped in the predicted order and cut the tracking cost of Cartesian lines well below the production ADRC, the nominal value and the binomial observer. The cost falls with the bound in simulation, whereas on the robot the spread among the three optima is comparable to the repeat scatter, so the data do not establish a ranking of the bounds. An ablation of the cost weighting on a wave motion changes the selected gains but not the cost beyond that scatter.</p>
+        <p>On a 6-DOF manipulator with production gains every optimum ran with the wrist mode damped in the predicted order and cut the tracking cost of Cartesian lines well below the production ADRC, the nominal value and the binomial observer. The cost falls with the bound in simulation, whereas on the robot the spread among the three optima is comparable to the repeat scatter, so the data do not establish a ranking of the bounds. An ablation of the cost weighting on a wave motion changes the selected gains but not the cost beyond that scatter.</p>
       </div>
     </section>
 
@@ -95,7 +95,7 @@
       </div>
       <div class="media-group" id="randomization">
         <div class="media-group-header"><h3 class="media-group-title">Randomization of the simulated plant</h3></div>
-        <p class="section-description" style="margin-top:0">What the search and the validation saw besides the nominal model (Section IV-B of the paper). Every candidate of the three searches was evaluated on draws 1, 2 and 3 with and without the payload, three cycles per line, and the validation of Table I used draws 100–106, draw 106 fixed by the configuration beyond the ranges. Each draw is reproducible from the seed and the row order given in the first table, and all values are in <a href="assets/randomization_draws.json">randomization_draws.json</a>.</p>
+        <p class="section-description" style="margin-top:0">What the search and the validation saw besides the nominal model (Section IV-A of the paper). Every candidate of the three searches was evaluated on draws 1, 2 and 3 with and without the payload, three cycles per line, and the validation of Table I used draws 100–106, draw 106 fixed by the configuration beyond the ranges. Each draw is reproducible from the seed and the row order given in the first table, and all values are in <a href="assets/randomization_draws.json">randomization_draws.json</a>.</p>
         <div class="choice-table">
           <table class="metrics-table">
             <thead>
@@ -185,7 +185,7 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Perpendicular-error RMS e<sub>⊥</sub> and reversal error e<sub>rev</sub>, means over the two runs of each line, from Table II of the paper, with ρ in rad/s. The four searched settings score 0.385–0.397 over the six lines. With the payload the two settings of the bound 0.05 score 0.39 and the two more damped optima 0.41, a difference above the run-to-run scatter, whereas without the payload the four lie within 0.377–0.397 in no order of the bound.</p>
+        <p class="table-note">Perpendicular-error RMS e<sub>⊥</sub> and reversal error e<sub>rev</sub>, means over the two runs of each line, from Table II of the paper, with ρ in rad/s. The four searched settings score 0.385–0.397 over the six lines. With the payload the two settings of the bound 0.05 score 0.39 and the two more damped optima 0.41, a difference at the edge of the run-to-run scatter, whereas without the payload the four lie within 0.377–0.397 in no order of the bound.</p>
       </div>
       <div class="media-group" id="loops">
         <div class="media-group-header">
@@ -218,7 +218,7 @@
           </div>
           <div class="media-card">
             <div class="media-card-bar"><span class="media-name">On the robot</span></div>
-            <p class="method-overview" style="margin-top:0">All four searched settings ran cleanly on every line and load, with the wrist mode as a bump whose height follows the bound (10.5, 8.9, 8.6 and 5.4 dB from the bound 0.05 to 0.15, against 29 dB for the oscillating ρ = 104), and scored 0.385–0.397 over the six lines, 27–29 % below the nominal value, 25–27 % below the binomial observer and 60–62 % below the production ADRC. The simulated gain of the lowest bound carried over in full (27 % in simulation, 29 % on the robot), and the simulated losses of the higher bounds, 7 % and 15 %, shrank to 2 % and 3 %. With the payload the lowest bound gains 4 % over the others, and without it the four are indistinguishable.</p>
+            <p class="method-overview" style="margin-top:0">All four searched settings ran cleanly on every line and load, with the wrist mode as a bump whose height follows the bound (10.5, 8.9, 8.6 and 5.4 dB from the bound 0.05 to 0.15, against 29 dB for the oscillating ρ = 104), and scored 0.385–0.397 over the six lines, 27–29 % below the nominal value, 25–27 % below the binomial observer and 60–62 % below the production ADRC. The simulated gain of the lowest bound carried over in full (27 % in simulation, 29 % on the robot), and the simulated losses of the higher bounds, 7 % and 15 %, shrank to 2 % and 3 %. With the payload the two settings of the bound 0.05 score 0.39 and the two more damped optima 0.41, an ordering of 4.5 % at the edge of the repeat scatter, and without the payload the four lie within 0.377–0.397 in no order of the bound.</p>
           </div>
         </div>
       </div>

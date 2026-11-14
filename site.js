@@ -16,7 +16,7 @@
     { id: "s5b", title: "Ablation, wave lines", length: "38 s", src: "videos/s5b_ablation.mp4?v=20261113b", poster: "assets/posters/s5b.jpg?v=20261113b",
       caption: "The cost weighting on a wave motion. The production ADRC, the optimum of the perpendicular weighting (92, 92, 92, 80) and the optimum of the lowest bound on the y wave line with the payload, the measured deviation drawn ×30, and the search repeated under three weightings." },
     { id: "s6", title: "Summary", length: "31 s", src: "videos/s6_summary.mp4?v=20261113b", poster: "assets/posters/s6.jpg?v=20261113b",
-      caption: "The damping of the measured wrist mode, carried from the robot to the simulator, is what makes the search transfer, the three bounds lie within the repeat scatter of each other on the robot, and the ablation leaves the optimum within the scatter of the search." }
+      caption: "The damping of the measured wrist mode, carried from the robot to the simulator, is what makes the search transfer, the spread among the optima of the three bounds is comparable to the repeat scatter on the robot, so the data do not rank the bounds, and the ablation changes the selected gains but not the cost beyond the scatter." }
   ];
   var player = document.getElementById("featured-video");
   var caption = document.getElementById("featured-description");
