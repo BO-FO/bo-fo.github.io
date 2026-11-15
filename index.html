@@ -30,14 +30,14 @@
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
-      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261115">Supplementary video (MP4)</a></p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261115b">Supplementary video (MP4)</a></p>
     </section>
 
     <section class="showcase page-width" id="videos" aria-label="Featured videos">
       <div class="showcase-layout">
         <div class="featured-demo">
           <div class="video-shell">
-            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261115" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
+            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261115b" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
           </div>
           <p id="featured-description" class="featured-caption">The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the bound sweep in simulation, the ablation on the wave lines and a summary.</p>
         </div>
@@ -56,15 +56,15 @@
     <section class="page-width section-space" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
-        <img src="assets/fig1_pipeline.png?v=20261113b" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
+        <img src="assets/fig1_pipeline.png?v=20261115b" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
       </figure>
-      <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the robot with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their spectral bumps, in the order of their bounds as predicted, close the loop.</p>
+      <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the robot with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their wrist-mode peaks, in the order of their bounds as predicted, close the loop.</p>
       <div class="method-contributions">
         <h3 class="contributions-title">Our contributions</h3>
         <ul class="contributions">
           <li>A gain rule for a fourth-order ESO that relocates the four observer poles with one parameter for each gain order while the production bandwidth <em>ω<sub>o</sub></em> and the joint-controller gains stay fixed, and zero parameters recover the binomial observer.</li>
           <li>A tuning procedure that divides the work between the robot and a simulator. The nominal and the oscillating run on the robot identify the wrist mode and fit a two-mass loop model, and constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, searches under a bound on the damping of that model, swept over three levels, with a torque-demand constraint on every joint so that accuracy is not bought with saturation.</li>
-          <li>Hardware validation on a six-axis industrial manipulator with its production ADRC gains, with and without a 4.5 kg suspended payload, of the nominal and the stepped common value, the binomial observer and the optima of the three bounds, two runs on each line and load. The fitted damping orders the measured spectral bump of every straight-line setting (rank correlation −0.98), and the optima lower the tracking cost by 60–62 % against the production ADRC and by 27–29 % against the nominal value, the spread of the three bounds comparable to the repeat scatter on the robot.</li>
+          <li>Hardware validation on a six-axis industrial manipulator with its production ADRC gains, with and without a 4.5 kg suspended payload, of the nominal and the stepped common value, the binomial observer and the optima of the three bounds, two runs on each line and load. The fitted damping orders the measured wrist-mode peak of every straight-line setting (rank correlation −0.98), and the optima lower the tracking cost by 60–62 % against the production ADRC and by 27–29 % against the nominal value, the spread of the three bounds comparable to the repeat scatter on the robot.</li>
         </ul>
       </div>
     </section>
@@ -81,8 +81,8 @@
           </figure>
           <figure class="media-card">
             <div class="media-card-bar"><span class="media-name">The wrist mode identified on the robot</span><span class="media-metrics"><span>rank correlation <strong>−0.98</strong></span></span></div>
-            <img src="assets/ident.png?v=20261113b" alt="Predicted wrist-mode damping against the measured spectral bump of every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed.">
-            <figcaption>Wrist-mode damping predicted by the two-mass model, fitted to the ρ = 59 and ρ = 104 runs only, against the measured height of the bump of the joint-5 torque spectrum for every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed (Fig. 2 of the paper).</figcaption>
+            <img src="assets/ident.png?v=20261115b" alt="Predicted wrist-mode damping against the measured wrist-mode peak of every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed.">
+            <figcaption>Wrist-mode damping predicted by the two-mass model, fitted to the ρ = 59 and ρ = 104 runs only, against the measured height of the wrist-mode peak of the joint-5 torque spectrum for every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed (Fig. 2 of the paper).</figcaption>
           </figure>
         </div>
       </div>
@@ -151,7 +151,7 @@
         <div class="choice-table">
           <table class="metrics-table">
             <thead>
-              <tr><th>Setting</th><th>ζ (two-mass)</th><th>e<sub>⊥</sub>, payload</th><th>e<sub>⊥</sub>, no payload</th><th>e<sub>rev</sub>, payload</th><th>e<sub>rev</sub>, no payload</th><th>Δτ wrist (mN·m)</th><th>Wrist-mode bump (dB)</th><th>Cost J̄</th><th style="text-align:left">Outcome</th></tr>
+              <tr><th>Setting</th><th>ζ (two-mass)</th><th>e<sub>⊥</sub>, payload</th><th>e<sub>⊥</sub>, no payload</th><th>e<sub>rev</sub>, payload</th><th>e<sub>rev</sub>, no payload</th><th>Δτ wrist (mN·m)</th><th>Wrist-mode peak (dB)</th><th>Cost J̄</th><th style="text-align:left">Outcome</th></tr>
             </thead>
             <tbody>
               <tr><td>Production ADRC (3rd order)</td><td>0.62</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>161 / 156</td><td>1.6</td><td>1.00</td><td style="text-align:left">baseline</td></tr>
@@ -165,7 +165,7 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Rows in the order of Table II of the paper (decreasing cost), the rejected ρ = 104 last. ζ is the wrist-mode damping predicted by the two-mass loop model fitted to the ρ = 59 and ρ = 104 runs. The error columns are the mean over the x, y and z lines of the change of the perpendicular-error RMS and of the reversal error relative to the production ADRC on the same line. Δτ is the torque-increment RMS of the wrist joints with / without the payload. Bump is the height of the wrist-mode peak in the joint-5 torque spectrum on the z line without payload. J̄ is the cost of the paper, path errors and torque activity, on the hardware metrics of each line normalized by the production ADRC of the same line and load, averaged over the six lines. The ρ<sub>i</sub> are rounded to integers on this page. Values run, bound 0.15 (81.43, 63.18, 74.14, 69.31), 0.10 (70.42, 69.99, 77.11, 70.62), 0.05 (82.22, 91.71, 89.59, 79.26) and its runner-up (114.65, 105.40, 97.77, 84.39), with a slowest observer pole of 20.0, 20.2, 21.4 and 20.8 rad/s, at or above the 20 rad/s limit of the search.</p>
+        <p class="table-note">Rows in the order of Table II of the paper (decreasing cost), the rejected ρ = 104 last. ζ is the wrist-mode damping predicted by the two-mass loop model fitted to the ρ = 59 and ρ = 104 runs. The error columns are the mean over the x, y and z lines of the change of the perpendicular-error RMS and of the reversal error relative to the production ADRC on the same line. Δτ is the torque-increment RMS of the wrist joints with / without the payload. The peak column is the height of the wrist-mode peak in the joint-5 torque spectrum on the z line without payload. J̄ is the cost of the paper, path errors and torque activity, on the hardware metrics of each line normalized by the production ADRC of the same line and load, averaged over the six lines. The ρ<sub>i</sub> are rounded to integers on this page. Values run, bound 0.15 (81.43, 63.18, 74.14, 69.31), 0.10 (70.42, 69.99, 77.11, 70.62), 0.05 (82.22, 91.71, 89.59, 79.26) and its runner-up (114.65, 105.40, 97.77, 84.39), with a slowest observer pole of 20.0, 20.2, 21.4 and 20.8 rad/s, at or above the 20 rad/s limit of the search.</p>
       </div>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Every setting of Table II</h3></div>
@@ -209,7 +209,7 @@
 
     <section class="page-width section-space experiment-section" id="bound" aria-labelledby="bound-title">
       <h2 id="bound-title">The damping bound, what the robot tells the simulator</h2>
-      <p class="section-description">Stepped up from the nominal ρ = 59 to 104, the common value oscillated in a single-joint limit cycle of joint 5 at 30 Hz that grows during the moves and is absent at rest. The same mode is already present in the nominal runs as a broad bump of 2–4 dB near 25 Hz, and it is absent with the production observer. The rigid loop model of the joint places its marginal mode at 14–20 Hz and cannot reproduce it, whereas a two-mass loop model of the compliant wrist, fitted to the nominal and the oscillating run, predicts the damping of the mode for any setting and orders the measured bump of every straight-line setting run on the robot (rank correlation −0.98). Its damping is the quantity carried to the simulator, and the search was run at three levels of the bound.</p>
+      <p class="section-description">Stepped up from the nominal ρ = 59 to 104, the common value oscillated in a single-joint limit cycle of joint 5 at 30 Hz that grows during the moves and is absent at rest. The same mode is already present in the nominal runs as a broad peak of 2–4 dB near 25 Hz, and it is absent with the production observer. The rigid loop model of the joint places its marginal mode at 14–20 Hz and cannot reproduce it, whereas a two-mass loop model of the compliant wrist, fitted to the nominal and the oscillating run, predicts the damping of the mode for any setting and orders the measured wrist-mode peak of every straight-line setting run on the robot (rank correlation −0.98). Its damping is the quantity carried to the simulator, and the search was run at three levels of the bound.</p>
       <div class="media-group">
         <div class="media-grid">
           <div class="media-card">
@@ -218,7 +218,7 @@
           </div>
           <div class="media-card">
             <div class="media-card-bar"><span class="media-name">On the robot</span></div>
-            <p class="method-overview" style="margin-top:0">All four searched settings ran cleanly on every line and load, with the wrist mode as a bump whose height follows the bound (10.5, 8.9, 8.6 and 5.4 dB from the bound 0.05 to 0.15, against 29 dB for the oscillating ρ = 104), and scored 0.385–0.397 over the six lines, 27–29 % below the nominal value, 25–27 % below the binomial observer and 60–62 % below the production ADRC. The simulated gain of the lowest bound carried over in full (27 % in simulation, 29 % on the robot), and the simulated losses of the higher bounds, 7 % and 15 %, shrank to 2 % and 3 %. With the payload the two settings of the bound 0.05 score 0.39 and the two more damped optima 0.41, an ordering of 4.5 % at the edge of the repeat scatter, and without the payload the four lie within 0.377–0.397 in no order of the bound.</p>
+            <p class="method-overview" style="margin-top:0">All four searched settings ran cleanly on every line and load, with the wrist mode as a peak whose height follows the bound (10.5, 8.9, 8.6 and 5.4 dB from the bound 0.05 to 0.15, against 29 dB for the oscillating ρ = 104), and scored 0.385–0.397 over the six lines, 27–29 % below the nominal value, 25–27 % below the binomial observer and 60–62 % below the production ADRC. The simulated gain of the lowest bound carried over in full (27 % in simulation, 29 % on the robot), and the simulated losses of the higher bounds, 7 % and 15 %, shrank to 2 % and 3 %. With the payload the two settings of the bound 0.05 score 0.39 and the two more damped optima 0.41, an ordering of 4.5 % at the edge of the repeat scatter, and without the payload the four lie within 0.377–0.397 in no order of the bound.</p>
           </div>
         </div>
       </div>
