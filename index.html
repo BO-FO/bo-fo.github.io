@@ -95,8 +95,8 @@
           </figure>
           <figure class="media-card">
             <div class="media-card-bar"><span class="media-name">Validation on unseen configurations (Fig. 7 of the paper)</span><span class="media-metrics"><span><strong>7</strong> configurations</span></span></div>
-            <img src="assets/validation.png?v=20261116k" alt="Validation cost of the binomial observer, rho 59, rho 104 and the three optima against the wrist mismatch of the configurations with five and six samples of delay, and on the eight- and ten-sample configurations on a log scale.">
-            <figcaption>(a) Cost against the wrist mismatch on the configurations with five and six samples of delay, the order of the optima reversing at a mismatch of 2.3. (b) The configurations with eight and ten samples of delay on a log scale, where every fourth-order setting reaches the clamp and the production ADRC stays at 1.</figcaption>
+            <img src="assets/validation.png?v=20261116l" alt="Validation cost of the binomial observer, rho 59, rho 104 and the three optima against the wrist mismatch at the loop delay of the controller, and on the configurations with longer delays on a log scale.">
+            <figcaption>(a) Cost against the wrist mismatch at the loop delay of the controller, the order of the optima reversing at a mismatch of 2.3. (b) The configurations with longer delays on a log scale, where every fourth-order setting reaches the clamp and the production ADRC stays at 1.</figcaption>
           </figure>
         </div>
       </div>
@@ -236,8 +236,8 @@
     <section class="page-width section-space experiment-section" id="bound" aria-labelledby="bound-title">
       <h2 id="bound-title">The damping bound, what the robot tells the simulator</h2>
       <figure class="method-figure">
-        <img src="assets/margin.png?v=20261116e" alt="Gain margin of the rigid wrist and shoulder loops and the two-mass wrist damping against the common relocation value, with the binomial, nominal and oscillating values marked.">
-        <figcaption>Margins of the loop models against the common value ρ (Fig. 3 of the paper). (a) Gain margin λ of the rigid wrist and shoulder loops at eight (solid) and six (dashed) samples of delay, with the production third-order observer of the wrist at eight samples as a reference. (b) Damping ζ of the closed-loop wrist mode of the two-mass model, the three bounds dashed. The margin returns to its binomial value near 1.3 times the nominal value, while the wrist damping keeps falling and crosses zero at ρ = 104.</figcaption>
+        <img src="assets/margin.png?v=20261116l" alt="Gain margin of the rigid wrist and shoulder loops and the two-mass wrist damping against the common relocation value, with the binomial, nominal and oscillating values marked.">
+        <figcaption>Margins of the loop models against the common value ρ (Fig. 3 of the paper). (a) Gain margin λ of the rigid wrist and shoulder loops at the loop delay of the controller, with the production third-order observer of the wrist as a reference. (b) Damping ζ of the closed-loop wrist mode of the two-mass model, the three bounds dashed. The margin returns to its binomial value near 1.3 times the nominal value, while the wrist damping keeps falling and crosses zero at ρ = 104.</figcaption>
       </figure>
       <p class="section-description">Stepped up from the nominal ρ = 59 to 104, the common value oscillated in a single-joint limit cycle of joint 5 at 30 Hz that grows during the moves and is absent at rest. The same mode is already present in the nominal runs as a broad peak of 2–4 dB near 25 Hz, and it is absent with the production observer. The rigid loop model of the joint places its marginal mode at 14–20 Hz and cannot reproduce it, whereas a two-mass loop model of the compliant wrist, fitted to the nominal and the oscillating run, predicts the damping of the mode for any setting and orders the measured wrist-mode peak of every straight-line setting run on the robot (rank correlation −0.98). Its damping is the quantity carried to the simulator, and the search was run at three levels of the bound.</p>
       <div class="media-group">
