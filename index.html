@@ -30,14 +30,14 @@
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
-      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261116h">Supplementary video (MP4)</a></p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261116m">Supplementary video (MP4)</a></p>
     </section>
 
     <section class="showcase page-width" id="videos" aria-label="Featured videos">
       <div class="showcase-layout">
         <div class="featured-demo">
           <div class="video-shell">
-            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261116h" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
+            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261116m" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
           </div>
           <p id="featured-description" class="featured-caption">The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the bound sweep in simulation, the ablation on the wave lines and a summary.</p>
         </div>
@@ -58,10 +58,6 @@
       <figure class="method-figure">
         <img src="assets/fig1_pipeline.png?v=20261116h" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
       </figure>
-      <figure class="method-figure">
-        <img src="assets/loop.png?v=20261116f" alt="Control loop of one joint. The ADRC law with the measured joint angle and velocity, the division by b0 and the torque clamp, the joint, and the fourth-order extended state observer with the two-layer gain rule feeding the disturbance estimate, the production third-order observer as the alternative.">
-        <figcaption>Control loop of one joint with the fourth-order ESO (Fig. 2 of the paper). The ADRC law uses the measured angle and velocity, the observer estimates the disturbance and its rate from the commanded torque and the angle, and the production third-order observer takes its place in the baseline.</figcaption>
-      </figure>
       <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the robot with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their wrist-mode peaks, in the order of their bounds as predicted, close the loop.</p>
       <div class="method-contributions">
         <h3 class="contributions-title">Our contributions</h3>
@@ -79,22 +75,22 @@
       <div class="media-group">
         <div class="media-grid">
           <figure class="media-card">
-            <div class="media-card-bar"><span class="media-name">The bound sweep (Fig. 5 of the paper)</span><span class="media-metrics"><span><strong>219</strong> settings</span></span></div>
+            <div class="media-card-bar"><span class="media-name">The bound sweep (Fig. 4 of the paper)</span><span class="media-metrics"><span><strong>219</strong> settings</span></span></div>
             <img src="assets/search.png?v=20261116b" alt="Cost of every setting of the three searches against the wrist damping predicted by the two-mass model, with the three bounds and their optima marked.">
             <figcaption>Cost of the 219 settings of the three searches on the search configurations, with and without the payload, against the wrist damping ζ predicted by the two-mass model, admitted at the lowest bound (filled circles) or feasible but failing the bound or the pole condition (open circles), with ρ = 59 and ρ = 104 ringed, the optimum of each bound a plus sign and the three bounds dashed. The cost falls as the damping is spent, and the bound decides where the trade stops.</figcaption>
           </figure>
           <figure class="media-card">
             <div class="media-card-bar"><span class="media-name">The wrist mode identified on the robot</span><span class="media-metrics"><span>rank correlation <strong>−0.98</strong></span></span></div>
             <img src="assets/ident.png?v=20261116b" alt="Predicted wrist-mode damping against the measured wrist-mode peak of every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed.">
-            <figcaption>Wrist-mode damping predicted by the two-mass model, fitted to the ρ = 59 and ρ = 104 runs only, against the measured height of the wrist-mode peak of the joint-5 torque spectrum for every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed (Fig. 4 of the paper).</figcaption>
+            <figcaption>Wrist-mode damping predicted by the two-mass model, fitted to the ρ = 59 and ρ = 104 runs only, against the measured height of the wrist-mode peak of the joint-5 torque spectrum for every straight-line setting run on the robot, with and without the payload, with the three bounds of the search dashed (Fig. 3 of the paper).</figcaption>
           </figure>
           <figure class="media-card">
-            <div class="media-card-bar"><span class="media-name">The search progress (Fig. 6 of the paper)</span><span class="media-metrics"><span><strong>60</strong> proposals for each bound</span></span></div>
+            <div class="media-card-bar"><span class="media-name">The search progress (Fig. 5 of the paper)</span><span class="media-metrics"><span><strong>60</strong> proposals for each bound</span></span></div>
             <img src="assets/bo_progress.png?v=20261116e" alt="Best admitted cost against the proposal number for the three bounds, and the predicted wrist damping of every proposal settling on its bound.">
             <figcaption>(a) The best admitted cost against the proposal number, starting from the best admitted prior setting of each level, with ρ = 59 and the box corner ρ<sub>i</sub> = 1 dotted. (b) The wrist damping predicted for each proposal, the three bounds dashed. The proposals settle on their bound and the cost falls with it.</figcaption>
           </figure>
           <figure class="media-card">
-            <div class="media-card-bar"><span class="media-name">Validation on unseen configurations (Fig. 7 of the paper)</span><span class="media-metrics"><span><strong>7</strong> configurations</span></span></div>
+            <div class="media-card-bar"><span class="media-name">Validation on unseen configurations (Fig. 6 of the paper)</span><span class="media-metrics"><span><strong>7</strong> configurations</span></span></div>
             <img src="assets/validation.png?v=20261116l" alt="Validation cost of the binomial observer, rho 59, rho 104 and the three optima against the wrist mismatch at the loop delay of the controller, and on the configurations with longer delays on a log scale.">
             <figcaption>(a) Cost against the wrist mismatch at the loop delay of the controller, the order of the optima reversing at a mismatch of 2.3. (b) The configurations with longer delays on a log scale, where every fourth-order setting reaches the clamp and the production ADRC stays at 1.</figcaption>
           </figure>
@@ -161,15 +157,15 @@
       <h2 id="experiment-2-title">Robot, Cartesian line tracking on a six-axis manipulator</h2>
       <figure class="method-figure">
         <img src="assets/setup.png?v=20261116j" alt="Experimental set-up. The six-axis manipulator on its pedestal, the 4.5 kg payload case, the power supply, the real-time PC that runs the controller and the monitor with the control program, and the signal chain from the trajectory through the real-time PC and EtherCAT to the joint drives.">
-        <figcaption>Experimental set-up (Fig. 8 of the paper). (a) The lab, the six-axis manipulator on its pedestal, the 4.5 kg payload case, the power supply, the real-time PC that runs the controller and the monitor with the control program. (b) Signal chain. The trajectory is streamed at 50 Hz to the real-time PC, which runs the ADRC law with the production or the candidate observer at 1 kHz over EtherCAT and logs the joint states and torques at the same rate.</figcaption>
+        <figcaption>Experimental set-up (Fig. 7 of the paper). (a) The lab, the six-axis manipulator on its pedestal, the 4.5 kg payload case, the power supply, the real-time PC that runs the controller and the monitor with the control program. (b) Signal chain. The trajectory is streamed at 50 Hz to the real-time PC, which runs the ADRC law with the production or the candidate observer at 1 kHz over EtherCAT and logs the joint states and torques at the same rate.</figcaption>
       </figure>
       <figure class="method-figure">
         <img src="assets/hwtraces.png?v=20261116e" alt="Welch spectrum of the joint-5 commanded torque on the z line with the payload for four settings, and the 5 Hz high-pass torque over a 3 s excerpt of one move.">
-        <figcaption>Joint-5 commanded torque on the z line with the payload (Fig. 9 of the paper) for the production ADRC, ρ = 59, the oscillating ρ = 104 and the optimum of the bound 0.05. (a) Welch spectrum over the three-cycle window, the wrist mode at about 30 Hz. (b) The torque after the 5 Hz high-pass filter during a 3 s excerpt of one move.</figcaption>
+        <figcaption>Joint-5 commanded torque on the z line with the payload (Fig. 8 of the paper) for the production ADRC, ρ = 59, the oscillating ρ = 104 and the optimum of the bound 0.05. (a) Welch spectrum over the three-cycle window, the wrist mode at about 30 Hz. (b) The torque after the 5 Hz high-pass filter during a 3 s excerpt of one move.</figcaption>
       </figure>
       <figure class="method-figure">
         <img src="assets/hwerror.png?v=20261116f" alt="Perpendicular path error against time over one cycle on the z line and the y line with the payload for the production ADRC, rho 59, rho 104 and the optimum of the bound 0.05, the reversals dotted.">
-        <figcaption>Perpendicular error over one cycle with the payload (Fig. 10 of the paper), z line (a) and y line (b), for the same four settings, the reversals dotted.</figcaption>
+        <figcaption>Perpendicular error over one cycle with the payload (Fig. 9 of the paper), z line (a) and y line (b), for the same four settings, the reversals dotted.</figcaption>
       </figure>
       <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis industrial manipulator running the production real-time controller PLEM at 1 kHz. All errors come from the joint encoders through the kinematic model, and the supplementary video draws the measured deviations on the frames magnified 100 times. The production ADRC, the nominal ρ = 59, the binomial observer and the four searched settings ran in one session, two runs on each line and load (84 runs, all clean), and ρ = 104 ran in an earlier session. The production gains, kept in simulation and on the robot, are k<sub>p</sub> = 400 s<sup>−2</sup> and k<sub>d</sub> = 40 s<sup>−1</sup> (225 and 30 on joints 4–5), b<sub>0</sub> = (0.227, 0.121, 0.556, 0.571, 0.393, 0.496) rad/(s<sup>2</sup> N m) and ω<sub>o</sub> = 60 rad/s, with the torque clamped at the rated torque τ<sub>max</sub> = (432, 432, 197, 80, 80, 80) N m.</p>
       <div class="media-group">
@@ -229,7 +225,7 @@
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">bound 0.05</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.11 / 0.13</strong> mm</span><span>ζ <strong>0.05</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z05.jpg?v=20261111" data-src="videos/loops/z05.mp4?v=20261111" aria-label="optimum of the bound 0.05, one cycle on the three lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 104 <span class="speed-tag">30 Hz oscillation on z, rejected</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.12 / 0.08 / 0.10</strong> mm</span><span>ζ <strong>−0.002</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho104.jpg?v=20261111" data-src="videos/loops/rho104.mp4?v=20261111" aria-label="rho = 104, one cycle on the three lines"></video></div>
         </div>
-        <p class="section-reference"><span>Still version.</span> The production ADRC, ρ = 59, the binomial observer, the rejected ρ = 104 and the optimum of the bound 0.05 as a single figure, the measured deviation drawn ×100, in <a href="assets/snapshots_all.png?v=20261116b">snapshots_all.png</a> (Fig. 11 of the paper).</p>
+        <p class="section-reference"><span>Still version.</span> The production ADRC, ρ = 59, the binomial observer, the rejected ρ = 104 and the optimum of the bound 0.05 as a single figure, the measured deviation drawn ×100, in <a href="assets/snapshots_all.png?v=20261116b">snapshots_all.png</a> (Fig. 10 of the paper).</p>
       </div>
     </section>
 
@@ -237,7 +233,7 @@
       <h2 id="bound-title">The damping bound, what the robot tells the simulator</h2>
       <figure class="method-figure">
         <img src="assets/margin.png?v=20261116l" alt="Gain margin of the rigid wrist and shoulder loops and the two-mass wrist damping against the common relocation value, with the binomial, nominal and oscillating values marked.">
-        <figcaption>Margins of the loop models against the common value ρ (Fig. 3 of the paper). (a) Gain margin λ of the rigid wrist and shoulder loops at the loop delay of the controller, with the production third-order observer of the wrist as a reference. (b) Damping ζ of the closed-loop wrist mode of the two-mass model, the three bounds dashed. The margin returns to its binomial value near 1.3 times the nominal value, while the wrist damping keeps falling and crosses zero at ρ = 104.</figcaption>
+        <figcaption>Margins of the loop models against the common value ρ (Fig. 2 of the paper). (a) Gain margin λ of the rigid wrist and shoulder loops at the loop delay of the controller, with the production third-order observer of the wrist as a reference. (b) Damping ζ of the closed-loop wrist mode of the two-mass model, the three bounds dashed. The margin returns to its binomial value near 1.3 times the nominal value, while the wrist damping keeps falling and crosses zero at ρ = 104.</figcaption>
       </figure>
       <p class="section-description">Stepped up from the nominal ρ = 59 to 104, the common value oscillated in a single-joint limit cycle of joint 5 at 30 Hz that grows during the moves and is absent at rest. The same mode is already present in the nominal runs as a broad peak of 2–4 dB near 25 Hz, and it is absent with the production observer. The rigid loop model of the joint places its marginal mode at 14–20 Hz and cannot reproduce it, whereas a two-mass loop model of the compliant wrist, fitted to the nominal and the oscillating run, predicts the damping of the mode for any setting and orders the measured wrist-mode peak of every straight-line setting run on the robot (rank correlation −0.98). Its damping is the quantity carried to the simulator, and the search was run at three levels of the bound.</p>
       <div class="media-group">
@@ -276,7 +272,7 @@
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">bound 0.05, straight lines</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.14 / 0.15 / 0.17</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.40</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/z05.jpg?v=20261113" data-src="videos/loops_wave/z05.mp4?v=20261113" aria-label="optimum of the bound 0.05 from the straight lines, one cycle on the three wave lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (92, 92, 92, 80) <span class="speed-tag">perpendicular and along-track weightings</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.15 / 0.16</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.39</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/w1.jpg?v=20261113" data-src="videos/loops_wave/w1.mp4?v=20261113" aria-label="rho_i = (92, 92, 92, 80), one cycle on the three wave lines"></video></div>
         </div>
-        <p class="section-reference"><span>Still version.</span> The four settings as a single figure, the measured deviation drawn ×30, in <a href="assets/wave.png?v=20261116b">wave.png</a> (Fig. 12 of the paper).</p>
+        <p class="section-reference"><span>Still version.</span> The four settings as a single figure, the measured deviation drawn ×30, in <a href="assets/wave.png?v=20261116b">wave.png</a> (Fig. 11 of the paper).</p>
       </div>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Every setting of Table III</h3></div>
