@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BO-FO · Bayesian Optimization of a Fourth-Order ESO</title>
-<meta name="description" content="Project page of Bayesian optimization of a fourth-order extended state observer with pole relocation for robot manipulators (Hwarang Kim, Sesun You).">
-<meta property="og:title" content="BO-FO, Bayesian Optimization of a Fourth-Order ESO With Pole Relocation for Robot Manipulators">
-<meta property="og:description" content="A fourth-order ESO gain rule tuned by constrained Bayesian optimization within a wrist-damping bound identified on the robot, and validated on a six-axis industrial manipulator with its production ADRC gains.">
+<title>BO-FO · Cascaded Sim-to-Real Tuning of a Fourth-Order ESO</title>
+<meta name="description" content="Project page of cascaded sim-to-real tuning of a fourth-order extended state observer for robot manipulators (Hwarang Kim, Sesun You).">
+<meta property="og:title" content="BO-FO, Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer for Robot Manipulators">
+<meta property="og:description" content="A cascaded sim-to-real procedure that turns the wrist oscillation measured on the robot into a damping constraint for constrained Bayesian optimization of a fourth-order ESO, evaluated on a six-axis collaborative manipulator with its production ADRC gains.">
 <meta property="og:image" content="https://bo-fo.github.io/assets/teaser_snapshots.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23315c45'/%3E%3Ctext x='32' y='42' font-family='Helvetica,Arial' font-size='26' font-weight='700' text-anchor='middle' fill='white'%3EBO%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,18 +26,18 @@
   </header>
   <main id="main">
     <section class="hero page-width" aria-labelledby="paper-title">
-      <h1 id="paper-title">Bayesian Optimization of a Fourth-Order Extended State Observer With Pole Relocation for Robot Manipulators</h1>
+      <h1 id="paper-title">Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer for Robot Manipulators</h1>
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
-      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261117g">Supplementary video (MP4)</a></p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261117j">Supplementary video (MP4)</a></p>
     </section>
 
     <section class="showcase page-width" id="videos" aria-label="Featured videos">
       <div class="showcase-layout">
         <div class="featured-demo">
           <div class="video-shell">
-            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261117g" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
+            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261117j" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
           </div>
           <p id="featured-description" class="featured-caption">The narrated video, 4 min 18 s. The thumbnails below pick one part of it.</p>
         </div>
@@ -48,8 +48,8 @@
     <section class="abstract-section section-space" id="abstract" aria-labelledby="abstract-title">
       <div class="reading-width">
         <h2 id="abstract-title">Abstract</h2>
-        <p>In active disturbance rejection control (ADRC) a fourth observer state for the disturbance rate reduces the lag of the extended state observer (ESO) behind a moving payload, but binomial pole placement lowers the stability margin and can drive a low-inertia wrist into the torque clamp. We relocate the four observer poles with one parameter for each gain order and tune them between robot and simulator. The robot steps a common value up until the wrist oscillates, a two-mass loop model fitted to these two runs predicts the wrist damping of any setting, and constrained Bayesian optimization on a randomized simulated manipulator searches the four parameters under a bound on that damping, at three levels.</p>
-        <p>On a six-axis manipulator with its production gains every optimum ran with its wrist mode damped in the predicted order and lowered the tracking cost of Cartesian lines below the production ADRC, the nominal value and the binomial observer. The spread among the three optima is comparable to the repeat scatter, and an ablation of the cost weighting on a wave motion changes the selected gains but not the cost beyond that scatter.</p>
+        <p>An observer setting that scores well in simulation can oscillate on the robot. We propose a cascaded sim-to-real procedure for tuning the extended state observer (ESO) of an active disturbance rejection controller on a robot manipulator, in which each stage passes one quantity to the next. A preliminary simulation gives a nominal setting. On the robot, with its production gains, a common observer parameter is stepped up from that setting to the onset of wrist oscillation, and a two-mass loop model calibrated to the torque spectra of the nominal and the oscillating run turns this observation into a constraint on the damping of the wrist mode. Constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, then tunes the four gains of a fourth-order ESO with pole relocation under this constraint and within the torque clamps, at three levels of the damping bound. The robot evaluates the result.</p>
+        <p>Every selected setting ran with its wrist-mode peak in the order the calibrated model predicts and lowered the encoder-derived tracking cost of Cartesian lines below the production controller, the nominal setting and the binomial observer, and the setting of the lowest bound kept its gain on a wave path. The spread among the three bounds is comparable to the repeat scatter. The data thus support the settings the procedure selects under the tested conditions and do not rank the bounds.</p>
       </div>
     </section>
 
@@ -60,7 +60,7 @@
       </figure>
       <ul class="stages">
         <li><strong>Stage 0, simulator.</strong> A preliminary one-parameter search with softer gains gives the nominal common value, ρ = 59.</li>
-        <li><strong>Stage 1, robot.</strong> The common value is stepped up with the production gains to the onset of wrist oscillation, ρ = 104 at 30 Hz. The joint-5 torque spectra of the two runs fit a two-mass model of the compliant wrist, which predicts the wrist damping of any setting.</li>
+        <li><strong>Stage 1, robot.</strong> The common value is stepped up with the production gains to the onset of wrist oscillation, ρ = 104 at 30 Hz. The joint-5 torque spectra of these two calibration runs on the z line fit a two-mass model of the compliant wrist, which turns the observation into a constraint, the wrist damping of any setting.</li>
         <li><strong>Stage 2, simulator.</strong> Constrained Bayesian optimization tunes the four parameters, with and without the 4.5 kg payload, among the settings whose predicted wrist damping is at least the bound, 0.15, 0.10 or 0.05.</li>
         <li><strong>Stage 3, robot.</strong> The optimum of each bound runs against the production ADRC, the binomial observer and the nominal value in a session separate from the calibration runs. The closed loop with the production gains is the same in Stages 1 to 3, and Stage 0 used softer gains.</li>
       </ul>
@@ -128,7 +128,7 @@
 
     <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
       <h2 id="experiment-2-title">Robot</h2>
-      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis industrial manipulator with its production real-time controller PLEM at 1 kHz. Two runs on each line and load, 72 runs in one session, all clean, and ρ = 104 in an earlier session.</p>
+      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis collaborative manipulator with its production real-time controller PLEM at 1 kHz. Two runs on each line and load, 72 runs in one session, all clean, and ρ = 104 in an earlier session.</p>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Results against the production ADRC</h3></div>
         <div class="choice-table">
@@ -227,8 +227,8 @@
       <h2 id="citation-title">Citation</h2>
 <pre><code>@article{kim2026bofo,
   author  = {Kim, Hwarang and You, Sesun},
-  title   = {Bayesian Optimization of a Fourth-Order Extended State Observer
-             With Pole Relocation for Robot Manipulators},
+  title   = {Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer
+             for Robot Manipulators},
   journal = {IEEE Transactions on Industrial Electronics},
   year    = {2026},
   note    = {under review}
