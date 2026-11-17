@@ -1,9 +1,9 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117d", poster: "assets/posters/full.jpg?v=20261113e",
+    { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117e", poster: "assets/posters/full.jpg?v=20261113e",
       caption: "The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the searches at three damping bounds in simulation, the ablation on the wave lines and a summary." },
-    { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261117d", poster: "assets/posters/s1.jpg?v=20261117d",
+    { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261117e", poster: "assets/posters/s1.jpg?v=20261117e",
       caption: "Study design, in which the common value is stepped up on the robot from its nominal value to the onset of wrist oscillation, and a two-mass loop model fitted to these two runs gives the damping of every setting. Constrained Bayesian optimization in the simulator, with and without the payload, searches at three levels of the damping bound, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value." },
     { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261113d", poster: "assets/posters/s2.jpg?v=20261113d",
       caption: "A six-axis manipulator running the production real-time controller PLEM at 1 kHz, a 4.5 kg case hanging from the flange, and the three 0.30 m lines along x, y and z." },

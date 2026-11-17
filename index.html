@@ -30,14 +30,14 @@
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
-      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261117d">Supplementary video (MP4)</a></p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261117e">Supplementary video (MP4)</a></p>
     </section>
 
     <section class="showcase page-width" id="videos" aria-label="Featured videos">
       <div class="showcase-layout">
         <div class="featured-demo">
           <div class="video-shell">
-            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261117d" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
+            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261117e" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
           </div>
           <p id="featured-description" class="featured-caption">The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the searches at three damping bounds in simulation, the ablation on the wave lines and a summary.</p>
         </div>
@@ -56,7 +56,7 @@
     <section class="page-width section-space" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
-        <img src="assets/fig1_pipeline.png?v=20261117d" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
+        <img src="assets/fig1_pipeline.png?v=20261117e" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
       </figure>
       <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the robot with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their wrist-mode peaks, in the order of their bounds as predicted, close the loop.</p>
       <div class="method-contributions">
