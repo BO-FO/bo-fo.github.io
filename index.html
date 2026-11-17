@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261111">
+<link rel="stylesheet" href="styles.css?v=20261118">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,7 +20,7 @@
     <div class="nav-inner">
       <a class="wordmark" href="#top">BO-FO</a>
       <nav aria-label="Main navigation">
-        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Simulation</a><a href="#experiment-2">Robot</a><a href="#bound">Damping bound</a><a href="#ablation">Ablation</a><a href="#citation">Citation</a>
+        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Simulation</a><a href="#experiment-2">Robot</a><a href="#ablation">Ablation</a><a href="#citation">Citation</a>
       </nav>
     </div>
   </header>
@@ -39,7 +39,7 @@
           <div class="video-shell">
             <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261117f" poster="assets/posters/full.jpg?v=20261113e" aria-label="Supplementary video"></video>
           </div>
-          <p id="featured-description" class="featured-caption">The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the searches at three damping bounds in simulation, the ablation on the wave lines and a summary.</p>
+          <p id="featured-description" class="featured-caption">The narrated video, 4 min 18 s. The thumbnails below pick one part of it.</p>
         </div>
         <div class="demo-picker" id="demo-picker" role="group" aria-label="Choose a video"></div>
       </div>
@@ -48,42 +48,37 @@
     <section class="abstract-section section-space" id="abstract" aria-labelledby="abstract-title">
       <div class="reading-width">
         <h2 id="abstract-title">Abstract</h2>
-        <p>In active disturbance rejection control (ADRC) a fourth observer state for the disturbance rate reduces the lag of the extended state observer (ESO) behind a moving payload. Binomial pole placement, however, lowers the stability margin and can drive the low-inertia wrist into the torque clamp. We study a gain rule with one relocation parameter for each gain order and a tuning procedure split between robot and simulator. A common value is stepped up on the robot until the wrist oscillates. A two-mass loop model fitted to the torque spectra of these two runs represents a wrist mode the rigid joint model lacks and predicts the order in which it appears across every straight-line setting run on the robot. Constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, then searches the four parameters within the torque clamps among settings whose predicted wrist damping reaches a bound set at three levels.</p>
-        <p>On a 6-DOF manipulator with production gains every optimum ran with its wrist-mode peak in the predicted order and lowered the tracking cost of Cartesian lines below the production ADRC, the nominal value and the binomial observer. In simulation the cost falls with the bound. On the robot the spread among the three optima is comparable to the repeat scatter, so the data do not establish a ranking of the bounds. An ablation of the cost weighting on a wave motion changes the selected gains but not the cost beyond that scatter.</p>
+        <p>In active disturbance rejection control (ADRC) a fourth observer state for the disturbance rate reduces the lag of the extended state observer (ESO) behind a moving payload, but binomial pole placement lowers the stability margin and can drive a low-inertia wrist into the torque clamp. We relocate the four observer poles with one parameter for each gain order and tune them between robot and simulator. The robot steps a common value up until the wrist oscillates, a two-mass loop model fitted to these two runs predicts the wrist damping of any setting, and constrained Bayesian optimization on a randomized simulated manipulator searches the four parameters under a bound on that damping, at three levels.</p>
+        <p>On a six-axis manipulator with its production gains every optimum ran with its wrist mode damped in the predicted order and lowered the tracking cost of Cartesian lines below the production ADRC, the nominal value and the binomial observer. The spread among the three optima is comparable to the repeat scatter, and an ablation of the cost weighting on a wave motion changes the selected gains but not the cost beyond that scatter.</p>
       </div>
     </section>
 
     <section class="page-width section-space" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
-        <img src="assets/fig1_pipeline.png?v=20261117f" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.">
+        <img src="assets/fig1_pipeline.png?v=20261117f" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
       </figure>
-      <p class="method-overview">Simulator to robot to simulator to robot. <strong>Stage 0.</strong> A preliminary one-parameter search in the simulator with softer gains gave the nominal common value, ρ = 59. <strong>Stage 1.</strong> The common value is stepped up on the robot with the production gains to the onset of sustained wrist oscillation, at ρ = 104, 1.8 times the nominal value, the wrist oscillates at 30 Hz. The joint-5 torque spectra of the nominal and the oscillating run fit a two-mass loop model of the compliant wrist, whose damping is carried to the simulator as the bound of the search. <strong>Stage 2.</strong> Constrained Bayesian optimization tunes the four parameters on a randomized simulated manipulator, with and without the 4.5 kg pendulum payload, under a torque-demand constraint, among the settings whose predicted wrist damping is at least the bound, at three levels of the bound, 0.15, 0.10 and 0.05. <strong>Stage 3.</strong> The optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value, and their wrist-mode peaks, in the order of their bounds as predicted, close the loop.</p>
-      <div class="method-contributions">
-        <h3 class="contributions-title">Our contributions</h3>
-        <ul class="contributions">
-          <li>A gain rule for a fourth-order ESO that relocates the four observer poles with one parameter for each gain order while the production bandwidth <em>ω<sub>o</sub></em> and the joint-controller gains stay fixed, and zero parameters recover the binomial observer.</li>
-          <li>A tuning procedure that divides the work between the robot and a simulator. The nominal and the oscillating run on the robot identify the wrist mode and fit a two-mass loop model, and constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, searches under a bound on the damping of that model, set at three levels, with a torque-demand constraint on every joint so that accuracy is not bought with saturation.</li>
-          <li>Hardware validation on a six-axis industrial manipulator with its production ADRC gains, with and without a 4.5 kg suspended payload, of the nominal and the stepped common value, the binomial observer and the optima of the three bounds, two runs on each line and load. The fitted damping orders the measured wrist-mode peak of every straight-line setting (rank correlation −0.98), and the optima lower the tracking cost by 60–62 % against the production ADRC and by 27–29 % against the nominal value, the spread of the three bounds comparable to the repeat scatter on the robot.</li>
-        </ul>
-      </div>
+      <ul class="stages">
+        <li><strong>Stage 0, simulator.</strong> A preliminary one-parameter search with softer gains gives the nominal common value, ρ = 59.</li>
+        <li><strong>Stage 1, robot.</strong> The common value is stepped up with the production gains to the onset of wrist oscillation, ρ = 104 at 30 Hz. The joint-5 torque spectra of the two runs fit a two-mass model of the compliant wrist, which predicts the wrist damping of any setting.</li>
+        <li><strong>Stage 2, simulator.</strong> Constrained Bayesian optimization tunes the four parameters, with and without the 4.5 kg payload, among the settings whose predicted wrist damping is at least the bound, 0.15, 0.10 or 0.05.</li>
+        <li><strong>Stage 3, robot.</strong> The optimum of each bound runs against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.</li>
+      </ul>
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
-      <h2 id="experiment-1-title">Simulation, searches on a randomized plant at three damping bounds</h2>
-      <p class="section-description">Three searches ran with the same cost, plant, configurations, optimizer and 55 prior settings and a wrist damping bound of 0.15, 0.10 and 0.05, each with 60 proposals, all feasible. The optima are ρ<sub>i</sub> = (81, 63, 74, 69) at a cost of 0.75, (70, 70, 77, 71) at 0.69 and (82, 92, 90, 79) at 0.65, against 0.89 for the nominal ρ = 59, 0.90 for the binomial observer and 0.67 for the rejected ρ = 104, that is 16 %, 22 % and 27 % below the nominal value, the same with and without the payload. The cost falls as the damping is spent. No setting with ζ ≥ 0.25 scored below the nominal value, and every cost below 0.75 lies at ζ ≤ 0.16. On the unseen configurations within the envelope of the search configurations the optima kept their order and their gain. At a wrist input-gain ratio of 2.3, the rigid wrist margin of the settings, the order reversed, the least damped optimum losing most, and with eight samples of delay every optimum reached the clamp.</p>
-      <div class="media-group">
-      </div>
+      <h2 id="experiment-1-title">Simulation</h2>
+      <p class="section-description">Three searches on the same randomized plant, one at each damping bound, 60 proposals each after 55 prior settings. The optima of the bounds 0.15, 0.10 and 0.05 score 0.75, 0.69 and 0.65 against 0.89 for the nominal value and 0.90 for the binomial observer. The cost falls as the bound is lowered, and no setting with a predicted damping of 0.25 or more scored below the nominal value.</p>
       <div class="media-group" id="motions">
-        <div class="media-group-header"><h3 class="media-group-title">The eleven validation motions in simulation</h3></div>
-        <p class="section-description" style="margin-top:0">One cycle of every motion on the simulated manipulator with the 4.5 kg pendulum payload, same plant draw for both controllers (nominal inertia, seven samples of loop delay, 1.5× sensor noise), the production ADRC on the left of each cell and a damping-bound optimum of an earlier revision of the search, ρ<sub>i</sub> = (108, 90, 91, 81), on the right, with the commanded path as an orange line. The clip loops and plays when it is in view.</p>
+        <div class="media-group-header"><h3 class="media-group-title">The eleven validation motions</h3></div>
+        <p class="section-description" style="margin-top:0">One cycle of every motion with the payload, the production ADRC on the left of each cell and a damping-bound optimum of an earlier search, ρ<sub>i</sub> = (108, 90, 91, 81), on the right. The clip plays when it is in view.</p>
         <div class="media-grid single">
           <div class="media-card loop-card"><video class="loop" muted loop playsinline preload="none" poster="videos/motions_grid.jpg?v=20261111" data-src="videos/motions_grid.mp4?v=20261111" style="aspect-ratio:16/9" aria-label="Eleven validation motions in simulation, production ADRC and a damping-bound optimum side by side"></video></div>
         </div>
       </div>
-      <div class="media-group" id="randomization">
-        <div class="media-group-header"><h3 class="media-group-title">Randomization of the simulated plant</h3></div>
-        <p class="section-description" style="margin-top:0">What the search and the validation saw besides the nominal model (Section IV-A of the paper). Every candidate of the three searches was evaluated on draws 1, 2 and 3 with and without the payload, three cycles on each line, and the validation of Table I used draws 100–106, draw 106 fixed by the configuration beyond the ranges. Each draw is reproducible from the seed and the row order given in the first table, and all values are in <a href="assets/randomization_draws.json">randomization_draws.json</a>.</p>
+      <details class="data" id="randomization">
+        <summary>Randomization of the simulated plant, cost and constraints</summary>
+        <p class="section-description">Every candidate was evaluated on draws 1, 2 and 3 with and without the payload, and the validation of Table I used draws 100–106. Each draw is reproducible from the seed and the row order of the first table, and all values are in <a href="assets/randomization_draws.json">randomization_draws.json</a>.</p>
         <div class="choice-table">
           <table class="metrics-table">
             <thead>
@@ -126,36 +121,53 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Draws 1–3 are the search configurations (N, b/b<sub>0</sub>) = (6, 1.3), (5, 1.6) and (5, 1.8) of the paper, draws 100–106 the seven validation configurations with delays of 5 to 10 samples and wrist mismatches of 1.4 to 2.5. The disturbance d<sub>j</sub> = bias<sub>j</sub> + x<sub>j</sub> − c<sub>j</sub> tanh(q̇<sub>j</sub>/0.01) is added to the applied torque of every joint and is unknown to the controller.</p>
-      </div>
-      <p class="section-reference"><span>Cost and bound.</span> J = w<sub>⊥</sub>ê<sub>⊥</sub>² + w<sub>∥</sub>ê<sub>∥</sub>² + w<sub>rev</sub>ê<sub>rev</sub>² + w<sub>u</sub>û, every term a squared ratio to the production ADRC on the same motion and configuration (weights 0.50, 0.18, 0.09, 0.23), and û is the torque-increment RMS of each joint relative to its own production level, squared and averaged over the joints. The optimizer is BoTorch with a log-noisy-expected-improvement acquisition and a feasibility classifier, and proposals are screened by the Routh–Hurwitz conditions, a slowest-pole limit of 20 rad/s, a shoulder gain margin of 6 dB at six samples of delay and 3 dB at eight, and the wrist damping of the two-mass model at least the bound of the run. The torque demand of every joint must stay within 0.9 of its clamp on every motion and configuration.</p>
+        <p class="table-note">Draws 1–3 are the search configurations (N, b/b<sub>0</sub>) = (6, 1.3), (5, 1.6) and (5, 1.8) of the paper, draws 100–106 the seven validation configurations. The disturbance d<sub>j</sub> = bias<sub>j</sub> + x<sub>j</sub> − c<sub>j</sub> tanh(q̇<sub>j</sub>/0.01) is added to the applied torque of every joint and is unknown to the controller.</p>
+        <p class="table-note">Cost J = w<sub>⊥</sub>ê<sub>⊥</sub>² + w<sub>∥</sub>ê<sub>∥</sub>² + w<sub>rev</sub>ê<sub>rev</sub>² + w<sub>u</sub>û, every term a squared ratio to the production ADRC on the same motion and configuration (weights 0.50, 0.18, 0.09, 0.23), û the torque-increment RMS of each joint relative to its production level, squared and averaged over the joints. BoTorch with a log-noisy-expected-improvement acquisition and a feasibility classifier. Proposals pass the Routh–Hurwitz conditions, a slowest-pole limit of 20 rad/s, a shoulder gain margin of 6 dB at six samples of delay and 3 dB at eight, and the wrist damping bound of the run. The torque demand of every joint stays within 0.9 of its clamp.</p>
+      </details>
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
-      <h2 id="experiment-2-title">Robot, Cartesian line tracking on a six-axis manipulator</h2>
-      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis industrial manipulator running the production real-time controller PLEM at 1 kHz. All errors come from the joint encoders through the kinematic model, and the supplementary video draws the measured deviations on the frames magnified 100 times. The production ADRC, the nominal ρ = 59, the binomial observer and the three optima ran in one session, two runs on each line and load (72 runs, all clean), and ρ = 104 ran in an earlier session. The production gains, kept in simulation and on the robot, are k<sub>p</sub> = 400 s<sup>−2</sup> and k<sub>d</sub> = 40 s<sup>−1</sup> (225 and 30 on joints 4–5), b<sub>0</sub> = (0.227, 0.121, 0.556, 0.571, 0.393, 0.496) rad/(s<sup>2</sup> N m) and ω<sub>o</sub> = 60 rad/s, with the torque clamped at the rated torque τ<sub>max</sub> = (432, 432, 197, 80, 80, 80) N m.</p>
+      <h2 id="experiment-2-title">Robot</h2>
+      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis industrial manipulator with its production real-time controller PLEM at 1 kHz. Two runs on each line and load, 72 runs in one session, all clean, and ρ = 104 in an earlier session.</p>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Results against the production ADRC</h3></div>
         <div class="choice-table">
           <table class="metrics-table">
             <thead>
-              <tr><th>Setting</th><th>ζ (two-mass)</th><th>e<sub>⊥</sub>, payload</th><th>e<sub>⊥</sub>, no payload</th><th>e<sub>rev</sub>, payload</th><th>e<sub>rev</sub>, no payload</th><th>e<sub>∥</sub>, payload</th><th>e<sub>∥</sub>, no payload</th><th>Δτ wrist (mN·m)</th><th>Wrist-mode peak (dB)</th><th>Cost J̄</th><th style="text-align:left">Outcome</th></tr>
+              <tr><th>Setting</th><th>ζ (two-mass)</th><th>e<sub>⊥</sub>, payload</th><th>e<sub>⊥</sub>, no payload</th><th>e<sub>rev</sub>, payload</th><th>e<sub>rev</sub>, no payload</th><th>e<sub>∥</sub>, payload</th><th>e<sub>∥</sub>, no payload</th><th>Wrist-mode peak (dB)</th><th>Cost J̄</th></tr>
             </thead>
             <tbody>
-              <tr><td>Production ADRC (3rd order)</td><td>0.62</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>161 / 156</td><td>1.6</td><td>1.00</td><td style="text-align:left">baseline</td></tr>
-              <tr><td>4th, ρ = 59 <span class="speed-tag">nominal</span></td><td>0.20</td><td>−39 %</td><td>−36 %</td><td>−41 %</td><td>−49 %</td><td>−36 %</td><td>−44 %</td><td>166 / 163</td><td>3.9</td><td>0.55</td><td style="text-align:left">the nominal common value, ran cleanly</td></tr>
-              <tr><td>4th, binomial (ρ = 0)</td><td>0.20</td><td>−39 %</td><td>−39 %</td><td>−42 %</td><td>−51 %</td><td>−37 %</td><td>−47 %</td><td>166 / 161</td><td>4.7</td><td>0.53</td><td style="text-align:left">ran cleanly, within 8 % of the nominal value on every line</td></tr>
-              <tr><td>4th, ρ<sub>i</sub> = (81, 63, 74, 69) <span class="speed-tag">bound 0.15</span></td><td>0.15</td><td>−56 %</td><td>−60 %</td><td>−65 %</td><td>−67 %</td><td>−53 %</td><td>−57 %</td><td>168 / 166</td><td>5.4</td><td>0.40</td><td style="text-align:left">ran cleanly, the most damped optimum</td></tr>
-              <tr><td>4th, ρ<sub>i</sub> = (70, 70, 77, 71) <span class="speed-tag">bound 0.10</span></td><td>0.10</td><td>−58 %</td><td>−61 %</td><td>−59 %</td><td>−65 %</td><td>−52 %</td><td>−60 %</td><td>169 / 166</td><td>8.6</td><td>0.39</td><td style="text-align:left">ran cleanly</td></tr>
-              <tr><td>4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">bound 0.05</span></td><td>0.05</td><td>−60 %</td><td>−61 %</td><td>−63 %</td><td>−65 %</td><td>−57 %</td><td>−60 %</td><td>172 / 167</td><td>10.5</td><td>0.39</td><td style="text-align:left">ran cleanly, the lowest six-line cost and the best with the payload</td></tr>
-              <tr><td>4th, ρ = 104</td><td>−0.002</td><td>−68 %</td><td>−72 %</td><td>−74 %</td><td>−76 %</td><td>−59 %</td><td>−67 %</td><td>178 / 216</td><td>29</td><td>not scored</td><td style="text-align:left">sustained 30 Hz wrist oscillation on z, rejected, not in Table II (earlier session)</td></tr>
+              <tr><td>Production ADRC (3rd order)</td><td>0.62</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>0 %</td><td>1.6</td><td>1.00</td></tr>
+              <tr><td>4th, ρ = 59 <span class="speed-tag">nominal</span></td><td>0.20</td><td>−39 %</td><td>−36 %</td><td>−41 %</td><td>−49 %</td><td>−36 %</td><td>−44 %</td><td>3.9</td><td>0.55</td></tr>
+              <tr><td>4th, binomial (ρ = 0)</td><td>0.20</td><td>−39 %</td><td>−39 %</td><td>−42 %</td><td>−51 %</td><td>−37 %</td><td>−47 %</td><td>4.7</td><td>0.53</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (81, 63, 74, 69) <span class="speed-tag">bound 0.15</span></td><td>0.15</td><td>−56 %</td><td>−60 %</td><td>−65 %</td><td>−67 %</td><td>−53 %</td><td>−57 %</td><td>5.4</td><td>0.40</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (70, 70, 77, 71) <span class="speed-tag">bound 0.10</span></td><td>0.10</td><td>−58 %</td><td>−61 %</td><td>−59 %</td><td>−65 %</td><td>−52 %</td><td>−60 %</td><td>8.6</td><td>0.39</td></tr>
+              <tr><td>4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">bound 0.05</span></td><td>0.05</td><td>−60 %</td><td>−61 %</td><td>−63 %</td><td>−65 %</td><td>−57 %</td><td>−60 %</td><td>10.5</td><td>0.39</td></tr>
+              <tr><td>4th, ρ = 104 <span class="speed-tag">rejected</span></td><td>−0.002</td><td>−68 %</td><td>−72 %</td><td>−74 %</td><td>−76 %</td><td>−59 %</td><td>−67 %</td><td>29</td><td style="white-space:nowrap">not scored</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="table-note">Rows in the order of Table II of the paper (decreasing cost), the rejected ρ = 104 last. ζ is the wrist-mode damping predicted by the two-mass loop model fitted to the ρ = 59 and ρ = 104 runs. The error columns are the mean over the x, y and z lines of the change of the perpendicular-error RMS, of the reversal error and of the along-track error RMS relative to the production ADRC on the same line (ρ = 104 against the production ADRC of its own session). Δτ is the torque-increment RMS of the wrist joints with / without the payload. The peak column is the height of the wrist-mode peak in the joint-5 torque spectrum on the z line without payload. J̄ is the cost of the paper, path errors and torque activity, on the hardware metrics of each line normalized by the production ADRC of the same line and load, averaged over the six lines. The ρ<sub>i</sub> are rounded to integers on this page. Values run, bound 0.15 (81.43, 63.18, 74.14, 69.31), 0.10 (70.42, 69.99, 77.11, 70.62), 0.05 (82.22, 91.71, 89.59, 79.26), with a slowest observer pole of 20.0, 20.2, 21.4 and 20.8 rad/s, at or above the 20 rad/s limit of the search.</p>
+        <p class="table-note">Changes of the perpendicular-error RMS, the reversal error and the along-track error RMS relative to the production ADRC, means over the three lines. ζ is the wrist damping predicted by the two-mass model, the peak the height of the wrist mode in the joint-5 torque spectrum on the z line without payload, J̄ the cost of the paper averaged over the six lines. ρ = 104 oscillated at 30 Hz on the z line and is not scored.</p>
+        <p class="section-description">The three optima ran with their wrist-mode peaks in the order of the bounds, 10.5, 8.6 and 5.4 dB against 29 dB for ρ = 104, and lowered the cost by 60–62 % against the production ADRC and 27–29 % against the nominal value. Their 3 % spread is comparable to the 1–4 % between repeated runs, so the robot does not rank the bounds.</p>
       </div>
-      <div class="media-group">
-        <div class="media-group-header"><h3 class="media-group-title">Every setting of Table II</h3></div>
+      <div class="media-group" id="loops">
+        <div class="media-group-header">
+          <h3 class="media-group-title">Every setting in motion</h3>
+          <button type="button" class="loop-toggle" id="loop-toggle" aria-pressed="true">Pause all</button>
+        </div>
+        <p class="section-description" style="margin-top:0">One A–B–A cycle of each setting with the payload on the y, z and x lines, the measured deviation drawn ×100, its colour the perpendicular error from 0 to 0.8 mm and the dashed line the commanded path. Rows in the order of Table II.</p>
+        <div class="media-grid single loops-grid">
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">Production ADRC (3rd-order ESO)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.28 / 0.29 / 0.36</strong> mm</span><span>ζ <strong>0.62</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/adrc.jpg?v=20261111" data-src="videos/loops/adrc.mp4?v=20261111" aria-label="Production ADRC, one cycle on the three lines"></video></div>
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 59 <span class="speed-tag">nominal</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.18 / 0.16 / 0.24</strong> mm</span><span>ζ <strong>0.20</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho59.jpg?v=20261111" data-src="videos/loops/rho59.mp4?v=20261111" aria-label="rho = 59, one cycle on the three lines"></video></div>
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, binomial (ρ = 0)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.18 / 0.16 / 0.23</strong> mm</span><span>ζ <strong>0.20</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/binomial.jpg?v=20261111" data-src="videos/loops/binomial.mp4?v=20261111" aria-label="Binomial fourth-order observer, one cycle on the three lines"></video></div>
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (81, 63, 74, 69) <span class="speed-tag">bound 0.15</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.15 / 0.11 / 0.14</strong> mm</span><span>ζ <strong>0.15</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z15.jpg?v=20261111" data-src="videos/loops/z15.mp4?v=20261111" aria-label="Optimum of the bound 0.15, one cycle on the three lines"></video></div>
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (70, 70, 77, 71) <span class="speed-tag">bound 0.10</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.14 / 0.11 / 0.14</strong> mm</span><span>ζ <strong>0.10</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z10.jpg?v=20261111" data-src="videos/loops/z10.mp4?v=20261111" aria-label="Optimum of the bound 0.10, one cycle on the three lines"></video></div>
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">bound 0.05</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.11 / 0.13</strong> mm</span><span>ζ <strong>0.05</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z05.jpg?v=20261111" data-src="videos/loops/z05.mp4?v=20261111" aria-label="optimum of the bound 0.05, one cycle on the three lines"></video></div>
+          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 104 <span class="speed-tag">30 Hz oscillation on z, rejected</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.12 / 0.08 / 0.10</strong> mm</span><span>ζ <strong>−0.002</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho104.jpg?v=20261111" data-src="videos/loops/rho104.mp4?v=20261111" aria-label="rho = 104, one cycle on the three lines"></video></div>
+        </div>
+      </div>
+      <details class="data" id="table2">
+        <summary>Table II, every line and load</summary>
         <div class="choice-table">
           <table class="metrics-table">
             <thead>
@@ -171,59 +183,20 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Perpendicular-error RMS e<sub>⊥</sub> and reversal error e<sub>rev</sub>, means over the two runs of each line, from Table II of the paper, with ρ in rad/s. The three optima score 0.385–0.397 over the six lines. With the payload the optimum of the bound 0.05 scores 0.39 and the two more damped optima 0.41, a difference at the edge of the run-to-run scatter, whereas without the payload the three lie within 0.377–0.387 in no order of the bound.</p>
-      </div>
-      <div class="media-group" id="loops">
-        <div class="media-group-header">
-          <h3 class="media-group-title">Every tested setting in motion</h3>
-          <button type="button" class="loop-toggle" id="loop-toggle" aria-pressed="true">Pause all</button>
-        </div>
-        <p class="section-description" style="margin-top:0">One A–B–A cycle of each setting with the 4.5 kg payload, the whole arm as the camera recorded it, the y line, the z line and the x line seen end-on, with the measured path deviation drawn on the frames magnified ×100 as it is measured (the colour is the perpendicular error, 0–0.8 mm, the dashed line the commanded path and the white circle the current deviation). Rows in the order of Table II, the rejected ρ = 104 last. The clips loop and play when they are in view.</p>
-        <div class="media-grid single loops-grid">
-          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">Production ADRC (3rd-order ESO)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.28 / 0.29 / 0.36</strong> mm</span><span>ζ <strong>0.62</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/adrc.jpg?v=20261111" data-src="videos/loops/adrc.mp4?v=20261111" aria-label="Production ADRC, one cycle on the three lines"></video></div>
-          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 59 <span class="speed-tag">nominal</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.18 / 0.16 / 0.24</strong> mm</span><span>ζ <strong>0.20</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho59.jpg?v=20261111" data-src="videos/loops/rho59.mp4?v=20261111" aria-label="rho = 59, one cycle on the three lines"></video></div>
-          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, binomial (ρ = 0)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.18 / 0.16 / 0.23</strong> mm</span><span>ζ <strong>0.20</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/binomial.jpg?v=20261111" data-src="videos/loops/binomial.mp4?v=20261111" aria-label="Binomial fourth-order observer, one cycle on the three lines"></video></div>
-          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (81, 63, 74, 69) <span class="speed-tag">bound 0.15</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.15 / 0.11 / 0.14</strong> mm</span><span>ζ <strong>0.15</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z15.jpg?v=20261111" data-src="videos/loops/z15.mp4?v=20261111" aria-label="Optimum of the bound 0.15, one cycle on the three lines"></video></div>
-          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (70, 70, 77, 71) <span class="speed-tag">bound 0.10</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.14 / 0.11 / 0.14</strong> mm</span><span>ζ <strong>0.10</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z10.jpg?v=20261111" data-src="videos/loops/z10.mp4?v=20261111" aria-label="Optimum of the bound 0.10, one cycle on the three lines"></video></div>          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (82, 92, 90, 79) <span class="speed-tag">bound 0.05</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.11 / 0.13</strong> mm</span><span>ζ <strong>0.05</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/z05.jpg?v=20261111" data-src="videos/loops/z05.mp4?v=20261111" aria-label="optimum of the bound 0.05, one cycle on the three lines"></video></div>
-          <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 104 <span class="speed-tag">30 Hz oscillation on z, rejected</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.12 / 0.08 / 0.10</strong> mm</span><span>ζ <strong>−0.002</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho104.jpg?v=20261111" data-src="videos/loops/rho104.mp4?v=20261111" aria-label="rho = 104, one cycle on the three lines"></video></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page-width section-space experiment-section" id="bound" aria-labelledby="bound-title">
-      <h2 id="bound-title">The damping bound, what the robot tells the simulator</h2>
-      <p class="section-reference"><span>Fitted model.</span> The two-mass loop model fitted to the ρ = 59 and ρ = 104 runs on the z line is in <a href="assets/twomass_fit.json">twomass_fit.json</a>. Of its six fits the paper uses the first, the one of least cost, with an actuation delay of 3 samples and a measurement delay of 4 samples at 1 kHz. Its theta holds μ, the motor-side fraction of the total inertia, f<sub>r</sub>, the free resonance in Hz, ζ<sub>r</sub>, the damping ratio of the two inertias, and r, the inverse of the total inertia relative to 1/b<sub>0</sub>, so the total inertia is 1/(r b<sub>0</sub>) and r = 0.7956 means 1.257 times the nominal inertia, the 26 % of the paper. The entry pred_f_zeta lists the mode frequency and damping of settings by their internal names, adrc the production ADRC, e2 the binomial observer, p6 ρ = 59, p10 ρ = 104, and p7, l1, l2 and q1 settings of earlier revisions. The damping the model predicts for the current settings is the ζ column of the results table above.</p>
-      <p class="section-description">Stepped up from the nominal ρ = 59 to 104, the common value oscillated in a single-joint limit cycle of joint 5 at 30 Hz that grows during the moves and is absent at rest. The same mode is already present in the nominal runs as a broad peak of 2–4 dB near 25 Hz, and it is absent with the production observer. The rigid loop model of the joint places its marginal mode at 14–20 Hz and cannot reproduce it, whereas a two-mass loop model of the compliant wrist, fitted to the nominal and the oscillating run, predicts the damping of the mode for any setting and orders the measured wrist-mode peak of every straight-line setting run on the robot (rank correlation −0.98). Its damping is the quantity carried to the simulator, and the search was run at three levels of the bound.</p>
-      <div class="media-group">
-        <div class="media-grid">
-          <div class="media-card">
-            <div class="media-card-bar"><span class="media-name">In simulation</span></div>
-            <p class="method-overview" style="margin-top:0">The cost falls as the bound is lowered, and the optima of the bounds 0.15, 0.10 and 0.05 score 0.75, 0.69 and 0.65, 16 %, 22 % and 27 % below the nominal value, the same with and without the payload. On the unseen configurations within the envelope of the search configurations they keep their order and their gain. At a wrist input-gain ratio of 2.3, the rigid wrist margin of the settings, the wrist torque increment of the least damped optimum triples and the order reverses, the most damped optimum losing least, and with eight samples of delay every optimum reaches the clamp.</p>
-          </div>
-          <div class="media-card">
-            <div class="media-card-bar"><span class="media-name">On the robot</span></div>
-            <p class="method-overview" style="margin-top:0">All three optima ran cleanly on every line and load, with the wrist mode as a peak whose height follows the bound (10.5, 8.6 and 5.4 dB from the bound 0.05 to 0.15, against 29 dB for the oscillating ρ = 104), and scored 0.385–0.397 over the six lines, 27–29 % below the nominal value, 25–27 % below the binomial observer and 60–62 % below the production ADRC. The simulated gain of the lowest bound carried over in full (27 % in simulation, 29 % on the robot), and the simulated losses of the higher bounds, 7 % and 15 %, shrank to 2 % and 3 %. With the payload the optimum of the bound 0.05 scores 0.39 and the two more damped optima 0.41, an ordering of 4.5 % at the edge of the repeat scatter, and without the payload the three lie within 0.377–0.387 in no order of the bound.</p>
-          </div>
-        </div>
-      </div>
-      <p class="section-description">Repeated runs of one setting differ by 2.4 % in cost on the median line and 9.5 % at most, and the six-line mean built from the first runs differs from that of the second by 1–4 % for each setting. The 3 % spread among the optima is comparable to the 1–4 % differences between repeated six-line means, so the present data do not establish a consistent hardware ranking among the three bounds. All three bounds retain a substantial improvement over the baselines, 25–29 % below the nominal value and the binomial observer. The optimum of the lowest bound, ρ<sub>i</sub> = (82, 92, 90, 79), the lowest six-line cost, is the setting carried into the ablation below.</p>
+        <p class="table-note">Means over the two runs of each line, from Table II of the paper. The three optima score 0.385–0.397 over the six lines. With the payload the optimum of the bound 0.05 scores 0.39 and the two more damped optima 0.41, and without the payload the three lie within 0.377–0.387 in no order of the bound. Repeated runs of one setting differ by 2.4 % in cost on the median line and 9.5 % at most. Values run, bound 0.15 (81.43, 63.18, 74.14, 69.31), 0.10 (70.42, 69.99, 77.11, 70.62), 0.05 (82.22, 91.71, 89.59, 79.26), slowest observer pole 20.0, 20.2 and 21.4 rad/s. Production gains k<sub>p</sub> = 400 s<sup>−2</sup> and k<sub>d</sub> = 40 s<sup>−1</sup> (225 and 30 on joints 4–5), b<sub>0</sub> = (0.227, 0.121, 0.556, 0.571, 0.393, 0.496) rad/(s<sup>2</sup> N m), ω<sub>o</sub> = 60 rad/s, torque clamped at (432, 432, 197, 80, 80, 80) N m.</p>
+      </details>
+      <details class="data" id="twomass">
+        <summary>Fitted two-mass model</summary>
+        <p class="table-note">The two-mass loop model fitted to the ρ = 59 and ρ = 104 runs on the z line is in <a href="assets/twomass_fit.json">twomass_fit.json</a>. Of its six fits the paper uses the first, the one of least cost, with an actuation delay of 3 samples and a measurement delay of 4 samples at 1 kHz. Its theta holds μ, the motor-side fraction of the total inertia, f<sub>r</sub>, the free resonance in Hz, ζ<sub>r</sub>, the damping ratio of the two inertias, and r, the inverse of the total inertia relative to 1/b<sub>0</sub>, so r = 0.7956 means 1.257 times the nominal inertia, the 26 % of the paper. The entry pred_f_zeta lists the mode frequency and damping of settings by their internal names, adrc the production ADRC, e2 the binomial observer, p6 ρ = 59, p10 ρ = 104, and p7, l1, l2 and q1 settings of earlier revisions. The ζ column of the results table is the damping the model predicts for the current settings. The fitted damping orders the measured wrist-mode peak of every straight-line setting run on the robot, rank correlation −0.98.</p>
+      </details>
     </section>
 
     <section class="page-width section-space experiment-section" id="ablation" aria-labelledby="ablation-title">
       <h2 id="ablation-title">Ablation, the cost weighting on a wave motion</h2>
-      <p class="section-description">To test whether the optimum depends on the weighting of the path errors in the cost or on the motion, the three lines were given a lateral sine of 4 cm amplitude and 1.5 waves, and the search was repeated on them at the bound 0.05 with w<sub>u</sub> = 0.3 and the path weights (w<sub>⊥</sub>, w<sub>∥</sub>, w<sub>rev</sub>) set in turn to (0.5, 0.1, 0.1), (0.1, 0.5, 0.1) and (0.1, 0.1, 0.5), 40 proposals under each weighting from one candidate pool, each later search warm-started from the earlier ones, after 28 prior settings that include the line optima, 128 distinct settings in all.</p>
+      <p class="section-description">The three lines were given a lateral sine of 4 cm and 1.5 waves, and the search was repeated at the bound 0.05 under three weightings of the path errors. Under every weighting the lowest costs form one cluster on the damping bound, within 1 %. On the robot the line optimum and the two wave optima lowered the cost by 57–61 % against the production ADRC on 48 runs and lie within 1–5 % of each other, against repeat differences of up to 0.02 in cost, so the weighting changes the selected gains but not the attainable cost.</p>
       <div class="media-group">
-        <div class="media-grid single">
-          <div class="media-card">
-            <div class="media-card-bar"><span class="media-name">In simulation and on the robot</span></div>
-            <p class="method-overview" style="margin-top:0">Under every weighting the lowest costs form one cluster on the damping bound, within 1 %, with the optimum of the bound 0.05 from the straight lines, the line optimum below, within 1.2 % of each optimum. The searches under the perpendicular and the along-track weighting converged to the same setting, ρ<sub>i</sub> = (92, 92, 92, 80), the line optimum with ρ<sub>1</sub> raised, and that under the reversal weighting to ρ<sub>i</sub> = (120, 113, 101, 86), with ρ<sub>1</sub> at the limit of the box, both at a predicted damping of 0.05.</p>
-            <p class="method-overview">On the robot the line optimum and the two wave optima ran the three wave lines with and without the payload, 48 runs, all clean. Against the production ADRC of the same line and load they lowered the cost by 57–61 % under every weighting and the perpendicular error from 0.47–0.56 to 0.12–0.16 mm, the optimum of the perpendicular weighting lowest under each by 1–3 % over the line optimum and 3–5 % over that of the reversal weighting, but repeated runs of one setting differ by up to 0.02, and with the payload the line optimum and that optimum trade places with the weighting. The weighting thus changed the selected gains but not the attainable cost beyond the cluster width in simulation or the repeat differences on the robot, and the line optimum carries its gain to a curved path.</p>
-          </div>
-        </div>
-      </div>
-      <div class="media-group">
-        <div class="media-group-header"><h3 class="media-group-title">Every setting of Table III in motion</h3></div>
-        <p class="section-description" style="margin-top:0">One A–B–A cycle of each setting on the wave lines with the 4.5 kg payload, the y wave line, the z wave line and the x wave line seen end-on, with the measured path deviation drawn on the frames magnified ×30 as it is measured (the colour is the perpendicular error, 0–0.8 mm, the dashed line the commanded wave and the white circle the current deviation). Rows in the order of Table III, decreasing cost, the best last. The clips loop and play when they are in view.</p>
+        <div class="media-group-header"><h3 class="media-group-title">Every setting in motion</h3></div>
+        <p class="section-description" style="margin-top:0">One cycle of each setting on the wave lines with the payload, the measured deviation drawn ×30. Rows in the order of Table III.</p>
         <div class="media-grid single loops-grid">
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">Production ADRC (3rd-order ESO)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.49 / 0.62 / 0.58</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>1.00</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/adrc.jpg?v=20261113" data-src="videos/loops_wave/adrc.mp4?v=20261113" aria-label="Production ADRC, one cycle on the three wave lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (120, 113, 101, 86) <span class="speed-tag">reversal weighting</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.14 / 0.16 / 0.17</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.41</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/w2.jpg?v=20261113" data-src="videos/loops_wave/w2.mp4?v=20261113" aria-label="rho_i = (120, 113, 101, 86), one cycle on the three wave lines"></video></div>
@@ -231,8 +204,8 @@
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (92, 92, 92, 80) <span class="speed-tag">perpendicular and along-track weightings</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.13 / 0.15 / 0.16</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.39</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/w1.jpg?v=20261113" data-src="videos/loops_wave/w1.mp4?v=20261113" aria-label="rho_i = (92, 92, 92, 80), one cycle on the three wave lines"></video></div>
         </div>
       </div>
-      <div class="media-group">
-        <div class="media-group-header"><h3 class="media-group-title">Every setting of Table III</h3></div>
+      <details class="data" id="table3">
+        <summary>Table III, every line and load</summary>
         <div class="choice-table">
           <table class="metrics-table">
             <thead>
@@ -246,14 +219,12 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Perpendicular-error RMS e<sub>⊥</sub> and reversal error e<sub>rev</sub> on the wave lines, means over the two runs of each line, from Table III of the paper, with ρ in rad/s, for the two optima of the wave search, each tagged with the weighting that found it (the perpendicular and the along-track weighting share one optimum), and the optimum of the bound 0.05 under the paper's default weighting on the straight lines, and the cost under each weighting (one path weight raised to 0.5, the other two 0.1, w<sub>u</sub> = 0.3), normalized by the production ADRC of the same line and load and averaged over the six lines. Rows in the order of the paper, decreasing cost, the best last. The optimum of the perpendicular weighting is lowest under every weighting, by 1–3 % over the line optimum and 3–5 % over that of the reversal weighting, and repeated runs of one setting differ by 0.02 at most. With the payload the line optimum and that optimum trade places with the weighting. Values run (91.62, 92.25, 91.55, 80.20) and (120.00, 113.06, 100.81, 85.97), slowest observer pole 20.0 and 21.1 rad/s.</p>
-      </div>
-      <p class="section-description">The weighting changes the selected gains but not the attainable cost beyond the cluster width in simulation or the repeat differences on the robot, and the optimum of the bound 0.05 from the straight lines carries its gain to a curved path. The search decides the damping bound, and the weighting only names a point of the cluster on it.</p>
+        <p class="table-note">Means over the two runs of each line, from Table III of the paper, and the cost under each weighting (one path weight raised to 0.5, the other two 0.1, w<sub>u</sub> = 0.3). The perpendicular and the along-track weighting share one optimum. Values run (91.62, 92.25, 91.55, 80.20) and (120.00, 113.06, 100.81, 85.97), slowest observer pole 20.0 and 21.1 rad/s.</p>
+      </details>
     </section>
 
     <section class="page-width section-space experiment-section" id="citation" aria-labelledby="citation-title">
       <h2 id="citation-title">Citation</h2>
-      <p class="section-description">The manuscript is under review, and the entry below will be updated when it is published.</p>
 <pre><code>@article{kim2026bofo,
   author  = {Kim, Hwarang and You, Sesun},
   title   = {Bayesian Optimization of a Fourth-Order Extended State Observer
@@ -266,6 +237,6 @@
     </section>
   </main>
   <footer class="page-width"><a class="wordmark" href="#top">BO-FO</a><p>Hwarang Kim and Sesun You · Manuscript under review, IEEE Transactions on Industrial Electronics</p><a href="#top">Back to top ↑</a></footer>
-  <script src="site.js?v=20261111" defer></script>
+  <script src="site.js?v=20261118" defer></script>
 </body>
 </html>

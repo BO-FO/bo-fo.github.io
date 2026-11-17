@@ -2,21 +2,21 @@
 (function () {
   var DEMOS = [
     { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117f", poster: "assets/posters/full.jpg?v=20261113e",
-      caption: "The full narrated video, with the study design, hardware set-up, the y line with the payload and the z line without it (measured deviations drawn ×100, live joint-5 torque), the searches at three damping bounds in simulation, the ablation on the wave lines and a summary." },
+      caption: "The narrated video, 4 min 18 s." },
     { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261117f", poster: "assets/posters/s1.jpg?v=20261117f",
-      caption: "Study design, in which the common value is stepped up on the robot from its nominal value to the onset of wrist oscillation, and a two-mass loop model fitted to these two runs gives the damping of every setting. Constrained Bayesian optimization in the simulator, with and without the payload, searches at three levels of the damping bound, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value." },
+      caption: "The study design, robot to simulator to robot." },
     { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261113d", poster: "assets/posters/s2.jpg?v=20261113d",
-      caption: "A six-axis manipulator running the production real-time controller PLEM at 1 kHz, a 4.5 kg case hanging from the flange, and the three 0.30 m lines along x, y and z." },
+      caption: "A six-axis manipulator with the production real-time controller PLEM at 1 kHz, a 4.5 kg case on the flange, three 0.30 m lines." },
     { id: "s3", title: "y line with payload", length: "33 s", src: "videos/s3_yline.mp4?v=20261117f", poster: "assets/posters/s3.jpg?v=20261117f",
-      caption: "Production ADRC, the nominal ρ = 59 and the optimum of the bound 0.05, (82, 92, 90, 79), on the y line with the payload, with the measured deviation drawn on the frames magnified 100 times." },
+      caption: "Production ADRC, the nominal ρ = 59 and the optimum of the bound 0.05 on the y line with the payload, the deviation drawn ×100." },
     { id: "s4", title: "z line, wrist damping", length: "37 s", src: "videos/s4_zline.mp4?v=20261115b", poster: "assets/posters/s4.jpg?v=20261115b",
-      caption: "The z line without payload, where the nominal ρ = 59 runs cleanly with a broad wrist-mode peak, ρ = 104 carries a sustained 30 Hz wrist oscillation below the torque clamp, and the optimum of the lowest bound runs cleanly with the mode damped near 29 Hz, as the two-mass model predicted." },
+      caption: "The z line without payload, where ρ = 104 oscillates at 30 Hz and the optimum of the lowest bound runs with the mode damped, as the two-mass model predicted." },
     { id: "s5", title: "Simulation", length: "42 s", src: "videos/s5_simulation.mp4?v=20261117c", poster: "assets/posters/s5.jpg?v=20261117c",
-      caption: "The three searches against the predicted wrist damping (Fig. 4), and the wrist mode identified from the robot runs (Fig. 3)." },
+      caption: "The three searches against the predicted wrist damping, and the wrist mode identified from the robot runs." },
     { id: "s5b", title: "Ablation, wave lines", length: "38 s", src: "videos/s5b_ablation.mp4?v=20261117f", poster: "assets/posters/s5b.jpg?v=20261117f",
-      caption: "The cost weighting on a wave motion. The production ADRC, the optimum of the perpendicular weighting (92, 92, 92, 80) and the optimum of the lowest bound on the y wave line with the payload, the measured deviation drawn ×30, and the search repeated under three weightings." },
+      caption: "The cost weighting on a wave motion, three settings on the y wave line with the payload, the deviation drawn ×30." },
     { id: "s6", title: "Summary", length: "31 s", src: "videos/s6_summary.mp4?v=20261115", poster: "assets/posters/s6.jpg?v=20261115",
-      caption: "The damping of the measured wrist mode, carried from the robot to the simulator, is what makes the search transfer, the spread among the optima of the three bounds is comparable to the repeat scatter on the robot, so the data do not rank the bounds, and the ablation changes the selected gains but not the cost beyond the scatter." }
+      caption: "The damping of the wrist mode, carried from the robot to the simulator, is what makes the search transfer." }
   ];
   var player = document.getElementById("featured-video");
   var caption = document.getElementById("featured-description");
