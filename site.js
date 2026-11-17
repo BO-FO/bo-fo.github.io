@@ -1,15 +1,15 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117j", poster: "assets/posters/full.jpg?v=20261113e",
+    { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117k", poster: "assets/posters/full.jpg?v=20261113e",
       caption: "The narrated video, 4 min 18 s." },
     { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261117j", poster: "assets/posters/s1.jpg?v=20261117j",
       caption: "The study design, robot to simulator to robot." },
     { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261113d", poster: "assets/posters/s2.jpg?v=20261113d",
       caption: "A six-axis manipulator with the production real-time controller PLEM at 1 kHz, a 4.5 kg case on the flange, three 0.30 m lines." },
-    { id: "s3", title: "y line with payload", length: "33 s", src: "videos/s3_yline.mp4?v=20261117f", poster: "assets/posters/s3.jpg?v=20261117f",
+    { id: "s3", title: "y line with payload", length: "33 s", src: "videos/s3_yline.mp4?v=20261117k", poster: "assets/posters/s3.jpg?v=20261117k",
       caption: "Production ADRC, the nominal ρ = 59 and the optimum of the bound 0.05 on the y line with the payload, the deviation drawn ×100." },
-    { id: "s4", title: "z line, wrist damping", length: "37 s", src: "videos/s4_zline.mp4?v=20261115b", poster: "assets/posters/s4.jpg?v=20261115b",
+    { id: "s4", title: "z line, wrist damping", length: "37 s", src: "videos/s4_zline.mp4?v=20261117k", poster: "assets/posters/s4.jpg?v=20261117k",
       caption: "The z line without payload, where ρ = 104 oscillates at 30 Hz and the optimum of the lowest bound runs with the mode damped, as the two-mass model predicted." },
     { id: "s5", title: "Simulation", length: "42 s", src: "videos/s5_simulation.mp4?v=20261117c", poster: "assets/posters/s5.jpg?v=20261117c",
       caption: "The three searches against the predicted wrist damping, and the wrist mode identified from the robot runs." },
