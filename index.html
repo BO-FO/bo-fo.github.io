@@ -56,13 +56,13 @@
     <section class="page-width section-space" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
-        <img src="assets/fig1_pipeline.png?v=20261117f" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
+        <img src="assets/fig1_pipeline.png?v=20261117h" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
       </figure>
       <ul class="stages">
         <li><strong>Stage 0, simulator.</strong> A preliminary one-parameter search with softer gains gives the nominal common value, ρ = 59.</li>
         <li><strong>Stage 1, robot.</strong> The common value is stepped up with the production gains to the onset of wrist oscillation, ρ = 104 at 30 Hz. The joint-5 torque spectra of the two runs fit a two-mass model of the compliant wrist, which predicts the wrist damping of any setting.</li>
         <li><strong>Stage 2, simulator.</strong> Constrained Bayesian optimization tunes the four parameters, with and without the 4.5 kg payload, among the settings whose predicted wrist damping is at least the bound, 0.15, 0.10 or 0.05.</li>
-        <li><strong>Stage 3, robot.</strong> The optimum of each bound runs against the production ADRC, the binomial observer and the nominal value. The same closed loop with the production gains runs in every stage.</li>
+        <li><strong>Stage 3, robot.</strong> The optimum of each bound runs against the production ADRC, the binomial observer and the nominal value in a session separate from the calibration runs. The closed loop with the production gains is the same in Stages 1 to 3, and Stage 0 used softer gains.</li>
       </ul>
     </section>
 
@@ -183,7 +183,7 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Means over the two runs of each line, from Table II of the paper. The three optima score 0.385–0.397 over the six lines. With the payload the optimum of the bound 0.05 scores 0.39 and the two more damped optima 0.41, and without the payload the three lie within 0.377–0.387 in no order of the bound. Repeated runs of one setting differ by 2.4 % in cost on the median line and 9.5 % at most. Values run, bound 0.15 (81.43, 63.18, 74.14, 69.31), 0.10 (70.42, 69.99, 77.11, 70.62), 0.05 (82.22, 91.71, 89.59, 79.26), slowest observer pole 20.0, 20.2 and 21.4 rad/s. Production gains k<sub>p</sub> = 400 s<sup>−2</sup> and k<sub>d</sub> = 40 s<sup>−1</sup> (225 and 30 on joints 4–5), b<sub>0</sub> = (0.227, 0.121, 0.556, 0.571, 0.393, 0.496) rad/(s<sup>2</sup> N m), ω<sub>o</sub> = 60 rad/s, torque clamped at (432, 432, 197, 80, 80, 80) N m.</p>
+        <p class="table-note">Means over the two runs of each line, from Table II of the paper. The three optima score 0.385–0.397 over the six lines. With the payload the optimum of the bound 0.05 scores 0.39 and the two more damped optima 0.41, and without the payload the three lie within 0.377–0.387 in no order of the bound. Repeated runs of one setting differ by 2.4 % in cost on the median line and 9.5 % at most. Values run, bound 0.15 (81.43, 63.18, 74.14, 69.31), 0.10 (70.42, 69.99, 77.11, 70.62), 0.05 (82.22, 91.71, 89.59, 79.26), slowest observer pole 20.0, 20.2 and 21.4 rad/s. Production gains k<sub>p</sub> = 400 s<sup>−2</sup> and k<sub>d</sub> = 40 s<sup>−1</sup> (225 and 30 on joints 4–5), b<sub>0</sub> = (0.227, 0.121, 0.556, 0.571, 0.393, 0.496) rad/(s<sup>2</sup> N m), ω<sub>o</sub> = 60 rad/s, torque clamped at half the rated torque, (216, 216, 98.6, 39.9, 39.9, 39.9) N m, in the simulation and the hardware plugin alike.</p>
       </details>
       <details class="data" id="twomass">
         <summary>Fitted two-mass model</summary>
