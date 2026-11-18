@@ -1,7 +1,7 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117k", poster: "assets/posters/full.jpg?v=20261113e",
+    { id: "full", title: "Supplementary video", length: "4 min 18 s", src: "videos/supp_video.mp4?v=20261117k", poster: "assets/posters/full.jpg?v=20261118",
       caption: "The narrated video, 4 min 18 s." },
     { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261117j", poster: "assets/posters/s1.jpg?v=20261117j",
       caption: "The study design, robot to simulator to robot." },
