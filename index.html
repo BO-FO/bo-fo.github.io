@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261118d">
+<link rel="stylesheet" href="styles.css?v=20261118e">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -20,7 +20,7 @@
     <div class="nav-inner">
       <a class="wordmark" href="#top">Cascaded-S2R</a>
       <nav aria-label="Main navigation">
-        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Simulation</a><a href="#experiment-2">Robot</a><a href="#ablation">Ablation</a><a href="#citation">Citation</a>
+        <a href="#videos">Videos</a><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#experiment-1">Simulation</a><a href="#experiment-2">Robot experiments</a><a href="#ablation">Ablation</a><a href="#citation">Citation</a>
       </nav>
     </div>
   </header>
@@ -57,6 +57,7 @@
         <img src="assets/fig1_pipeline.png?v=20261118" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
         <figcaption>Four stages between the simulator and the robot, each passing one result to the next.</figcaption>
       </figure>
+      <p class="method-overview">A preliminary simulation gives a nominal common value for the observer. On the robot, with its production gains, that value is stepped up to the onset of wrist oscillation, and a two-mass loop model fitted to the torque spectra of these two runs predicts the wrist damping of any setting. Constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, then tunes the four parameters among the settings whose predicted damping is at least a bound, at three levels of the bound. The optimum of each level returns to the robot against the production ADRC, the binomial observer and the nominal value, and its measured wrist-mode peak is checked against the prediction.</p>
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
@@ -120,7 +121,7 @@
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
-      <h2 id="experiment-2-title">Robot</h2>
+      <h2 id="experiment-2-title">Robot experiments</h2>
       <p class="section-description">Three 0.30 m lines along x, y and z, with and without a 4.5 kg payload, production gains, 72 runs.</p>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Results against the production ADRC</h3></div>

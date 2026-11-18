@@ -55,7 +55,7 @@ nav a:hover { color:var(--ink); }
 figcaption { color:var(--muted); font-size:15px; line-height:1.6; margin-top:9px; }
 .method-figure { margin-top:24px; max-width:960px; }
 .method-figure img { border:1px solid var(--line); border-radius:5px; background:#fff; }
-.method-overview { max-width:960px; margin-top:12px; font-size:17px; color:var(--muted); line-height:1.6; }
+.method-overview { max-width:900px; margin-top:22px; font-size:17px; color:var(--ink); line-height:1.65; text-align:left; }
 .contributions-title { margin-top:30px; }
 .contributions { padding-left:20px; margin-bottom:0; }
 .contributions li + li { margin-top:12px; }

@@ -42,3 +42,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-18 (night): favicon replaced, the inline "BO" data-URI icon of the BO-FO days -> favicon.svg ("S2R" on the accent green, key ?v=20261118); Chrome kept showing BO until then (user).
 
 2026-11-18 (night): header links reduced to "Paper" (placeholder until the preprint) and "Video" (the narrated supplementary video); the silent overview is the player below them.
+
+2026-11-18 (night): a four-sentence summary of the stages under Fig. 1 (user: Method had too little text) and the "Robot" section renamed "Robot experiments" (heading and nav). styles.css key ?v=20261118e.
