@@ -1,7 +1,11 @@
-/* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
+/* Featured-video picker: the thumbnails under the player swap its source, poster and caption. Since 2026-11-18 the first entry is the
+   silent overview (teaser.mp4), autoplaying muted in a loop like the intro videos of other project pages; the narrated video is second. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 28 s", src: "videos/supp_video.mp4?v=20261118f", poster: "assets/posters/full.jpg?v=20261118d",
+    { id: "teaser", title: "Overview, silent", length: "1 min 12 s", src: "videos/teaser.mp4?v=20261118", poster: "assets/posters/full.jpg?v=20261118d",
+      thumb: "assets/posters/teaser.jpg?v=20261118", muted: true, loop: true,
+      caption: "The silent overview, 1 min 12 s. The thumbnails below pick the narrated video or one part of it." },
+    { id: "full", title: "Supplementary video, narrated", length: "4 min 28 s", src: "videos/supp_video.mp4?v=20261118f", poster: "assets/posters/full.jpg?v=20261118d",
       caption: "The narrated video, 4 min 28 s." },
     { id: "s1", title: "Overview", length: "51 s", src: "videos/s1_overview.mp4?v=20261118d", poster: "assets/posters/s1.jpg?v=20261118b",
       caption: "The cascaded procedure, simulator to robot to simulator to robot, each stage passing one result to the next." },
@@ -26,16 +30,17 @@
     var wasPlaying = !player.paused && !player.ended;
     player.pause();
     player.poster = demo.poster;
+    player.muted = !!demo.muted; player.loop = !!demo.loop;   // the silent overview loops muted, the narrated clips play with sound
     player.src = demo.src;
     player.load();
     caption.textContent = demo.caption;
     picker.querySelectorAll(".demo-choice").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.id === demo.id ? "true" : "false"); });
-    if (autoplay && wasPlaying) { player.play().catch(function () {}); }
+    if (autoplay && (wasPlaying || demo.muted)) { player.play().catch(function () {}); }
   }
   DEMOS.forEach(function (demo, i) {
     var b = document.createElement("button");
     b.type = "button"; b.className = "demo-choice"; b.dataset.id = demo.id; b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
-    var img = document.createElement("img"); img.src = demo.poster; img.alt = ""; img.loading = "lazy";
+    var img = document.createElement("img"); img.src = demo.thumb || demo.poster; img.alt = ""; img.loading = "lazy";
     var t = document.createElement("strong"); t.textContent = demo.title;
     var l = document.createElement("span"); l.textContent = demo.length;
     b.appendChild(img); b.appendChild(t); b.appendChild(l);
