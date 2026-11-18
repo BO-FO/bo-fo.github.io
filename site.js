@@ -1,11 +1,11 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 9 s", src: "videos/supp_video.mp4?v=20261118", poster: "assets/posters/full.jpg?v=20261118b",
-      caption: "The narrated video, 4 min 9 s." },
-    { id: "s1", title: "Overview", length: "44 s", src: "videos/s1_overview.mp4?v=20261117j", poster: "assets/posters/s1.jpg?v=20261117j",
-      caption: "The study design, robot to simulator to robot." },
-    { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261113d", poster: "assets/posters/s2.jpg?v=20261113d",
+    { id: "full", title: "Supplementary video", length: "4 min 21 s", src: "videos/supp_video.mp4?v=20261118c", poster: "assets/posters/full.jpg?v=20261118b",
+      caption: "The narrated video, 4 min 21 s." },
+    { id: "s1", title: "Overview", length: "51 s", src: "videos/s1_overview.mp4?v=20261118", poster: "assets/posters/s1.jpg?v=20261118",
+      caption: "The cascaded procedure, simulator to robot to simulator to robot, each stage passing one quantity to the next." },
+    { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261118", poster: "assets/posters/s2.jpg?v=20261113d",
       caption: "A six-axis manipulator with the production real-time controller PLEM at 1 kHz, a 4.5 kg case on the flange, three 0.30 m lines." },
     { id: "s3", title: "y line with payload", length: "33 s", src: "videos/s3_yline.mp4?v=20261117k", poster: "assets/posters/s3.jpg?v=20261117k",
       caption: "Production ADRC, the nominal ρ = 59 and the optimum of the bound 0.05 on the y line with the payload, the deviation drawn ×100." },
@@ -15,8 +15,8 @@
       caption: "The three searches against the predicted wrist damping, and the wrist mode identified from the robot runs." },
     { id: "s5b", title: "Ablation, wave lines", length: "38 s", src: "videos/s5b_ablation.mp4?v=20261117j", poster: "assets/posters/s5b.jpg?v=20261117j",
       caption: "The cost weighting on a wave motion, three settings on the y wave line with the payload, the deviation drawn ×30." },
-    { id: "s6", title: "Summary", length: "31 s", src: "videos/s6_summary.mp4?v=20261115", poster: "assets/posters/s6.jpg?v=20261115",
-      caption: "The damping of the wrist mode, carried from the robot to the simulator, is what makes the search transfer." }
+    { id: "s6", title: "Summary", length: "37 s", src: "videos/s6_summary.mp4?v=20261118", poster: "assets/posters/s6.jpg?v=20261118",
+      caption: "Every optimum ran with its wrist mode in the order the calibrated model predicted, and the data do not rank the bounds." }
   ];
   var player = document.getElementById("featured-video");
   var caption = document.getElementById("featured-description");
