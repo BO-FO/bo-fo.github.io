@@ -46,3 +46,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-18 (night): a four-sentence summary of the stages under Fig. 1 (user: Method had too little text) and the "Robot" section renamed "Robot experiments" (heading and nav). styles.css key ?v=20261118e.
 
 2026-11-18 (night): teaser.mp4 re-rendered, the second box of the cascade schematic now the rho=104 z line WITH the payload so that all four boxes carry the 4.5 kg payload (user), key ?v=20261118c.
+
+2026-11-18 (night): teaser.mp4 re-rendered, the simulator boxes of the schematic now play the same line as the robot box beside them (z, then y), key ?v=20261118d.
