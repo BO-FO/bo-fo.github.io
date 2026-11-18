@@ -93,6 +93,7 @@ details.data .table-note { margin-top:8px; }
 /* looping clips of every setting */
 .loops-grid { gap:26px 22px; }
 .loop-card video { width:100%; aspect-ratio:1200/296; border:1px solid var(--line); border-radius:5px; background:#fff; }
+.loops-grid.wave .loop-card video { aspect-ratio:1200/374; }   /* the wave-line loops are 1200 x 374 (letterboxed with white bands until 2026-11-18) */
 .loop-card .media-name .speed-tag { margin-left:8px; font-size:14px; font-weight:600; }
 .loop-toggle { flex:none; padding:5px 14px; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--muted); font-size:14px; }
 .loop-toggle:hover { background:var(--tint); color:var(--ink); }
@@ -148,3 +149,18 @@ footer p,footer > a:last-child { color:var(--muted); font-size:14px; }
   footer p { order:3; width:100%; }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+/* centred layout (2026-11-18, user: "전체적으로 가운데정렬"): headings, descriptions, figures, lists, tables and the citation sit in the middle of
+   the page; running prose and list text stay left-aligned inside their centred columns */
+h2, .media-group-title, figcaption, .section-description, .table-note { text-align:center; }
+.media-group-header { justify-content:center; position:relative; }
+.media-group-header .loop-toggle { position:absolute; right:0; top:50%; transform:translateY(-50%); }
+.section-description, .method-figure, .method-overview, .method-contributions, .section-reference, .table-note, pre, .metrics-table { margin-inline:auto; }
+.stages { margin:18px auto 0; }
+.highlights { margin:6px auto 34px; }
+footer { justify-content:center; gap:28px; }
+@media (max-width:600px) {
+  .media-group-header { flex-wrap:wrap; }
+  .media-group-header .loop-toggle { position:static; transform:none; }
+}
+

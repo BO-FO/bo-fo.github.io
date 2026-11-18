@@ -34,3 +34,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-18 (evening, later still): the caption under the featured video removed too (user); the video stands alone under the header.
 
 2026-11-18 (night): the featured video no longer autoplays (user); it shows the poster until played, and loops.
+
+2026-11-18 (night): the page centred (user): section headings, group titles, descriptions, captions and table notes centre-aligned, figures, lists, tables, the citation block and the footer centred as blocks; prose and list text stay left-aligned inside their columns (styles.css, block at the end, key ?v=20261118d). Same commit: the wave-line loop videos (1200 x 374) get their own aspect ratio (`.loops-grid.wave`), they had been letterboxed with white bands by the 1200/296 rule of the straight-line loops.
