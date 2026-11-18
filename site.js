@@ -1,5 +1,5 @@
-/* The featured video (the silent overview) autoplays muted in a loop from its HTML attributes; the thumbnail picker under it was
-   removed on 2026-11-18 (user), the narrated video is linked in the header. */
+/* The featured video (the silent overview) starts on click and loops (no autoplay since 2026-11-18 evening, user); the thumbnail
+   picker under it was removed on 2026-11-18 (user), the narrated video is linked in the header. */
 
 /* Looping clips of every setting: the source is attached and playback started when a clip scrolls into view, paused when it leaves;
    one button pauses or resumes them all. */
