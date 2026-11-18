@@ -30,3 +30,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-18 (later): teaser.mp4 re-rendered without the percentage figures on the y line and wave slides (user), key ?v=20261118b.
 
 2026-11-18 (evening, later): the thumbnail picker under the featured video removed (user); the page shows the silent overview only, the narrated video stays linked in the header. The per-slide files videos/s1_overview.mp4 … s6_summary.mp4 and assets/posters/s1 … s6.jpg, teaser.jpg are no longer referenced (kept; mux_segments_v9.py of the paper repository still writes them). site.js keeps only the loop-clip code, styles.css lost the .demo-picker / .demo-choice rules.
+
+2026-11-18 (evening, later still): the caption under the featured video removed too (user); the video stands alone under the header.
