@@ -2,7 +2,7 @@
    silent overview (teaser.mp4), autoplaying muted in a loop like the intro videos of other project pages; the narrated video is second. */
 (function () {
   var DEMOS = [
-    { id: "teaser", title: "Overview, silent", length: "1 min 12 s", src: "videos/teaser.mp4?v=20261118", poster: "assets/posters/full.jpg?v=20261118d",
+    { id: "teaser", title: "Overview, silent", length: "1 min 12 s", src: "videos/teaser.mp4?v=20261118b", poster: "assets/posters/full.jpg?v=20261118d",
       thumb: "assets/posters/teaser.jpg?v=20261118", muted: true, loop: true,
       caption: "The silent overview, 1 min 12 s. The thumbnails below pick the narrated video or one part of it." },
     { id: "full", title: "Supplementary video, narrated", length: "4 min 28 s", src: "videos/supp_video.mp4?v=20261118f", poster: "assets/posters/full.jpg?v=20261118d",

@@ -26,3 +26,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-17, later: page condensed (user: too much text, type too small). Visible prose cut from about 5000 to 1300 words, base type 16 to 18 px (tables 15 px). The per-line Tables II and III, the randomization tables with the cost and constraints, and the fitted two-mass model now sit in collapsed blocks (`<details class="data">`) under their sections, with every value unchanged. Removed from the page text, the contributions list, the damping-bound section (its result sentence moved under the results table), the production-gain sentence (in the Table II block) and the long clip captions.
 
 2026-11-18 (evening): the silent overview `videos/teaser.mp4` (1:12) is the featured video, first in the picker, autoplaying muted in a loop (site.js sets muted/loop from the entry, the narrated clips play with sound); the narrated video is the second entry. Two links in the header, the silent overview and the narrated supplementary video.
+
+2026-11-18 (later): teaser.mp4 re-rendered without the percentage figures on the y line and wave slides (user), key ?v=20261118b.
