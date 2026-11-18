@@ -1,9 +1,9 @@
-# bo-fo.github.io
+# cascaded-s2r.github.io
 
-Project page of **BO-FO**, *Bayesian Optimization of a Fourth-Order Extended State Observer With Pole Relocation for Robot Manipulators*
+Project page of **Cascaded-S2R**, *Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer for Robot Manipulators*
 (Hwarang Kim, Sesun You; manuscript under review, IEEE Transactions on Industrial Electronics, 2026).
 
-Live page: https://bo-fo.github.io
+Live page: https://cascaded-s2r.github.io (until 2026-11-18 the organization was BO-FO and the page bo-fo.github.io, after the earlier title of the manuscript)
 
 Static site, no build step (GitHub Pages serves the `main` branch root):
 

@@ -1,7 +1,7 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 21 s", src: "videos/supp_video.mp4?v=20261118c", poster: "assets/posters/full.jpg?v=20261118b",
+    { id: "full", title: "Supplementary video", length: "4 min 21 s", src: "videos/supp_video.mp4?v=20261118c", poster: "assets/posters/full.jpg?v=20261118c",
       caption: "The narrated video, 4 min 21 s." },
     { id: "s1", title: "Overview", length: "51 s", src: "videos/s1_overview.mp4?v=20261118", poster: "assets/posters/s1.jpg?v=20261118",
       caption: "The cascaded procedure, simulator to robot to simulator to robot, each stage passing one quantity to the next." },
