@@ -55,21 +55,16 @@
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
         <img src="assets/fig1_pipeline.png?v=20261118" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
+        <figcaption>Four stages between the simulator and the robot, each passing one result to the next.</figcaption>
       </figure>
-      <ul class="stages">
-        <li><strong>Stage 0, simulator.</strong> A preliminary one-parameter search with softer gains gives the nominal common value, ρ = 59.</li>
-        <li><strong>Stage 1, robot.</strong> The common value is stepped up with the production gains to the onset of wrist oscillation, ρ = 104 at 30 Hz. The joint-5 torque spectra of these two calibration runs on the z line fit a two-mass model of the compliant wrist, which turns the observation into a constraint, the wrist damping of any setting.</li>
-        <li><strong>Stage 2, simulator.</strong> Constrained Bayesian optimization tunes the four parameters, with and without the 4.5 kg payload, among the settings whose predicted wrist damping is at least the bound, 0.15, 0.10 or 0.05.</li>
-        <li><strong>Stage 3, robot.</strong> The optimum of each bound runs against the production ADRC, the binomial observer and the nominal value in a session separate from the calibration runs. The closed loop with the production gains is the same in Stages 1 to 3, and Stage 0 used softer gains.</li>
-      </ul>
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
       <h2 id="experiment-1-title">Simulation</h2>
-      <p class="section-description">Three searches on the same randomized plant, one at each damping bound, 60 proposals each after 55 prior settings. The optima of the bounds 0.15, 0.10 and 0.05 score 0.75, 0.69 and 0.65 against 0.89 for the nominal value and 0.90 for the binomial observer. The cost falls as the bound is lowered, and no setting with a predicted damping of 0.25 or more scored below the nominal value.</p>
+      <p class="section-description">Constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, at three levels of the wrist-damping bound.</p>
       <div class="media-group" id="motions">
         <div class="media-group-header"><h3 class="media-group-title">The eleven validation motions</h3></div>
-        <p class="section-description" style="margin-top:0">One cycle of every motion with the payload, the production ADRC on the left of each cell and a damping-bound optimum of an earlier search, ρ<sub>i</sub> = (108, 90, 91, 81), on the right. The clip plays when it is in view.</p>
+        <p class="section-description" style="margin-top:0">Eleven validation motions, the production ADRC on the left of each cell and a damping-bound optimum of an earlier search on the right.</p>
         <div class="media-grid single">
           <div class="media-card loop-card"><video class="loop" muted loop playsinline preload="none" poster="videos/motions_grid.jpg?v=20261111" data-src="videos/motions_grid.mp4?v=20261111" style="aspect-ratio:16/9" aria-label="Eleven validation motions in simulation, production ADRC and a damping-bound optimum side by side"></video></div>
         </div>
@@ -126,7 +121,7 @@
 
     <section class="page-width section-space experiment-section" id="experiment-2" aria-labelledby="experiment-2-title">
       <h2 id="experiment-2-title">Robot</h2>
-      <p class="section-description">Three 0.30 m lines along x, y and z, three A–B–A cycles each, with and without a 4.5 kg case hanging from the flange, on a six-axis collaborative manipulator with its production real-time controller PLEM at 1 kHz. Two runs on each line and load, 72 runs in one session, all clean, and ρ = 104 in an earlier session.</p>
+      <p class="section-description">Three 0.30 m lines along x, y and z, with and without a 4.5 kg payload, production gains, 72 runs.</p>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Results against the production ADRC</h3></div>
         <div class="choice-table">
@@ -145,15 +140,14 @@
             </tbody>
           </table>
         </div>
-        <p class="table-note">Changes of the perpendicular-error RMS, the reversal error and the along-track error RMS relative to the production ADRC, means over the three lines. ζ is the wrist damping predicted by the two-mass model, the peak the height of the wrist mode in the joint-5 torque spectrum on the z line without payload, J̄ the cost of the paper averaged over the six lines. ρ = 104 oscillated at 30 Hz on the z line and is not scored.</p>
-        <p class="section-description">The three optima ran with their wrist-mode peaks in the order of the bounds, 10.5, 8.6 and 5.4 dB against 29 dB for ρ = 104, and lowered the cost by 60–62 % against the production ADRC and 27–29 % against the nominal value. Their 3 % spread is comparable to the 1–4 % between repeated runs, so the robot does not rank the bounds.</p>
+        <p class="table-note">Relative to the production ADRC, means over the three lines. ζ is the predicted wrist damping, the peak the height of the wrist mode in the joint-5 torque spectrum, J̄ the cost over the six lines. ρ = 104 oscillated at 30 Hz and is not scored.</p>
       </div>
       <div class="media-group" id="loops">
         <div class="media-group-header">
           <h3 class="media-group-title">Every setting in motion</h3>
           <button type="button" class="loop-toggle" id="loop-toggle" aria-pressed="true">Pause all</button>
         </div>
-        <p class="section-description" style="margin-top:0">One A–B–A cycle of each setting with the payload on the y, z and x lines, the measured deviation drawn ×100, its colour the perpendicular error from 0 to 0.8 mm and the dashed line the commanded path. Rows in the order of Table II.</p>
+        <p class="section-description" style="margin-top:0">One cycle of each setting with the payload, the deviation drawn ×100 and coloured by the perpendicular error.</p>
         <div class="media-grid single loops-grid">
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">Production ADRC (3rd-order ESO)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.28 / 0.29 / 0.36</strong> mm</span><span>ζ <strong>0.62</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/adrc.jpg?v=20261111" data-src="videos/loops/adrc.mp4?v=20261111" aria-label="Production ADRC, one cycle on the three lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ = 59 <span class="speed-tag">nominal</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.18 / 0.16 / 0.24</strong> mm</span><span>ζ <strong>0.20</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops/rho59.jpg?v=20261111" data-src="videos/loops/rho59.mp4?v=20261111" aria-label="rho = 59, one cycle on the three lines"></video></div>
@@ -191,10 +185,10 @@
 
     <section class="page-width section-space experiment-section" id="ablation" aria-labelledby="ablation-title">
       <h2 id="ablation-title">Ablation, the cost weighting on a wave motion</h2>
-      <p class="section-description">The three lines were given a lateral sine of 4 cm and 1.5 waves, and the search was repeated at the bound 0.05 under three weightings of the path errors. Under every weighting the lowest costs form one cluster on the damping bound, within 1 %. On the robot the line optimum and the two wave optima lowered the cost by 57–61 % against the production ADRC on 48 runs and lie within 1–5 % of each other, against repeat differences of up to 0.02 in cost, so the weighting changes the selected gains but not the attainable cost.</p>
+      <p class="section-description">The same lines with a lateral 4 cm sine, the search repeated under three weightings of the cost.</p>
       <div class="media-group">
         <div class="media-group-header"><h3 class="media-group-title">Every setting in motion</h3></div>
-        <p class="section-description" style="margin-top:0">One cycle of each setting on the wave lines with the payload, the measured deviation drawn ×30. Rows in the order of Table III.</p>
+        <p class="section-description" style="margin-top:0">One cycle of each setting with the payload, the deviation drawn ×30.</p>
         <div class="media-grid single loops-grid wave">
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">Production ADRC (3rd-order ESO)</span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.49 / 0.62 / 0.58</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>1.00</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/adrc.jpg?v=20261113" data-src="videos/loops_wave/adrc.mp4?v=20261113" aria-label="Production ADRC, one cycle on the three wave lines"></video></div>
           <div class="media-card loop-card"><div class="media-card-bar"><span class="media-name">4th, ρ<sub>i</sub> = (120, 113, 101, 86) <span class="speed-tag">reversal weighting</span></span><span class="media-metrics"><span>e<sub>⊥</sub> x/y/z <strong>0.14 / 0.16 / 0.17</strong> mm</span><span>J̄ (w<sub>⊥</sub> = 0.5) <strong>0.41</strong></span></span></div><video class="loop" muted loop playsinline preload="none" poster="videos/loops_wave/w2.jpg?v=20261113" data-src="videos/loops_wave/w2.mp4?v=20261113" aria-label="rho_i = (120, 113, 101, 86), one cycle on the three wave lines"></video></div>
