@@ -30,14 +30,14 @@
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
-      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261118c">Supplementary video (MP4)</a></p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper (PDF) · coming soon</span><a class="paper-link" href="videos/supp_video.mp4?v=20261118d">Supplementary video (MP4)</a></p>
     </section>
 
     <section class="showcase page-width" id="videos" aria-label="Featured videos">
       <div class="showcase-layout">
         <div class="featured-demo">
           <div class="video-shell">
-            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261118c" poster="assets/posters/full.jpg?v=20261118d" aria-label="Supplementary video"></video>
+            <video id="featured-video" controls playsinline preload="metadata" src="videos/supp_video.mp4?v=20261118d" poster="assets/posters/full.jpg?v=20261118d" aria-label="Supplementary video"></video>
           </div>
           <p id="featured-description" class="featured-caption">The narrated video, 4 min 21 s. The thumbnails below pick one part of it.</p>
         </div>
@@ -48,7 +48,7 @@
     <section class="abstract-section section-space" id="abstract" aria-labelledby="abstract-title">
       <div class="reading-width">
         <h2 id="abstract-title">Abstract</h2>
-        <p>An observer setting that scores well in simulation can oscillate on the robot. We propose a cascaded sim-to-real procedure for tuning the extended state observer (ESO) of an active disturbance rejection controller on a robot manipulator, in which each stage passes one quantity to the next. A preliminary simulation gives a nominal setting. On the robot, with its production gains, a common observer parameter is stepped up from that setting to the onset of wrist oscillation, and a two-mass loop model calibrated to the torque spectra of the nominal and the oscillating run turns this observation into a constraint on the damping of the wrist mode. Constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, then tunes the four gains of a fourth-order ESO with pole relocation under this constraint and within the torque clamps, at three levels of the damping bound. The robot evaluates the result.</p>
+        <p>An observer setting that scores well in simulation can oscillate on the robot. We propose a cascaded sim-to-real procedure for tuning the extended state observer (ESO) of an active disturbance rejection controller on a robot manipulator, in which each stage passes one result to the next. A preliminary simulation gives a nominal setting. On the robot, with its production gains, a common observer parameter is stepped up from that setting to the onset of wrist oscillation, and a two-mass loop model calibrated to the torque spectra of the nominal and the oscillating run turns this observation into a constraint on the damping of the wrist mode. Constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, then tunes the four gains of a fourth-order ESO with pole relocation under this constraint and within the torque clamps, at three levels of the damping bound. The robot evaluates the result.</p>
         <p>Every selected setting ran with its wrist-mode peak in the order the calibrated model predicts and lowered the encoder-derived tracking cost of Cartesian lines below the production controller, the nominal setting and the binomial observer, and the setting of the lowest bound kept its gain on a wave path. The spread among the three bounds is comparable to the repeat scatter. The data thus support the settings the procedure selects under the tested conditions and do not rank the bounds.</p>
       </div>
     </section>
@@ -56,7 +56,7 @@
     <section class="page-width section-space" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
-        <img src="assets/fig1_pipeline.png?v=20261117i" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
+        <img src="assets/fig1_pipeline.png?v=20261118" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
       </figure>
       <ul class="stages">
         <li><strong>Stage 0, simulator.</strong> A preliminary one-parameter search with softer gains gives the nominal common value, ρ = 59.</li>

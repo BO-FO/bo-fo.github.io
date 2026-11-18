@@ -1,10 +1,10 @@
 /* Featured-video picker: the thumbnails under the player swap its source, poster and caption. */
 (function () {
   var DEMOS = [
-    { id: "full", title: "Supplementary video", length: "4 min 21 s", src: "videos/supp_video.mp4?v=20261118c", poster: "assets/posters/full.jpg?v=20261118d",
+    { id: "full", title: "Supplementary video", length: "4 min 21 s", src: "videos/supp_video.mp4?v=20261118d", poster: "assets/posters/full.jpg?v=20261118d",
       caption: "The narrated video, 4 min 21 s." },
-    { id: "s1", title: "Overview", length: "51 s", src: "videos/s1_overview.mp4?v=20261118", poster: "assets/posters/s1.jpg?v=20261118",
-      caption: "The cascaded procedure, simulator to robot to simulator to robot, each stage passing one quantity to the next." },
+    { id: "s1", title: "Overview", length: "51 s", src: "videos/s1_overview.mp4?v=20261118b", poster: "assets/posters/s1.jpg?v=20261118b",
+      caption: "The cascaded procedure, simulator to robot to simulator to robot, each stage passing one result to the next." },
     { id: "s2", title: "Hardware set-up", length: "23 s", src: "videos/s2_setup.mp4?v=20261118", poster: "assets/posters/s2.jpg?v=20261113d",
       caption: "A six-axis manipulator with the production real-time controller PLEM at 1 kHz, a 4.5 kg case on the flange, three 0.30 m lines." },
     { id: "s3", title: "y line with payload", length: "33 s", src: "videos/s3_yline.mp4?v=20261117k", poster: "assets/posters/s3.jpg?v=20261117k",
