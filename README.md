@@ -40,3 +40,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-18 (night, later): page text cut to the essentials (user): the four stage bullets under Fig. 1 replaced by a one-line caption, every section description one sentence, the results paragraph under the Robot table and the long table note dropped or shortened, loop captions one line; about 745 visible words (was about 1250), the abstract untouched, the collapsed data blocks untouched. Previous text in git history (commit before this one).
 
 2026-11-18 (night): favicon replaced, the inline "BO" data-URI icon of the BO-FO days -> favicon.svg ("S2R" on the accent green, key ?v=20261118); Chrome kept showing BO until then (user).
+
+2026-11-18 (night): header links reduced to "Paper" (placeholder until the preprint) and "Video" (the narrated supplementary video); the silent overview is the player below them.
