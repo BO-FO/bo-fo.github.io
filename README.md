@@ -44,3 +44,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-18 (night): header links reduced to "Paper" (placeholder until the preprint) and "Video" (the narrated supplementary video); the silent overview is the player below them.
 
 2026-11-18 (night): a four-sentence summary of the stages under Fig. 1 (user: Method had too little text) and the "Robot" section renamed "Robot experiments" (heading and nav). styles.css key ?v=20261118e.
+
+2026-11-18 (night): teaser.mp4 re-rendered, the second box of the cascade schematic now the rho=104 z line WITH the payload so that all four boxes carry the 4.5 kg payload (user), key ?v=20261118c.
