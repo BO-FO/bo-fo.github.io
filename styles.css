@@ -166,8 +166,7 @@ footer { justify-content:center; gap:28px; }
 
 
 /* symbols of the method figure */
-.symbols { max-width:900px; margin:26px auto 0; }
-.symbols-title { font-size:19px; text-align:center; margin-bottom:12px; }
+details.data.symbols { max-width:900px; margin:26px auto 0; }
 .symbol-list { display:grid; grid-template-columns:max-content 1fr; gap:6px 18px; margin:0; font-size:16px; line-height:1.5; }
 .symbol-list dt { font-family:"Times New Roman",Times,serif; font-size:17px; white-space:nowrap; text-align:right; }
 .symbol-list dd { margin:0; color:var(--ink); }

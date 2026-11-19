@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cascaded-S2R · Cascaded Sim-to-Real Tuning of a Fourth-Order ESO</title>
-<meta name="description" content="Project page of cascaded sim-to-real tuning of a fourth-order extended state observer for robot manipulators (Hwarang Kim, Sesun You).">
-<meta property="og:title" content="Cascaded-S2R, Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer for Robot Manipulators">
+<title>Cascaded-S2R · Cascaded Sim-to-Real Tuning of ESOs With Hardware-Calibrated Damping Constraints</title>
+<meta name="description" content="Project page of cascaded sim-to-real tuning of extended state observers with hardware-calibrated damping constraints for robot manipulators (Hwarang Kim, Sesun You).">
+<meta property="og:title" content="Cascaded-S2R, Cascaded Sim-to-Real Tuning of Extended State Observers With Hardware-Calibrated Damping Constraints for Robot Manipulators">
 <meta property="og:description" content="A cascaded sim-to-real procedure that turns the wrist oscillation measured on the robot into a damping constraint for constrained Bayesian optimization of a fourth-order ESO, evaluated on a six-axis collaborative manipulator with its production ADRC gains.">
 <meta property="og:image" content="https://cascaded-s2r.github.io/assets/teaser_snapshots.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261118">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261119a">
+<link rel="stylesheet" href="styles.css?v=20261119b">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,7 +26,7 @@
   </header>
   <main id="main">
     <section class="hero page-width" aria-labelledby="paper-title">
-      <h1 id="paper-title">Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer for Robot Manipulators</h1>
+      <h1 id="paper-title">Cascaded Sim-to-Real Tuning of Extended State Observers With Hardware-Calibrated Damping Constraints for Robot Manipulators</h1>
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
@@ -58,8 +58,8 @@
         <figcaption>Four stages between the simulator and the robot, each passing one result to the next.</figcaption>
       </figure>
       <p class="method-overview">A preliminary simulation gives a nominal common value for the observer. On the robot, with its production gains, that value is stepped up to the onset of wrist oscillation, and a two-mass loop model fitted to the torque spectra of these two runs predicts the wrist damping of any setting. Constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, then tunes the four parameters among the settings whose predicted damping is at least a bound, at three levels of the bound. The optimum of each level returns to the robot against the production ADRC, the binomial observer and the nominal value, and its measured wrist-mode peak is checked against the prediction.</p>
-      <div class="symbols">
-        <h3 class="symbols-title">Symbols in the figure</h3>
+      <details class="data symbols">
+        <summary>Symbols in the figure</summary>
         <dl class="symbol-list">
           <dt><i>q</i>, <i>q̇</i></dt><dd>measured angle and velocity of a joint</dd>
           <dt><i>q</i><sub>d</sub>, <i>q̇</i><sub>d</sub>, <i>q̈</i><sub>d</sub></dt><dd>reference angle of the joint and its first and second derivatives</dd>
@@ -83,7 +83,7 @@
           <dt><i>J</i></dt><dd>cost, a weighted sum of <i>e</i><sub>⊥</sub>, <i>e</i><sub>∥</sub>, <i>e</i><sub>rev</sub> and <i>U</i>, each relative to the production ADRC, which scores 1</dd>
           <dt>no clamp</dt><dd>the torque demand of every joint stays within 0.9 of its clamp <i>τ</i><sub>max</sub></dd>
         </dl>
-      </div>
+      </details>
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
@@ -246,8 +246,8 @@
       <h2 id="citation-title">Citation</h2>
 <pre><code>@article{kim2026bofo,
   author  = {Kim, Hwarang and You, Sesun},
-  title   = {Cascaded Sim-to-Real Tuning of a Fourth-Order Extended State Observer
-             for Robot Manipulators},
+  title   = {Cascaded Sim-to-Real Tuning of Extended State Observers With
+             Hardware-Calibrated Damping Constraints for Robot Manipulators},
   journal = {IEEE Transactions on Industrial Electronics},
   year    = {2026},
   note    = {under review}
