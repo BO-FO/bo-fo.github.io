@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap">
-<link rel="stylesheet" href="styles.css?v=20261118e">
+<link rel="stylesheet" href="styles.css?v=20261119a">
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -58,6 +58,32 @@
         <figcaption>Four stages between the simulator and the robot, each passing one result to the next.</figcaption>
       </figure>
       <p class="method-overview">A preliminary simulation gives a nominal common value for the observer. On the robot, with its production gains, that value is stepped up to the onset of wrist oscillation, and a two-mass loop model fitted to the torque spectra of these two runs predicts the wrist damping of any setting. Constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, then tunes the four parameters among the settings whose predicted damping is at least a bound, at three levels of the bound. The optimum of each level returns to the robot against the production ADRC, the binomial observer and the nominal value, and its measured wrist-mode peak is checked against the prediction.</p>
+      <div class="symbols">
+        <h3 class="symbols-title">Symbols in the figure</h3>
+        <dl class="symbol-list">
+          <dt><i>q</i>, <i>q̇</i></dt><dd>measured angle and velocity of a joint</dd>
+          <dt><i>q</i><sub>d</sub>, <i>q̇</i><sub>d</sub>, <i>q̈</i><sub>d</sub></dt><dd>reference angle of the joint and its first and second derivatives</dd>
+          <dt><i>v</i></dt><dd>commanded acceleration of the joint</dd>
+          <dt><i>k</i><sub>p</sub>, <i>k</i><sub>d</sub></dt><dd>production position and velocity gains, kept in every stage</dd>
+          <dt><i>τ</i></dt><dd>torque command, the torque demand (<i>v</i> − <i>z</i><sub>3</sub>)/<i>b</i><sub>0</sub> limited by sat[·] to the clamp ±<i>τ</i><sub>max</sub></dd>
+          <dt><i>b</i><sub>0</sub>, <i>b</i></dt><dd>nominal input gain of the controller and input gain of the plant; their ratio <i>b</i>/<i>b</i><sub>0</sub> is randomized in the simulator</dd>
+          <dt><i>d</i>, <i>ḋ</i></dt><dd>total disturbance of a joint, its actual acceleration minus <i>b</i><sub>0</sub><i>τ</i>, and the rate of the disturbance</dd>
+          <dt><i>z</i><sub>3</sub>, <i>z</i><sub>4</sub></dt><dd>observer estimates of <i>d</i> and <i>ḋ</i>; only <i>z</i><sub>3</sub> enters the control law</dd>
+          <dt><i>g</i><sub><i>i</i></sub></dt><dd>observer gain of order <i>i</i> = 1, …, 4, with the binomial coefficient (<sup>4</sup><sub><i>i</i></sub>)</dd>
+          <dt><i>ω</i><sub>o</sub></dt><dd>production observer bandwidth, kept in every stage</dd>
+          <dt><i>ρ</i><sub>1</sub>, …, <i>ρ</i><sub>4</sub></dt><dd>relocation parameters, one for each gain order, in rad/s; all zero gives the binomial observer (<i>ρ</i> = 0)</dd>
+          <dt><i>ρ</i></dt><dd>common value, all four <i>ρ</i><sub><i>i</i></sub> equal; nominal value <i>ρ</i> = 59</dd>
+          <dt><i>ρ</i><sub><i>i</i></sub><sup>*</sup></dt><dd>optimum of the constrained search at one damping bound</dd>
+          <dt><i>ζ</i></dt><dd>damping ratio of the wrist mode that the calibrated two-mass loop model predicts for a setting</dd>
+          <dt><i>λ</i></dt><dd>gain margin of the rigid loop of one joint at the plant input; <i>λ</i> ≥ 2 is 6 dB</dd>
+          <dt><i>e</i><sub>⊥</sub>, <i>e</i><sub>∥</sub></dt><dd>tool-center-point error perpendicular to and along the commanded line</dd>
+          <dt><i>e</i><sub>rev</sub></dt><dd>largest position error in the windows around the path reversals</dd>
+          <dt>Δ<i>τ</i></dt><dd>torque increment between consecutive samples</dd>
+          <dt><i>U</i></dt><dd>torque activity, the RMS of Δ<i>τ</i> of each joint relative to the production ADRC, squared and averaged over the joints</dd>
+          <dt><i>J</i></dt><dd>cost, a weighted sum of <i>e</i><sub>⊥</sub>, <i>e</i><sub>∥</sub>, <i>e</i><sub>rev</sub> and <i>U</i>, each relative to the production ADRC, which scores 1</dd>
+          <dt>no clamp</dt><dd>the torque demand of every joint stays within 0.9 of its clamp <i>τ</i><sub>max</sub></dd>
+        </dl>
+      </div>
     </section>
 
     <section class="page-width section-space experiment-section" id="experiment-1" aria-labelledby="experiment-1-title">
