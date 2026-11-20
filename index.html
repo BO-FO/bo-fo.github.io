@@ -6,7 +6,7 @@
 <title>Cascaded-S2R · Cascaded Sim-to-Real Tuning of ESOs With Hardware-Calibrated Damping Constraints</title>
 <meta name="description" content="Project page of cascaded sim-to-real tuning of extended state observers with hardware-calibrated damping constraints for robot manipulators (Hwarang Kim, Sesun You).">
 <meta property="og:title" content="Cascaded-S2R, Cascaded Sim-to-Real Tuning of Extended State Observers With Hardware-Calibrated Damping Constraints for Robot Manipulators">
-<meta property="og:description" content="A cascaded sim-to-real procedure that turns the wrist oscillation measured on the robot into a damping constraint for constrained Bayesian optimization of a fourth-order ESO, evaluated on a six-axis collaborative manipulator with its production ADRC gains.">
+<meta property="og:description" content="A two-stage cascaded sim-to-real procedure that turns the wrist oscillation measured on the robot, from the initial setting of a simulation BO, into a damping constraint for constrained Bayesian optimization of a fourth-order ESO, evaluated on a six-axis collaborative manipulator with its production ADRC gains.">
 <meta property="og:image" content="https://cascaded-s2r.github.io/assets/teaser_snapshots.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20261118">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,14 +30,14 @@
       <p class="authors"><strong>Hwarang Kim</strong><sup>1</sup> &nbsp;·&nbsp; <strong>Sesun You</strong><sup>2</sup></p>
       <p class="affiliations"><sup>1</sup>WIM Inc., Daegu, Republic of Korea &nbsp;&nbsp;·&nbsp;&nbsp; <sup>2</sup>Department of Electronics Engineering, Incheon National University, Republic of Korea</p>
       <p class="venue">Manuscript under review · IEEE Transactions on Industrial Electronics · 2026</p>
-      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper</span><a class="paper-link" href="videos/supp_video.mp4?v=20261119" title="Narrated supplementary video, 4 min 30 s">Video</a></p>
+      <p class="paper-links"><span class="paper-link soon" title="The preprint will be linked here once available">Paper</span><a class="paper-link" href="videos/supp_video.mp4?v=20261120" title="Narrated supplementary video, 4 min 36 s">Video</a></p>
     </section>
 
     <section class="showcase page-width" id="videos" aria-label="Featured video">
       <div class="showcase-layout">
         <div class="featured-demo">
           <div class="video-shell">
-            <video id="featured-video" controls loop playsinline preload="metadata" src="videos/teaser.mp4?v=20261119" poster="assets/posters/full.jpg?v=20261119" aria-label="Silent overview video"></video>
+            <video id="featured-video" controls loop playsinline preload="metadata" src="videos/teaser.mp4?v=20261120" poster="assets/posters/full.jpg?v=20261119" aria-label="Silent overview video"></video>
           </div>
         </div>
       </div>
@@ -46,18 +46,18 @@
     <section class="abstract-section section-space" id="abstract" aria-labelledby="abstract-title">
       <div class="reading-width">
         <h2 id="abstract-title">Abstract</h2>
-        <p>An observer setting that scores well in simulation can oscillate on the robot. We propose a cascaded sim-to-real procedure for tuning the extended state observer (ESO) of an active disturbance rejection controller on a robot manipulator, in which each stage passes one result to the next. A preliminary simulation gives a nominal setting. On the robot, with its production gains, a common observer parameter is stepped up from that setting to the onset of wrist oscillation, and a two-mass loop model calibrated to the torque spectra of the nominal and the oscillating run turns this observation into a constraint on the damping of the wrist mode. Constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, then tunes the four gains of a fourth-order ESO with pole relocation under this constraint and within the torque clamps, at three levels of the damping bound. The robot evaluates the result.</p>
-        <p>Every selected setting ran with its wrist-mode peak in the order the calibrated model predicts and lowered the encoder-derived tracking cost of Cartesian lines below the production controller, the nominal setting and the binomial observer, and the setting of the lowest bound kept its gain on a wave path. The spread among the three bounds is comparable to the repeat scatter. The data thus support the settings the procedure selects under the tested conditions and do not rank the bounds.</p>
+        <p>An observer setting that scores well in simulation can oscillate on the robot. Bayesian optimization in simulation gave an initial setting of the extended state observer (ESO) of an active disturbance rejection controller on a robot manipulator, which ran clean on the robot, but, stepped up toward the values the simulation favors, it brought a sustained wrist oscillation that the rigid simulated plant does not contain. The simulation lacks a constraint on the damping of the wrist mode, and we propose a cascaded sim-to-real procedure of two stages that obtains it and tunes under it. In the first, a two-mass loop model calibrated to the torque spectra of the initial and the oscillating run turns the observation into a constraint on the wrist damping. In the second, constrained Bayesian optimization on a randomized simulated manipulator, loaded and unloaded, tunes the four gains of a fourth-order ESO with pole relocation under this constraint and within the torque clamps, at three levels of the damping bound, and the robot evaluates the result.</p>
+        <p>Every selected setting ran with its wrist-mode peak in the order the calibrated model predicts and lowered the encoder-derived tracking cost of Cartesian lines below the production controller, the initial setting and the binomial observer. The spread among the three bounds is comparable to the repeat scatter, so the data do not rank the bounds.</p>
       </div>
     </section>
 
     <section class="page-width section-space" id="method" aria-labelledby="method-title">
       <h2 id="method-title">Method</h2>
       <figure class="method-figure">
-        <img src="assets/fig1_pipeline.png?v=20261118" alt="Study design in four stages. A preliminary simulator search gives the nominal common value, the robot steps it up to the onset of wrist oscillation and fits a two-mass loop model, constrained Bayesian optimization searches at three levels of the damping bound in the simulator, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the nominal value.">
-        <figcaption>Four stages between the simulator and the robot, each passing one result to the next.</figcaption>
+        <img src="assets/fig1_pipeline.png?v=20261120" alt="The cascaded procedure in two stages. Stage 1: Bayesian optimization in the simulator gives the initial common value, the robot steps it up to the onset of wrist oscillation and a two-mass loop model is fitted to the two runs. Stage 2: constrained Bayesian optimization in the simulator at three levels of the damping bound, and the optimum of each level runs on the robot against the production ADRC, the binomial observer and the initial value.">
+        <figcaption>Two stages, each a simulation followed by robot runs. Stage 1 finds the wrist-damping constraint, Stage 2 tunes under it.</figcaption>
       </figure>
-      <p class="method-overview">A preliminary simulation gives a nominal common value for the observer. On the robot, with its production gains, that value is stepped up to the onset of wrist oscillation, and a two-mass loop model fitted to the torque spectra of these two runs predicts the wrist damping of any setting. Constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, then tunes the four parameters among the settings whose predicted damping is at least a bound, at three levels of the bound. The optimum of each level returns to the robot against the production ADRC, the binomial observer and the nominal value, and its measured wrist-mode peak is checked against the prediction.</p>
+      <p class="method-overview">Bayesian optimization in simulation gives an initial common value for the observer, which runs cleanly on the robot. Stepped up toward the values the simulation favors, it brings a sustained wrist oscillation, because the rigid simulated plant has no wrist mode and the simulation lacks a constraint on its damping. Stage 1 obtains this constraint with a two-mass loop model, fitted to the torque spectra of the initial and the oscillating run, which predicts the wrist damping of any setting. In Stage 2, constrained Bayesian optimization on a randomized simulated manipulator, with and without the payload, tunes the four parameters among the settings whose predicted damping is at least a bound, at three levels of the bound, and the optimum of each level returns to the robot against the production ADRC, the binomial observer and the initial value, its measured wrist-mode peak checked against the prediction.</p>
       <details class="data symbols">
         <summary>Symbols in the figure</summary>
         <dl class="symbol-list">
@@ -72,7 +72,7 @@
           <dt><i>g</i><sub><i>i</i></sub></dt><dd>observer gain of order <i>i</i> = 1, …, 4, with the binomial coefficient (<sup>4</sup><sub><i>i</i></sub>)</dd>
           <dt><i>ω</i><sub>o</sub></dt><dd>production observer bandwidth, kept in every stage</dd>
           <dt><i>ρ</i><sub>1</sub>, …, <i>ρ</i><sub>4</sub></dt><dd>relocation parameters, one for each gain order, in rad/s; all zero gives the binomial observer (<i>ρ</i> = 0)</dd>
-          <dt><i>ρ</i></dt><dd>common value, all four <i>ρ</i><sub><i>i</i></sub> equal; nominal value <i>ρ</i> = 59</dd>
+          <dt><i>ρ</i></dt><dd>common value, all four <i>ρ</i><sub><i>i</i></sub> equal; initial (nominal) value <i>ρ</i> = 59 from the simulation BO of Stage 1</dd>
           <dt><i>ρ</i><sub><i>i</i></sub><sup>*</sup></dt><dd>optimum of the constrained search at one damping bound</dd>
           <dt><i>ζ</i></dt><dd>damping ratio of the wrist mode that the calibrated two-mass loop model predicts for a setting</dd>
           <dt><i>λ</i></dt><dd>gain margin of the rigid loop of one joint at the plant input; <i>λ</i> ≥ 2 is 6 dB</dd>
