@@ -52,3 +52,5 @@ Static site, no build step (GitHub Pages serves the `main` branch root):
 2026-11-20: two-stage framing (user). Simulation BO gives the initial value rho = 59 (not a failure); Stage 1 = 1-1 simulation BO + 1-2 robot step-up and two-mass diagnosis, Stage 2 = 2-1 constrained BO + 2-2 robot evaluation. Fig. 1 (page variant, no equation numbers or figure/table references) with translucent group boxes, abstract, method caption and overview, symbols, og:description updated; teaser schematic (t1) grouped the same way; narrated video s1 narration and bullets rewritten (4 min 36 s). Keys ?v=20261120.
 
 2026-11-20: wave-line data block and note refer to Table IV of the paper (a Table III, cost relative to rho=59 in simulation and on the robot, was added to the paper).
+
+2026-11-20: two-mass note: scope "the seven straight-line settings of Fig. 6" and the full fit objective (residual scales, inertia prior, production-damping penalty).
